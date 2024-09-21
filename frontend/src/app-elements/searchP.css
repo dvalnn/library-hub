@@ -1,0 +1,88 @@
+#searchForm {
+    position: sticky;
+    padding: 10px;
+    margin: auto 0 auto 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#searchForm #searchBar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0.5rem;
+    border: 2px solid #818cf8;
+    border-radius: 0.5rem;
+    background-color: #e8e8e8;
+    width: 100%;
+}
+
+#searchForm #searchBar label {
+    font-size: 1.5rem;
+    color: #818cf8;
+    font-weight: 700;
+    margin-left: 7px;
+    background: #e8e8e8;
+}
+
+#searchForm #searchBar input[type=text].input {
+    padding: 11px 10px;
+    font-size: 1.5rem;
+    border: 2px #818cf8 none;
+    border-radius: 5px;
+    background: #e8e8e8;
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+#searchForm #searchBar input[type=text].input:focus {
+    outline: none;
+}
+
+#searchForm #searchBar #user-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#searchForm #searchBar #user-selector .radio {
+    text-align: center;
+}
+
+#searchForm #searchBar #user-selector .radio input {
+    display: none;
+}
+
+#searchForm #searchBar #user-selector .radio .name {
+    cursor: pointer;
+    padding: 0.5rem;
+    color: rgb(51, 65, 85);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    transition: all 0.2s ease-in-out;
+}
+
+#searchForm #searchBar #user-selector .radio input:checked+.name {
+    background-color: black;
+    font-size: larger;
+    color: #fff;
+    font-weight: 600;
+    border-color: #fff;
+}
+
+#searchForm #searchBar .LupaBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e8e8e8;
+    border: 2px rgba(129, 141, 248, 0.6196078431) dotted;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 3em;
+    height: 3em;
+}
+
+#searchForm #searchBar .Lupa {
+    font-size: 1.6em;
+    color: #818df8;
+}
