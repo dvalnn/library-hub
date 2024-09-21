@@ -2,6 +2,7 @@ package app
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"log"
 
@@ -19,7 +20,53 @@ func NewApp() *App {
 	return &App{}
 }
 
-const _DATABASE_NAME string = "libraryHub-24-25.db"
+var debugAgents = []Agent{
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 1,
+		AgentKind:     STUDENT,
+		Name:          "Charlie Bob Brown",
+		Class:         "10A",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 2,
+		AgentKind:     TEACHER,
+		Name:          "Abigail Bob Brown",
+		Class:         "",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 3,
+		AgentKind:     ASSISTANT,
+		Name:          "Robert Bob Cole",
+		Class:         "",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 4,
+		AgentKind:     STUDENT,
+		Name:          "Silvie Retriever",
+		Class:         "8B",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 5,
+		AgentKind:     TEACHER,
+		Name:          "Richard Hard",
+		Class:         "",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 6,
+		AgentKind:     STUDENT,
+		Name:          "Megan Marle Brown",
+		Class:         "12C",
+	},
+}
+
+// const _DATABASE_NAME string = "libraryHub-24-25"
+const _DATABASE_NAME string = "debug"
 
 // startup is called when the app starts. The context is saved
 // so we can call the runtime methods
@@ -34,6 +81,11 @@ func (a *App) Startup(ctx context.Context) {
 		log.Fatalf("could not migrate database: %v", err)
 	}
 
+	err = db.Create(&debugAgents).Error
+	if err != nil {
+		log.Fatalf("failed to insert test data: %v", err)
+	}
+
 	a.ctx = ctx
 	a.db = db
 }
@@ -43,14 +95,18 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-func (a *App) Goodbye(name string) string {
-	return fmt.Sprintf("Goodbye %s, sad to see you leave", name)
-}
-
-func (a *App) SearchStudent(name string) []*Student {
-	students, err := studentSearchLoose(a.db, name)
-	if err != nil {
-		log.Printf("[App.SearchStudent] Error: %v", err)
+func (a *App) SearchAgent(name string, ind AgentKind) ([]byte, error) {
+	if kind == 0 {
+		matches, err := agentNameSearch(a.db, name)
+		if err != nil {
+			return nil, err
+		}
+		return json.Marshal(matches)
 	}
-	return students
+
+	matches, err := agentNameSearch(a.db, name)
+	if err != nil {
+		return nil, err
+	}
+	return json.Marshal(matches)
 }

@@ -13,9 +13,18 @@ import (
 //go:embed all:frontend/dist
 var assets embed.FS
 
+var AllAgentKinds = []struct {
+	Value  app.AgentKind
+	TSNAME string
+}{
+	{app.STUDENT, "Student"},
+	{app.TEACHER, "TEACHER"},
+	{app.ASSISTANT, "Assistant"},
+}
+
 func main() {
-	// Create an instance of the app structure
-	app := app.NewApp()
+	// Create an instance of the instance structure
+	instance := app.NewApp()
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -26,9 +35,12 @@ func main() {
 			Assets: assets,
 		},
 		BackgroundColour: &options.RGBA{R: 27, G: 38, B: 54, A: 1},
-		OnStartup:        app.Startup,
+		OnStartup:        instance.Startup,
 		Bind: []interface{}{
-			app,
+			instance,
+		},
+		EnumBind: []interface{}{
+			AllAgentKinds,
 		},
 	})
 

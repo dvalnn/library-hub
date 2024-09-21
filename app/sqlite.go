@@ -24,11 +24,11 @@ func openSqliteDB(name string) (*gorm.DB, error) {
 	return db, nil
 }
 
-func migrateDB(db *gorm.DB) (error){
-    err := db.AutoMigrate(&Student{}, &Staff{}, &Record{})
-    if err != nil {
-        return err
-    }
+func migrateDB(db *gorm.DB) error {
+	err := db.AutoMigrate(&Agent{}, &Record{})
+	if err != nil {
+		return err
+	}
 
-    return nil
+	return nil
 }
