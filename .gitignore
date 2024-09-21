@@ -1,0 +1,11 @@
+# wails
+build/bin
+node_modules
+frontend/dist
+
+# nix
+result.*
+.direnv
+
+# project specific
+Sqlite/
