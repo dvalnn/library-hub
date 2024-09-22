@@ -4,8 +4,8 @@ function ActivitySelect({ userType }) {
 			return (
 				<select id="drop_act" defaultValue="Selecione atividade">
 					{/* <option value="" disabled selected>
-            Selecione atividade
-          </option> */}
+						Selecione atividade
+					</option> */}
 					<option value="Computadores">Computadores</option>
 					<option value="Trabalho individual">Trabalho individual</option>
 					<option value="Espaço Lúdico">Espaço Lúdico</option>
@@ -20,8 +20,8 @@ function ActivitySelect({ userType }) {
 			return (
 				<select id="drop_act" defaultValue="Selecione atividade">
 					{/* <option value="" disabled selected>
-              Selecione atividade
-          </option> */}
+						Selecione atividade
+					</option> */}
 					<option value="Computadores">Computadores</option>
 					<option value="Trabalho individual">Trabalho individual</option>
 					<option value="Espaço Lúdico">Espaço Lúdico</option>
@@ -32,8 +32,8 @@ function ActivitySelect({ userType }) {
 			return (
 				<select id="drop_act" defaultValue="Selecione atividade">
 					{/* <option value="" disabled selected>
-            Selecione atividade
-          </option> */}
+						Selecione atividade
+					</option> */}
 					<option value="Computadores">Computadores</option>
 					<option value="Espaço Lúdico">Espaço Lúdico</option>
 				</select>
@@ -60,12 +60,10 @@ function AgentDetails({ agent }) {
 			break;
 	}
 	return (
-		<div className="supportingRow">
+		<div className="details">
 			<h2>{role}</h2>
 			{agent.agent_kind === 1 && <h2>{agent.class}</h2>}
-			<form className="atividade">
-				<ActivitySelect userType={agent.agent_kind} />
-			</form>
+			<ActivitySelect userType={agent.agent_kind} />
 		</div>
 	);
 }
@@ -73,8 +71,10 @@ function AgentDetails({ agent }) {
 function Agent({ agent, button }) {
 	return (
 		<div className="icon-and-info">
-			<h1 className="name">{agent.name}</h1>
-			<AgentDetails agent={agent} />
+			<li className="newRegist">
+				<h1 className="name">{agent.name}</h1>
+				<AgentDetails agent={agent} />
+			</li>
 		</div>
 	);
 }

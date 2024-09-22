@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "./css/window.css";
-import "./css/searchP.css";
+import "./css/mainWindow.css";
+import "./css/searchBar.css";
 
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";

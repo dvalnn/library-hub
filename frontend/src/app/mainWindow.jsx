@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import performSearch from "./search.js";
 import Agent from "./agent.jsx";
 
+//TODO: Fazer Scroll window em .resultsContainer
+//TODO: Ajustar botões de icons da mainWindow
+//TODO: Tratar de toda a parte direita dos Registos
+
+
 function MainWindow({ searchArgs }) {
 	return (
 		<div id="mainWindow">
