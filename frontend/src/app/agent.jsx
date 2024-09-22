@@ -45,7 +45,7 @@ function ActivitySelect({ userType }) {
 
 function AgentDetails({ agent }) {
 	let role = "";
-	switch (agent.kind) {
+	switch (agent.agent_kind) {
 		case 1:
 			role = "Aluno";
 			break;
@@ -62,9 +62,9 @@ function AgentDetails({ agent }) {
 	return (
 		<div className="supportingRow">
 			<h2>{role}</h2>
-			{agent.kind === 1 && <h2>{agent.class}</h2>}
+			{agent.agent_kind === 1 && <h2>{agent.class}</h2>}
 			<form className="atividade">
-				<ActivitySelect userType={agent.kind} />
+				<ActivitySelect userType={agent.agent_kind} />
 			</form>
 		</div>
 	);

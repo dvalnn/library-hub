@@ -6,7 +6,6 @@ function RadioSelector({ selection, setSelection }) {
 			<label className="radio">
 				<input
 					type="radio"
-					value="1"
 					checked={selection === "student"}
 					onChange={() => setSelection("student")}
 				/>
@@ -15,7 +14,6 @@ function RadioSelector({ selection, setSelection }) {
 			<label className="radio">
 				<input
 					type="radio"
-					value="2"
 					checked={selection === "teacher"}
 					onChange={() => setSelection("teacher")}
 				/>
@@ -24,7 +22,6 @@ function RadioSelector({ selection, setSelection }) {
 			<label className="radio">
 				<input
 					type="radio"
-					value="3"
 					checked={selection === "assistant"}
 					onChange={() => setSelection("assistant")}
 				/>
@@ -33,7 +30,6 @@ function RadioSelector({ selection, setSelection }) {
 			<label className="radio">
 				<input
 					type="radio"
-					value="4"
 					checked={selection === "everyone"}
 					onChange={() => setSelection("everyone")}
 				/>
