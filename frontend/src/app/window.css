@@ -1,13 +1,14 @@
-#formsWindow {
+#mainWindow {
     display: inline-grid;
     width: 100vw;
-    height: 60vh;
     grid-template-columns: 1fr 1fr;
     margin: auto 0 auto 0;
     padding: 10px;
+    flex-grow: 1;
+    flex-shrink: 0;
 }
 
-#formsWindow .resultWindow {
+#mainWindow .resultWindow {
     display: grid;
     grid-auto-flow: row;
     grid-template-rows: auto 1fr;
@@ -21,12 +22,13 @@
     /* Make borders transparent */
 }
 
-#formsWindow .resultWindow .title {
+#mainWindow .resultWindow .title {
+    position: sticky;
     margin-top: -8px;
 }
 
-#formsWindow .resultWindow::before,
-#formsWindow .resultWindow::after {
+#mainWindow .resultWindow::before,
+#mainWindow .resultWindow::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -35,7 +37,7 @@
     /* Prevent interactions */
 }
 
-#formsWindow .resultWindow::before {
+#mainWindow .resultWindow::before {
     top: 0;
     left: 0;
     border-inline-start: 3px solid;
@@ -44,7 +46,7 @@
     border-image-slice: 1;
 }
 
-#formsWindow .resultWindow::after {
+#mainWindow .resultWindow::after {
     bottom: 0;
     right: 0;
     border-inline-end: 3px solid;
@@ -53,7 +55,8 @@
     border-image-slice: 1;
 }
 
-#formsWindow .resultsContainer {
+#mainWindow .resultsContainer {
+    overflow-y: scroll;
     display: grid;
     grid-auto-flow: row;
     grid-template-rows: auto;
@@ -63,7 +66,7 @@
     gap: 10px;
 }
 
-#formsWindow .resultsContainer .icon-and-info {
+#mainWindow .resultsContainer .icon-and-info {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,7 +77,7 @@
     padding: 2px 5px 2px 5px;
 }
 
-#formsWindow .resultsContainer .newRegist {
+#mainWindow .resultsContainer .newRegist {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -84,14 +87,14 @@
     margin-left: 7px;
 }
 
-#formsWindow .resultsContainer .newRegist .supportingRow {
+#mainWindow .resultsContainer .newRegist .supportingRow {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-#formsWindow .resultsContainer #plusButton {
+#mainWindow .resultsContainer #plusButton {
     /* Config start */
     --plus_sideLength: 5rem;
     --plus_topRightTriangleSideLength: 1.3rem;
@@ -107,7 +110,7 @@
     overflow: hidden;
 }
 
-#formsWindow .resultsContainer #plusButton::before {
+#mainWindow .resultsContainer #plusButton::before {
     position: absolute;
     content: "";
     top: 0;
@@ -121,19 +124,19 @@
     transition-duration: 0.2s;
 }
 
-#formsWindow .resultsContainer #plusButton:hover {
+#mainWindow .resultsContainer #plusButton:hover {
     cursor: pointer;
 }
 
-#formsWindow .resultsContainer #plusButton:hover::before {
+#mainWindow .resultsContainer #plusButton:hover::before {
     --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
 }
 
-#formsWindow .resultsContainer #plusButton:focus-visible::before {
+#mainWindow .resultsContainer #plusButton:focus-visible::before {
     --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
 }
 
-#formsWindow .resultsContainer #plusButton>.plusIcon {
+#mainWindow .resultsContainer #plusButton>.plusIcon {
     fill: white;
     width: calc(var(--plus_sideLength) * 0.7);
     height: calc(var(--plus_sideLength) * 0.7);
@@ -142,17 +145,17 @@
     transition-duration: 0.2s;
 }
 
-#formsWindow .resultsContainer #plusButton:hover>.plusIcon {
+#mainWindow .resultsContainer #plusButton:hover>.plusIcon {
     fill: black;
     transform: rotate(180deg);
 }
 
-#formsWindow .resultsContainer #plusButton:focus-visible>.plusIcon {
+#mainWindow .resultsContainer #plusButton:focus-visible>.plusIcon {
     fill: black;
     transform: rotate(180deg);
 }
 
-#formsWindow .resultsContainer #bin-button {
+#mainWindow .resultsContainer #bin-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,24 +169,24 @@
     transition-duration: 0.3s;
 }
 
-#formsWindow .resultsContainer #bin-button .bin-bottom {
+#mainWindow .resultsContainer #bin-button .bin-bottom {
     width: 15px;
 }
 
-#formsWindow .resultsContainer #bin-button .bin-top {
+#mainWindow .resultsContainer #bin-button .bin-top {
     width: 17px;
     transform-origin: right;
     transition-duration: 0.3s;
 }
 
-#formsWindow .resultsContainer #bin-button:hover .bin-top {
+#mainWindow .resultsContainer #bin-button:hover .bin-top {
     transform: rotate(45deg);
 }
 
-#formsWindow .resultsContainer #bin-button:hover {
+#mainWindow .resultsContainer #bin-button:hover {
     background-color: rgb(255, 0, 0);
 }
 
-#formsWindow .resultsContainer #bin-button:active {
+#mainWindow .resultsContainer #bin-button:active {
     transform: scale(0.9);
 }

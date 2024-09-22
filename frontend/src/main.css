@@ -16,19 +16,16 @@ html {
 
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#root {
+    height: 100%;
+    width: 100%;
+}
+#App {
     display: flex;
     flex-direction: column;
-}
-
-@font-face {
-    font-family: "Nunito";
-    font-style: normal;
-    font-weight: 400;
-    src: local(""),
-        url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
-}
-
-#app {
     height: 100vh;
-    text-align: center;
+    width: 100vw;
 }

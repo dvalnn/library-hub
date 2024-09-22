@@ -82,7 +82,19 @@
     height: 3em;
 }
 
-#searchForm #searchBar .Lupa {
-    font-size: 1.6em;
-    color: #818df8;
+#searchForm #searchBar .LupaBtn:hover{
+    border: transparent;
+    background-image: radial-gradient(circle, rgba(129, 141, 248, 0.6196078431) 0%, rgba(129, 141, 248, 0) 100%);
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+
+#searchForm #searchBar .LupaBtn svg {
+    width: 1.5em;
+    height: 1.5em; 
+}
+
+#searchForm #searchBar .LupaBtn #glass {
+    fill: #818df8;
+    stroke: #818cf8;
 }

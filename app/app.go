@@ -23,56 +23,48 @@ func NewApp() *App {
 var debugAgents = []Agent{
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 1,
 		AgentKind:     STUDENT,
 		Name:          "Charlie Bob Brown",
 		Class:         "10A",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 2,
 		AgentKind:     TEACHER,
 		Name:          "Abigail Bob Brown",
 		Class:         "",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 3,
 		AgentKind:     ASSISTANT,
 		Name:          "Robert Bob Cole",
 		Class:         "",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 4,
 		AgentKind:     STUDENT,
 		Name:          "Silvie Retriever",
 		Class:         "8B",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 5,
 		AgentKind:     TEACHER,
 		Name:          "Richard Hard",
 		Class:         "",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 6,
 		AgentKind:     STUDENT,
 		Name:          "Megan Marle Brown",
 		Class:         "12C",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 7,
 		AgentKind:     STUDENT,
 		Name:          "Coto Velo",
 		Class:         "5A",
 	},
 	{
 		Model:         gorm.Model{},
-		ProcessNumber: 8,
 		AgentKind:     TEACHER,
 		Name:          "Manu El",
 		Class:         "",
@@ -98,7 +90,7 @@ func (a *App) Startup(ctx context.Context) {
 	for _, agent := range debugAgents {
 
 		err = db.Where(
-			&Agent{ProcessNumber: agent.ProcessNumber},
+			&Agent{Name: agent.Name},
 		).Attrs(&agent).FirstOrCreate(&agent).Error
 		if err != nil {
 			log.Fatalf("failed to insert test data: %v", err)

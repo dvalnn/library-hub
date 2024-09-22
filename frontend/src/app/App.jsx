@@ -1,12 +1,13 @@
 // import { useState } from 'react';
 import { SearchSection } from './searchP';
-import './App.css';
+import { MainWindow } from './window';
 
 //* Main HTML Body
 function App() {
     return (
         <div id="App">
-            <SearchSection/>
+            <SearchSection />
+            <MainWindow />
         </div>
     )
 }

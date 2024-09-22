@@ -4,7 +4,25 @@ import "gorm.io/gorm"
 
 type Record struct {
 	gorm.Model
-	Agent         AgentKind `gorm:"NotNull"   json:"agent"`
-	ProcessNumber uint      `gorm:"NotNull"   json:"process_number"` // Actor's process number
-	Event         Activity  `gorm:"NotNull"   json:"event"`
+	Event   Activity `gorm:"NotNull" json:"event"`
+	AgentID int      `gorm:"NotNull" json:"agent_id"`
+	Agent   Agent
+}
+
+func (r *Record) create(db *gorm.DB) error {
+	err := db.Create(r).Error
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *Record) delete(db *gorm.DB) error {
+	err := db.Delete(r).Error
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

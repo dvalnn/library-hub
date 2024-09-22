@@ -18,7 +18,7 @@ var AllAgentKinds = []struct {
 	TSNAME string
 }{
 	{app.STUDENT, "Student"},
-	{app.TEACHER, "TEACHER"},
+	{app.TEACHER, "Teacher"},
 	{app.ASSISTANT, "Assistant"},
 }
 
