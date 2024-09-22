@@ -81,9 +81,14 @@ func (a *App) Startup(ctx context.Context) {
 		log.Fatalf("could not migrate database: %v", err)
 	}
 
-	err = db.Create(&debugAgents).Error
-	if err != nil {
-		log.Fatalf("failed to insert test data: %v", err)
+	for _, agent := range debugAgents {
+
+		err = db.Where(
+			&Agent{ProcessNumber: agent.ProcessNumber},
+		).Attrs(&agent).FirstOrCreate(&agent).Error
+		if err != nil {
+			log.Fatalf("failed to insert test data: %v", err)
+		}
 	}
 
 	a.ctx = ctx
@@ -95,18 +100,34 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-func (a *App) SearchAgent(name string, ind AgentKind) ([]byte, error) {
+func jsonString(matches []*Agent) ( string, error ){
+		bytes, err := json.MarshalIndent(matches, "", "    ")
+		if err != nil {
+			return "", err
+		}
+
+		return string(bytes), nil
+}
+
+func (a *App) SearchAgent(name string, kind AgentKind) (string, error) {
+	if name == "" {
+		return name, nil
+	}
+
+	log.Printf("Searching for %s %s", name, kind)
 	if kind == 0 {
 		matches, err := agentNameSearch(a.db, name)
 		if err != nil {
-			return nil, err
+			return "", err
 		}
-		return json.Marshal(matches)
+        return jsonString(matches)
+
 	}
 
 	matches, err := agentNameSearch(a.db, name)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return json.Marshal(matches)
+	log.Printf("%d matches found: %s\n\n", len(matches), matches)
+    return jsonString(matches)
 }

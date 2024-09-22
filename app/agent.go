@@ -28,10 +28,10 @@ func (a AgentKind) String() string {
 
 type Agent struct {
 	gorm.Model
-	ProcessNumber uint      `gorm:"NotNull"        json:"process_number" validate:"min=0"`
-	AgentKind     AgentKind `gorm:"NotNull"        json:"agent_kind"     validate:"min=1"`
-	Name          string    `gorm:"Unique;NotNull" json:"name"           validate:"nonzero"`
-	Class         string    `                      json:"class"`
+	ProcessNumber uint      `gorm:"NotNull" json:"process_number" validate:"min=0"`
+	AgentKind     AgentKind `gorm:"NotNull" json:"agent_kind"     validate:"min=1"`
+	Name          string    `gorm:"NotNull" json:"name"           validate:"nonzero"`
+	Class         string    `               json:"class"`
 }
 
 func (ag Agent) String() string {

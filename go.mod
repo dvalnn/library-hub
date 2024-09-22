@@ -5,7 +5,7 @@ go 1.21
 toolchain go1.22.7
 
 require (
-	github.com/wailsapp/wails/v2 v2.9.2
+	github.com/wailsapp/wails/v2 v2.9.1
 	gorm.io/driver/sqlite v1.5.6
 	gorm.io/gorm v1.25.12
 )
