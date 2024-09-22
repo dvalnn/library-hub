@@ -63,6 +63,20 @@ var debugAgents = []Agent{
 		Name:          "Megan Marle Brown",
 		Class:         "12C",
 	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 7,
+		AgentKind:     STUDENT,
+		Name:          "Coto Velo",
+		Class:         "5A",
+	},
+	{
+		Model:         gorm.Model{},
+		ProcessNumber: 8,
+		AgentKind:     TEACHER,
+		Name:          "Manu El",
+		Class:         "",
+	},
 }
 
 // const _DATABASE_NAME string = "libraryHub-24-25"
@@ -100,13 +114,13 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-func jsonString(matches []*Agent) ( string, error ){
-		bytes, err := json.MarshalIndent(matches, "", "    ")
-		if err != nil {
-			return "", err
-		}
+func jsonString(matches []*Agent) (string, error) {
+	bytes, err := json.Marshal(matches)
+	if err != nil {
+		return "", err
+	}
 
-		return string(bytes), nil
+	return string(bytes), nil
 }
 
 func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
@@ -120,9 +134,7 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 		if err != nil {
 			return nil, err
 		}
-        return matches, nil
-        // return jsonString(matches)
-
+		return matches, nil
 	}
 
 	matches, err := agentNameSearch(a.db, name)
@@ -130,6 +142,5 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 		return nil, err
 	}
 	log.Printf("%d matches found: %s\n\n", len(matches), matches)
-    return matches, nil
-    // return jsonString(matches)
+	return matches, nil
 }

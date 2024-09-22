@@ -1,5 +1,5 @@
 // import { useState } from 'react';
-import { SearchSection } from '../app-elements/searchP';
+import { SearchSection } from './searchP';
 import './App.css';
 
 //* Main HTML Body
