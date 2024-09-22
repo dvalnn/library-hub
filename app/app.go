@@ -22,52 +22,52 @@ func NewApp() *App {
 
 var debugAgents = []Agent{
 	{
-		Model:         gorm.Model{},
-		AgentKind:     STUDENT,
-		Name:          "Charlie Bob Brown",
-		Class:         "10A",
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Charlie Bob Brown",
+		Class:     "10A",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     TEACHER,
-		Name:          "Abigail Bob Brown",
-		Class:         "",
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Abigail Bob Brown",
+		Class:     "",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     ASSISTANT,
-		Name:          "Robert Bob Cole",
-		Class:         "",
+		Model:     gorm.Model{},
+		AgentKind: ASSISTANT,
+		Name:      "Robert Bob Cole",
+		Class:     "",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     STUDENT,
-		Name:          "Silvie Retriever",
-		Class:         "8B",
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Silvie Retriever",
+		Class:     "8B",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     TEACHER,
-		Name:          "Richard Hard",
-		Class:         "",
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Richard Hard",
+		Class:     "",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     STUDENT,
-		Name:          "Megan Marle Brown",
-		Class:         "12C",
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Megan Marle Brown",
+		Class:     "12C",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     STUDENT,
-		Name:          "Coto Velo",
-		Class:         "5A",
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Coto Velo",
+		Class:     "5A",
 	},
 	{
-		Model:         gorm.Model{},
-		AgentKind:     TEACHER,
-		Name:          "Manu El",
-		Class:         "",
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Manu El",
+		Class:     "",
 	},
 }
 
@@ -129,7 +129,7 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 		return matches, nil
 	}
 
-	matches, err := agentNameSearch(a.db, name)
+	matches, err := agentNameSearchFiltered(a.db, name, kind)
 	if err != nil {
 		return nil, err
 	}
