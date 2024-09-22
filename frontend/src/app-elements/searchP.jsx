@@ -29,10 +29,12 @@ function searchName(name) {
 			if (!matches) {
 				return;
 			}
-            console.log(`Matches found for ${name}: ${matches}`);
-			const matchObjects = JSON.parse(matches);
-            matchObjects.map((obj => {console.log(`Name as Object: ${obj.name}`)}))
-
+			console.log(`Matches found for ${name}:`);
+			matches.map((obj) => {
+				console.log(
+					`\t${obj.name} ${obj.class}, kind: ${obj.agent_kind}, PNumber: ${obj.process_number},`,
+				);
+			});
 		})
 		.catch((error) => {
 			console.log(error);

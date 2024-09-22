@@ -109,25 +109,27 @@ func jsonString(matches []*Agent) ( string, error ){
 		return string(bytes), nil
 }
 
-func (a *App) SearchAgent(name string, kind AgentKind) (string, error) {
+func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 	if name == "" {
-		return name, nil
+		return nil, nil
 	}
 
 	log.Printf("Searching for %s %s", name, kind)
 	if kind == 0 {
 		matches, err := agentNameSearch(a.db, name)
 		if err != nil {
-			return "", err
+			return nil, err
 		}
-        return jsonString(matches)
+        return matches, nil
+        // return jsonString(matches)
 
 	}
 
 	matches, err := agentNameSearch(a.db, name)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	log.Printf("%d matches found: %s\n\n", len(matches), matches)
-    return jsonString(matches)
+    return matches, nil
+    // return jsonString(matches)
 }
