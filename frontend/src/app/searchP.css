@@ -1,3 +1,5 @@
+@import url(./fonts.css);
+
 #searchForm {
     position: sticky;
     padding: 10px;
@@ -26,17 +28,22 @@
 }
 
 #searchForm #searchBar input[type=text].input {
+    font-family: 'Poppins-LightItalic';
     padding: 11px 10px;
     font-size: 1.5rem;
-    border: 2px #818cf8 none;
-    border-radius: 5px;
-    background: #e8e8e8;
     flex-grow: 1;
     margin-left: 1rem;
+    background: #e8e8e8;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: border-bottom 0.1s ease-in;
 }
 
 #searchForm #searchBar input[type=text].input:focus {
-    outline: none;
+    font-family: 'Poppins-Regular';
+    border-bottom: 2px dotted #818cf8;
+    border-image: radial-gradient(circle at center, #818cf8, transparent 80%) 0 0 100% 0;
 }
 
 #searchForm #searchBar #user-selector {
@@ -54,6 +61,7 @@
 }
 
 #searchForm #searchBar #user-selector .radio .name {
+    font-family: 'Poppins-Regular', sans-serif;
     cursor: pointer;
     padding: 0.5rem;
     color: rgb(51, 65, 85);
@@ -63,6 +71,7 @@
 }
 
 #searchForm #searchBar #user-selector .radio input:checked+.name {
+    font-family: 'Poppins-Medium';
     background-color: black;
     font-size: larger;
     color: #fff;
@@ -82,19 +91,25 @@
     height: 3em;
 }
 
-#searchForm #searchBar .LupaBtn:hover{
+#searchForm #searchBar .LupaBtn:hover {
     border: transparent;
-    background-image: radial-gradient(circle, rgba(129, 141, 248, 0.6196078431) 0%, rgba(129, 141, 248, 0) 100%);
+    background-image: radial-gradient(circle, rgba(248, 236, 129, 0.6196078431) 0%, rgba(248, 236, 129, 0) 100%);
+    /* background-image: radial-gradient(circle, rgba(129, 141, 248, 0.6196078431) 0%, rgba(129, 141, 248, 0) 100%); */
     transition: all 0.2s ease-in-out;
     transform: scale(1.1);
 }
 
 #searchForm #searchBar .LupaBtn svg {
     width: 1.5em;
-    height: 1.5em; 
+    height: 1.5em;
 }
 
-#searchForm #searchBar .LupaBtn #glass {
+#searchForm #searchBar .LupaBtn .lupa {
+    fill: #818df8;
+    stroke: #818cf8;
+}
+
+#searchForm #searchBar .LupaBtn:hover > svg .lupa{
     fill: #818df8;
     stroke: #818cf8;
 }
