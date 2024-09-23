@@ -2,8 +2,6 @@ package app
 
 import (
 	"context"
-	"encoding/json"
-	"fmt"
 	"log"
 
 	"gorm.io/gorm"
@@ -101,20 +99,6 @@ func (a *App) Startup(ctx context.Context) {
 	a.db = db
 }
 
-// Greet returns a greeting for the given name
-func (a *App) Greet(name string) string {
-	return fmt.Sprintf("Hello %s, It's show time!", name)
-}
-
-func jsonString(matches []*Agent) (string, error) {
-	bytes, err := json.Marshal(matches)
-	if err != nil {
-		return "", err
-	}
-
-	return string(bytes), nil
-}
-
 func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 	if name == "" {
 		return nil, nil
@@ -135,4 +119,17 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 	}
 	log.Printf("%d matches found: %s\n\n", len(matches), matches)
 	return matches, nil
+}
+
+func (a *App) CreateRecord(r *Record) (*Record, error) {
+	if err := r.create(a.db); err != nil {
+		return nil, err
+	}
+
+	return r, nil
+}
+
+// TODO: add record verification (maybe accept an ID, search and then delete)
+func (a *App) DeleteRecord(r *Record) error {
+	return r.delete(a.db)
 }
