@@ -23,9 +23,8 @@ const ExampleAgents = [
 
 //* Main HTML Body
 function App() {
-	const agent = ExampleAgents[0];
 	const [name, setName] = useState("");
-	const [filter, setFilter] = useState("");
+	const [filter, setFilter] = useState("everyone");
 
 	return (
 		<div id="App">
