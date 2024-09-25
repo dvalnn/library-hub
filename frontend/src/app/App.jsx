@@ -5,22 +5,6 @@ import "./css/searchBar.css";
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
 
-const ExampleAgents = [
-	{
-		name: "Vitor Nozelo",
-		kind: 1,
-		class: "8B",
-	},
-	{
-		name: "Paulo Binho",
-		kind: 2,
-	},
-	{
-		name: "Manel Bezouro",
-		kind: 3,
-	},
-];
-
 //* Main HTML Body
 function App() {
 	const [name, setName] = useState("");

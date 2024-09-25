@@ -64,6 +64,7 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    opacity: 20%;
 }
 
 #mainWindow .resultWindow #NoResults li {
