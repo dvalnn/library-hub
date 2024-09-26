@@ -21,30 +21,6 @@ func NewApp() *App {
 var debugAgents = []Agent{
 	{
 		Model:     gorm.Model{},
-		AgentKind: STUDENT,
-		Name:      "Charlie Bob Brown",
-		Class:     "10A",
-	},
-	{
-		Model:     gorm.Model{},
-		AgentKind: TEACHER,
-		Name:      "Abigail Bob Brown",
-		Class:     "",
-	},
-	{
-		Model:     gorm.Model{},
-		AgentKind: ASSISTANT,
-		Name:      "Robert Bob Cole",
-		Class:     "",
-	},
-	{
-		Model:     gorm.Model{},
-		AgentKind: STUDENT,
-		Name:      "Silvie Retriever Bob",
-		Class:     "8B",
-	},
-	{
-		Model:     gorm.Model{},
 		AgentKind: TEACHER,
 		Name:      "Bob Richard Hard",
 		Class:     "",
@@ -69,7 +45,7 @@ var debugAgents = []Agent{
 	}, {
 		Model:     gorm.Model{},
 		AgentKind: TEACHER,
-		Name:      "Bob O Contrutor",
+		Name:      "Bob O Construtor",
 		Class:     "",
 	}, {
 		Model:     gorm.Model{},
@@ -89,7 +65,7 @@ var debugAgents = []Agent{
 	}, {
 		Model:     gorm.Model{},
 		AgentKind: TEACHER,
-		Name:      "Bob O ",
+		Name:      "Bob",
 		Class:     "",
 	}, {
 		Model:     gorm.Model{},
