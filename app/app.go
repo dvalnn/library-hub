@@ -40,31 +40,96 @@ var debugAgents = []Agent{
 	{
 		Model:     gorm.Model{},
 		AgentKind: STUDENT,
-		Name:      "Silvie Retriever",
+		Name:      "Silvie Retriever Bob",
 		Class:     "8B",
 	},
 	{
 		Model:     gorm.Model{},
 		AgentKind: TEACHER,
-		Name:      "Richard Hard",
+		Name:      "Bob Richard Hard",
 		Class:     "",
 	},
 	{
 		Model:     gorm.Model{},
 		AgentKind: STUDENT,
-		Name:      "Megan Marle Brown",
+		Name:      "Megan Marle Brown Bob",
 		Class:     "12C",
 	},
 	{
 		Model:     gorm.Model{},
 		AgentKind: STUDENT,
-		Name:      "Coto Velo",
+		Name:      "Bob Coto Velo",
 		Class:     "5A",
 	},
 	{
 		Model:     gorm.Model{},
 		AgentKind: TEACHER,
-		Name:      "Manu El",
+		Name:      "Bob Manu El",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O Contrutor",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Bob O Aprendiz",
+		Class:     "12C",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: ASSISTANT,
+		Name:      "Bob O Serralheiro",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O Bob",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O ",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O Canalizador",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O Professor",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: STUDENT,
+		Name:      "Bob Esponja",
+		Class:     "12A",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: ASSISTANT,
+		Name:      "Bob O Cozinheiro",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Bob O Ditador",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Mario Bob",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Luigi Bob",
+		Class:     "",
+	}, {
+		Model:     gorm.Model{},
+		AgentKind: TEACHER,
+		Name:      "Peach Bob",
 		Class:     "",
 	},
 }
@@ -86,7 +151,6 @@ func (a *App) Startup(ctx context.Context) {
 	}
 
 	for _, agent := range debugAgents {
-
 		err = db.Where(
 			&Agent{Name: agent.Name},
 		).Attrs(&agent).FirstOrCreate(&agent).Error
