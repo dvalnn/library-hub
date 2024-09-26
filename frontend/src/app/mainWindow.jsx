@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import notfound from '../assets/images/not-found.png';
-import performSearch from "./search.js";
+import notfound from "../assets/images/not-found.png";
 import Agent from "./agent.jsx";
+import performSearch from "./search.js";
 
 //*MIGUEL:
 //TODO: Fazer Scroll window em .resultsContainer
@@ -13,8 +13,7 @@ import Agent from "./agent.jsx";
 
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
-//TODO: Tenta criar bués bobs, preciso de testar o scroll na janela de registos e formatar 
-
+//TODO: Tenta criar bués bobs, preciso de testar o scroll na janela de registos e formatar
 function MainWindow({ searchArgs }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 
@@ -22,8 +21,14 @@ function MainWindow({ searchArgs }) {
 		<div id="mainWindow">
 			<div id="leftWindow" className="resultWindow">
 				<h1 className="title">Resultados da Pesquisa</h1>
-				<AgentList searchArgs={searchArgs} btnType={1} setShowSubmit={setShowSubmit} />
-				{showSubmit != false && <WindowBtn BtnId={"RegBtn"} BtnTxt="Registar" />}
+				<AgentList
+					searchArgs={searchArgs}
+					btnType={1}
+					setShowSubmit={setShowSubmit}
+				/>
+				{showSubmit !== false && (
+					<WindowBtn BtnId={"RegBtn"} BtnTxt="Registar" />
+				)}
 			</div>
 			<div id="rightWindow" className="resultWindow">
 				<h1 className="title">Registos</h1>
@@ -33,30 +38,28 @@ function MainWindow({ searchArgs }) {
 	);
 }
 
+//TODO: rever títulos dos svgs
+//TODO: Adicionar button type
 function WindowBtn({ BtnId, BtnTxt }) {
 	return (
-
 		<button className="submit" id={BtnId}>
 			<svg viewBox="0 0 24 24" className="arr-2">
-				<path
-					d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-				></path>
+				<title>submeter</title>
+				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
 			</svg>
 			<span className="text">{BtnTxt}</span>
-			<span className="circle"></span>
+			<span className="circle" />
 			<svg viewBox="0 0 24 24" className="arr-1">
-				<path
-					d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-				></path>
+				<title>placeholder</title>
+				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
 			</svg>
 		</button>
-	)
-
+	);
 }
 
 function AgentList({ searchArgs, btnType, setShowSubmit }) {
 	const [elements, setElements] = useState([]);
-	const [error, setError] = useState(null);	//TODO: make this work
+	const [error, setError] = useState(null); //TODO: make this work
 
 	useEffect(() => {
 		setElements([]);
@@ -94,13 +97,12 @@ function AgentList({ searchArgs, btnType, setShowSubmit }) {
 }
 
 //TODO: Tiago mete a função a receber o agent, em principio deve aparecer uma window do lado direito
-
 function RegistList({ agent, btnType }) {
 	return (
 		<ul className="resultsContainer">
 			<Agent agent={agent} key={agent.id || index} btnType={btnType} />
 		</ul>
-	)
+	);
 }
 
 export default MainWindow;
