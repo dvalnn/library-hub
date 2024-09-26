@@ -43,20 +43,16 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 	const [userInput, setUserInput] = useState("");
 
 	const handleInputChange = (event) => {
-		console.log(`input change to: ${event.target.value}`);
 		setUserInput(event.target.value);
 	};
 
 	const handleKeyPress = async (event) => {
-		//TODO: Descobrir pq é que a pagina leva reload
 		if (event.key === "Enter") {
-			console.log("Enter pressed");
 			inputCallback(userInput);
 		}
 	};
 
 	const handleButtonClick = async () => {
-		console.log("Search button clicked");
 		inputCallback(userInput);
 	};
 
