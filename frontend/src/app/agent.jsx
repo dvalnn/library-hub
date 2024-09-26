@@ -68,7 +68,7 @@ function AgentDetails({ agent }) {
 	);
 }
 
-function Agent({ agent, btnType }) {
+function Agent({ agent, btnType, selectedAgents, setSelectedAgents}) {
 	let button;
 	if (btnType === 1) {
 		button = (
@@ -76,7 +76,9 @@ function Agent({ agent, btnType }) {
 				type="button"
 				className="registBtn"
 				id="plusButton"
-				onClick="newRecord()"
+				onClick={() => {
+                    setSelectedAgents(selectedAgents.push(agent.ID))
+				}}
 			>
 				<svg
 					className="plusIcon"
