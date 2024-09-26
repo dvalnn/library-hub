@@ -5,16 +5,14 @@ import Agent from "./agent.jsx";
 import performSearch from "./search.js";
 
 //*MIGUEL:
-//TODO: Fazer Scroll window em .resultsContainer
 //TODO: Tratar de toda a parte direita dos Registos
 //TODO: Tratar de meter o dropdown a funcionar com bootstrap
 //TODO: Meter fontes fixes no títulos e etc..
-//*dividir o mainWindow.css em mais ficheiros
-//
+
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
-//NOTE: Bués Bobs foram criados
-function MainWindow({ searchArgs, selection, selectionFuncs }) {
+
+function MainWindow({ searchArgs }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 
 	return (

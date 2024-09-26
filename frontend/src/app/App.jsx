@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./css/mainWindow.css";
 import "./css/searchBar.css";
+import "./css/buttons.css";
 
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";

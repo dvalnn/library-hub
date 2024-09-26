@@ -3,40 +3,25 @@ import { useState } from "react";
 function RadioSelector({ selection, setSelection }) {
 	return (
 		<div id="user-selector">
-			<label className="radio">
-				<input
-					type="radio"
-					checked={selection === "student"}
-					onChange={() => setSelection("student")}
-				/>
-				<span className="name">Aluno</span>
-			</label>
-			<label className="radio">
-				<input
-					type="radio"
-					checked={selection === "teacher"}
-					onChange={() => setSelection("teacher")}
-				/>
-				<span className="name">Professor</span>
-			</label>
-			<label className="radio">
-				<input
-					type="radio"
-					checked={selection === "assistant"}
-					onChange={() => setSelection("assistant")}
-				/>
-				<span className="name">Assistente</span>
-			</label>
-			<label className="radio">
-				<input
-					type="radio"
-					checked={selection === "everyone"}
-					onChange={() => setSelection("everyone")}
-				/>
-				<span className="name">Todos</span>
-			</label>
+			<LabelSelect labelName={"Aluno"} labelState={"student"} selection={selection} setSelection={setSelection}/>
+			<LabelSelect labelName={"Professor"} labelState={"teacher"} selection={selection} setSelection={setSelection}/>
+			<LabelSelect labelName={"Assistente"} labelState={"assistant"} selection={selection} setSelection={setSelection}/>
+			<LabelSelect labelName={"Todos"} labelState={"everyone"} selection={selection} setSelection={setSelection}/>
 		</div>
 	);
+}
+
+function LabelSelect({ labelName, labelState, selection, setSelection }) {
+	return (
+		<label className="radio">
+			<input
+				type="radio"
+				checked={selection === labelState}
+				onChange={() => setSelection(labelState)}
+			/>
+			<span className="name">{labelName}</span>
+		</label>
+	)
 }
 
 function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
