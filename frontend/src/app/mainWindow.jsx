@@ -13,9 +13,10 @@ import performSearch from "./search.js";
 
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
-//TODO: Tenta criar bués bobs, preciso de testar o scroll na janela de registos e formatar
+//NOTE: Bués Bobs foram criados
 function MainWindow({ searchArgs }) {
 	const [showSubmit, setShowSubmit] = useState(false);
+	const [selectedAgents, setSelectedAgents] = useState([]);
 
 	return (
 		<div id="mainWindow">
@@ -42,7 +43,7 @@ function MainWindow({ searchArgs }) {
 //TODO: Adicionar button type
 function WindowBtn({ BtnId, BtnTxt }) {
 	return (
-		<button className="submit" id={BtnId}>
+		<button type="button" className="submit" id={BtnId}>
 			<svg viewBox="0 0 24 24" className="arr-2">
 				<title>submeter</title>
 				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
