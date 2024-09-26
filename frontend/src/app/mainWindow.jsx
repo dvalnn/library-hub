@@ -12,7 +12,7 @@ import performSearch from "./search.js";
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
 
-function MainWindow({ searchArgs }) {
+function MainWindow({ searchArgs, selectionFuncs }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 
 	return (
