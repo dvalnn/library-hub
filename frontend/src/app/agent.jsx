@@ -6,7 +6,7 @@ function Agent({ agent, selectionFuncs, btnType }) {
 	const isSelected = checkFunc(agent.ID);
 	const clickFunc = isSelected ? removeFunc : appendFunc;
 	const handleClick = () => {
-		clickFunc(agent.ID)
+		clickFunc(agent.ID);
 	};
 
 	const divID = isSelected ? "Selected" : "NotSelected";
@@ -16,14 +16,14 @@ function Agent({ agent, selectionFuncs, btnType }) {
 			<title>Selecionar</title>
 			<path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z" />
 		</svg>
-	)
+	);
 
 	const minusButton = () => (
 		<svg className="selectIcon" viewBox="0 0 30 30">
 			<title>Desselecionar</title>
 			<path d="M6.25 16.25H23.75V13.75H6.25V16.25Z" />
 		</svg>
-	)
+	);
 
 	const selectBtn = isSelected ? minusButton : plusButton;
 
@@ -38,8 +38,6 @@ function Agent({ agent, selectionFuncs, btnType }) {
 			{svg()}
 		</button>
 	);
-
-
 
 	// Renders the "bin" button (button type other than 1)
 	const renderBinButton = () => (

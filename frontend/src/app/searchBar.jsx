@@ -3,10 +3,30 @@ import { useState } from "react";
 function RadioSelector({ selection, setSelection }) {
 	return (
 		<div id="user-selector">
-			<LabelSelect labelName={"Aluno"} labelState={"student"} selection={selection} setSelection={setSelection}/>
-			<LabelSelect labelName={"Professor"} labelState={"teacher"} selection={selection} setSelection={setSelection}/>
-			<LabelSelect labelName={"Assistente"} labelState={"assistant"} selection={selection} setSelection={setSelection}/>
-			<LabelSelect labelName={"Todos"} labelState={"everyone"} selection={selection} setSelection={setSelection}/>
+			<LabelSelect
+				labelName={"Aluno"}
+				labelState={"student"}
+				selection={selection}
+				setSelection={setSelection}
+			/>
+			<LabelSelect
+				labelName={"Professor"}
+				labelState={"teacher"}
+				selection={selection}
+				setSelection={setSelection}
+			/>
+			<LabelSelect
+				labelName={"Assistente"}
+				labelState={"assistant"}
+				selection={selection}
+				setSelection={setSelection}
+			/>
+			<LabelSelect
+				labelName={"Todos"}
+				labelState={"everyone"}
+				selection={selection}
+				setSelection={setSelection}
+			/>
 		</div>
 	);
 }
@@ -21,7 +41,7 @@ function LabelSelect({ labelName, labelState, selection, setSelection }) {
 			/>
 			<span className="name">{labelName}</span>
 		</label>
-	)
+	);
 }
 
 function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {

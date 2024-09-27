@@ -1,123 +1,131 @@
 @import url(./fonts.css);
 
 #mainWindow {
-    display: inline-grid;
-    width: 100%;
-    height: 80%;
-    grid-template-columns: 1fr 1fr;
-    margin: auto 0 auto 0;
-    padding: 10px;
-    flex-grow: 1;
-    flex-shrink: 0;
+	display: inline-grid;
+	width: 100%;
+	height: 80%;
+	grid-template-columns: 1fr 1fr;
+	margin: auto 0 auto 0;
+	padding: 10px;
+	flex-grow: 1;
+	flex-shrink: 0;
 }
 
 #mainWindow .resultWindow {
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-rows: auto 1fr auto;
-    position: relative;
-    align-items: start;
-    text-align: center;
-    max-height: 89vh;
-    border-inline-start: 3px solid transparent;
-    border-block-start: 3px solid transparent;
-    overflow-y: hidden;
-    overflow-x: hidden;
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-rows: auto 1fr auto;
+	position: relative;
+	align-items: start;
+	text-align: center;
+	max-height: 89vh;
+	border-inline-start: 3px solid transparent;
+	border-block-start: 3px solid transparent;
+	overflow-y: hidden;
+	overflow-x: hidden;
 }
 
 #mainWindow .resultWindow .title {
-    font-family: Poppins-Regular;
-    max-width: max-content;
-    padding-top: 12px;
-    margin: -15px auto 0px auto;
-    z-index: 1;
-    background-color: white;
+	font-family: Poppins-Regular;
+	max-width: max-content;
+	padding-top: 12px;
+	margin: -15px auto 0px auto;
+	z-index: 1;
+	background-color: white;
 }
 
 #mainWindow .resultWindow::before,
 #mainWindow .resultWindow::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
 }
 
 #mainWindow .resultWindow::before {
-    top: 15px;
-    left: 0;
-    border-inline-start: 3px solid;
-    border-block-start: 3px solid;
-    border-image-source: radial-gradient(circle at top left, #818df8, transparent 23%);
-    border-image-slice: 1;
+	top: 15px;
+	left: 0;
+	border-inline-start: 3px solid;
+	border-block-start: 3px solid;
+	border-image-source: radial-gradient(
+		circle at top left,
+		#818df8,
+		transparent 23%
+	);
+	border-image-slice: 1;
 }
 
 #mainWindow .resultWindow::after {
-    bottom: 0;
-    right: 0;
-    border-inline-end: 3px solid;
-    border-block-end: 3px solid;
-    border-image-source: radial-gradient(circle at bottom right, #818df8, transparent 23%);
-    border-image-slice: 1;
+	bottom: 0;
+	right: 0;
+	border-inline-end: 3px solid;
+	border-block-end: 3px solid;
+	border-image-source: radial-gradient(
+		circle at bottom right,
+		#818df8,
+		transparent 23%
+	);
+	border-image-slice: 1;
 }
 
 #mainWindow .resultWindow #NoResults {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    opacity: 20%;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	opacity: 20%;
 }
 
 #mainWindow .resultWindow #NoResults li {
-    font-family: Poppins-SemiBoldItalic;
-    font-size: 1.5em;
+	font-family: Poppins-SemiBoldItalic;
+	font-size: 1.5em;
 }
 
 #mainWindow .resultWindow #NoResults img {
-    width: 50%;
+	width: 50%;
 }
 
 #mainWindow .resultsContainer {
-    display: grid;
-    max-height: 99%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    grid-auto-flow: row;
-    grid-template-rows: auto;
-    padding: 5px;
-    margin: 0;
+	display: grid;
+	max-height: 99%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	grid-auto-flow: row;
+	grid-template-rows: auto;
+	padding: 5px;
+	margin: 0;
 
-    /* background-color: linear-gradient(transparent 12% currentColor 30% currentColor 70% transparent 86%);
+	/* background-color: linear-gradient(transparent 12% currentColor 30% currentColor 70% transparent 86%);
     background-clip: text;
     background-attachment: fixed; */
 }
 
 #mainWindow .resultsContainer .agentInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: max-content;
-    margin: 5px;
-    border: 2px black solid;
-    border-radius: 1em;
-    padding: 2px 5px 2px 5px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: max-content;
+	margin: 5px;
+	border: 2px black solid;
+	border-radius: 1em;
+	padding: 2px 5px 2px 5px;
 }
 
 #mainWindow .resultsContainer .newRegist {
-    font-family: Poppins-SemiBold;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    flex: 1;
-    margin: 7px;
+	font-family: Poppins-SemiBold;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	flex: 1;
+	margin: 7px;
 }
 
 #mainWindow .resultsContainer .newRegist .details {
-    font-family: Poppins-Regular;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+	font-family: Poppins-Regular;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }

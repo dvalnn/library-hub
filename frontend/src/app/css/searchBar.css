@@ -1,105 +1,110 @@
 @import url(./fonts.css);
 
 #searchBar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 10px;
-    padding: 0.5rem;
-    border: 2px solid #818cf8;
-    border-radius: 0.5rem;
-    background-color: #e8e8e8;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 10px;
+	padding: 0.5rem;
+	border: 2px solid #818cf8;
+	border-radius: 0.5rem;
+	background-color: #e8e8e8;
 }
 
 #searchBar label {
-    font-size: 1.5rem;
-    color: #818cf8;
-    margin-left: 7px;
-    background: #e8e8e8;
+	font-size: 1.5rem;
+	color: #818cf8;
+	margin-left: 7px;
+	background: #e8e8e8;
 }
 
-#searchBar input[type=text].input {
-    font-family: 'Poppins-LightItalic';
-    padding: 11px 10px;
-    font-size: 1.5rem;
-    flex: 1;
-    margin-left: 1rem;
-    background: #e8e8e8;
-    outline: none;
-    border: none;
-    border-radius: 5px;
-    transition: border-bottom 0.1s ease-in;
+#searchBar input[type="text"].input {
+	font-family: "Poppins-LightItalic";
+	padding: 11px 10px;
+	font-size: 1.5rem;
+	flex: 1;
+	margin-left: 1rem;
+	background: #e8e8e8;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	transition: border-bottom 0.1s ease-in;
 }
 
-#searchBar input[type=text].input:focus {
-    font-family: 'Poppins-Regular';
-    border-bottom: 2px dotted #818cf8;
-    border-image: radial-gradient(circle at center, #818cf8, transparent 80%) 0 0 100% 0;
+#searchBar input[type="text"].input:focus {
+	font-family: "Poppins-Regular";
+	border-bottom: 2px dotted #818cf8;
+	border-image: radial-gradient(circle at center, #818cf8, transparent 80%) 0 0
+		100% 0;
 }
 
 #searchBar #user-selector {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 
 #searchBar #user-selector .radio {
-    text-align: center;
+	text-align: center;
 }
 
 #searchBar #user-selector .radio input {
-    display: none;
+	display: none;
 }
 
 #searchBar #user-selector .radio .name {
-    font-family: 'Poppins-Regular', sans-serif;
-    cursor: pointer;
-    padding: 0.5rem;
-    color: rgb(51, 65, 85);
-    border-radius: 0.5rem;
-    background-color: #fff;
-    transition: all 0.2s ease-in-out;
+	font-family: "Poppins-Regular", sans-serif;
+	cursor: pointer;
+	padding: 0.5rem;
+	color: rgb(51, 65, 85);
+	border-radius: 0.5rem;
+	background-color: #fff;
+	transition: all 0.2s ease-in-out;
 }
 
-#searchBar #user-selector .radio input:checked+.name {
-    font-family: 'Poppins-Medium';
-    background-color: black;
-    font-size: larger;
-    color: #fff;
-    font-weight: 600;
-    border-color: #fff;
+#searchBar #user-selector .radio input:checked + .name {
+	font-family: "Poppins-Medium";
+	background-color: black;
+	font-size: larger;
+	color: #fff;
+	font-weight: 600;
+	border-color: #fff;
 }
 
 #searchBar .LupaBtn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e8e8e8;
-    border: 2px rgba(129, 141, 248, 0.6196078431) dotted;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 3em;
-    height: 3em;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #e8e8e8;
+	border: 2px rgba(129, 141, 248, 0.6196078431) dotted;
+	border-radius: 50%;
+	cursor: pointer;
+	width: 3em;
+	height: 3em;
 }
 
 #searchBar .LupaBtn:hover {
-    border: transparent;
-    background-image: radial-gradient(circle, rgba(129, 141, 248, 0.6196078431) 0%, rgba(129, 141, 248, 0) 100%);
-    transition: all 0.2s ease-in-out;
-    transform: scale(1.1);
+	border: transparent;
+	background-image: radial-gradient(
+		circle,
+		rgba(129, 141, 248, 0.6196078431) 0%,
+		rgba(129, 141, 248, 0) 100%
+	);
+	transition: all 0.2s ease-in-out;
+	transform: scale(1.1);
 }
 
 #searchBar .LupaBtn svg {
-    width: 1.5em;
-    height: 1.5em;
+	width: 1.5em;
+	height: 1.5em;
 }
 
 #searchBar .LupaBtn .lupa {
-    fill: #818df8;
-    stroke: #818cf8;
+	fill: #818df8;
+	stroke: #818cf8;
 }
 
-#searchBar .LupaBtn:hover > svg .lupa{
-    fill: white;
-    stroke: white;
+#searchBar .LupaBtn:hover > svg .lupa {
+	fill: white;
+	stroke: white;
 }
