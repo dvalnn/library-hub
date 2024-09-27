@@ -1,4 +1,4 @@
-function ActivitySelect({ userType }) {
+function ActivitySelect({ userType, setActivity }) {
 	// Define the activity options based on the userType
 	const getOptions = () => {
 		switch (userType) {

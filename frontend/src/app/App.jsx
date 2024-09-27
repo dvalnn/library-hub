@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./css/mainWindow.css";
 import "./css/searchBar.css";
 import "./css/buttons.css";
 
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
+
+import { CreateRecord, DeleteRecord } from "../../wailsjs/go/app/App.js";
 
 function useSelectionState() {
 	const [selection, setSelection] = useState([]);
@@ -35,6 +37,15 @@ function useSelectionState() {
 		checkSelection,
 		clearSelection,
 	];
+}
+
+function useRecordsState() {
+	const [records, setRecords] = useState([]);
+
+    // TODO: ImplementThis
+	const createRecords = (selectionState) => {
+		useEffect(() => {}, []);
+	};
 }
 
 //* Main HTML Body

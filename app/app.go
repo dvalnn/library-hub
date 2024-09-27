@@ -24,20 +24,17 @@ var debugAgents = []Agent{
 		AgentKind: TEACHER,
 		Name:      "Bob Richard Hard",
 		Class:     "",
-	},
-	{
+	}, {
 		Model:     gorm.Model{},
 		AgentKind: STUDENT,
 		Name:      "Megan Marle Brown Bob",
 		Class:     "12C",
-	},
-	{
+	}, {
 		Model:     gorm.Model{},
 		AgentKind: STUDENT,
 		Name:      "Bob Coto Velo",
 		Class:     "5A",
-	},
-	{
+	}, {
 		Model:     gorm.Model{},
 		AgentKind: TEACHER,
 		Name:      "Bob Manu El",

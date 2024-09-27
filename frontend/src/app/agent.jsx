@@ -1,12 +1,15 @@
+import { useState } from "react";
+
 import AgentDetails from "./agentDetails.jsx";
 
 function Agent({ agent, selectionFuncs, btnType }) {
 	const [appendFunc, removeFunc, checkFunc] = selectionFuncs;
+	const [activity, setActivity] = useState("ACTIVITY UNDEFINED"); // TODO: integrate this
 
-	const isSelected = checkFunc(agent.ID);
+	const isSelected = checkFunc(agentD);
 	const clickFunc = isSelected ? removeFunc : appendFunc;
 	const handleClick = () => {
-		clickFunc(agent.ID);
+		clickFunc({ agent, activity });
 	};
 
 	const divID = isSelected ? "Selected" : "NotSelected";
@@ -88,7 +91,7 @@ function Agent({ agent, selectionFuncs, btnType }) {
 			{/* Display agent information */}
 			<li className="newRegist">
 				<h1 className="name">{agent.name}</h1>
-				<AgentDetails agent={agent} />
+				<AgentDetails agent={agent} setActivity={setActivity} />
 			</li>
 		</div>
 	);

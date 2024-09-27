@@ -1,6 +1,6 @@
 import ActivitySelect from "./activitySelect.jsx";
 
-function AgentDetails({ agent }) {
+function AgentDetails({ agent, setActivity }) {
 	let role = "";
 	switch (agent.agent_kind) {
 		case 1:
@@ -20,7 +20,7 @@ function AgentDetails({ agent }) {
 		<div className="details">
 			<h2>{role}</h2>
 			{agent.agent_kind === 1 && <h2>{agent.class}</h2>}
-			<ActivitySelect userType={agent.agent_kind} />
+			<ActivitySelect userType={agent.agent_kind} setActivity={setActivity} />
 		</div>
 	);
 }
