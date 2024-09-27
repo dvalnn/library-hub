@@ -1,74 +1,123 @@
 @import url(./fontsColor.css);
 
-#mainWindow .resultsContainer #selectIcon {
-	/* Config start */
+#mainWindow .resultsContainer .registBtn {
 	--plus_sideLength: 5rem;
 	--plus_topRightTriangleSideLength: 1.3rem;
-	/* Config end */
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid var(--white);
 	width: var(--plus_sideLength);
 	height: var(--plus_sideLength);
-	background-color: var(--dark-green);
 	overflow: hidden;
+	border: 1px solid var(--white);
+	transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
+#mainWindow .resultsContainer #plusBtn {
+	background-color: var(--dark-green);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-#mainWindow .resultsContainer #selectIcon::before {
+#mainWindow .resultsContainer #minusBtn {
+	background-color: var(--dark-red);
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#mainWindow .resultsContainer .registBtn::before {
 	position: absolute;
 	content: "";
 	top: 0;
 	right: 0;
 	width: 0;
 	height: 0;
-	border-width: 0 var(--plus_topRightTriangleSideLength)
-	var(--plus_topRightTriangleSideLength) 0;
+	border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
 	border-style: solid;
 	border-color: transparent var(--white) transparent transparent;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.2s;
 }
 
-#mainWindow .resultsContainer #selectIcon:hover {
+#mainWindow .resultsContainer .registBtn:hover {
 	cursor: pointer;
-	background-color: var(--light-green);
+	transform: scale(1.05);
+}
+
+#mainWindow .resultsContainer #plusBtn:hover {
 	border: 2px solid var(--dark-green);
-}
-
-#mainWindow .resultsContainer #selectIcon:hover::before {
-	--plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
 	background-color: var(--light-green);
 }
 
-#mainWindow .resultsContainer #selectIcon:focus-visible::before {
+#mainWindow .resultsContainer #minusBtn:hover {
+	border: 2px solid var(--dark-red);
+	background-color: var(--light-red);
+}
+
+#mainWindow .resultsContainer .registBtn:hover::before {
 	--plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+#mainWindow .resultsContainer #plusBtn:hover::before {
+	background-color: var(--light-green);
+}
+
+#mainWindow .resultsContainer #minusBtn:hover::before {
 	background-color: var(--yellow);
 }
 
-#mainWindow .resultsContainer #selectIcon > .selectIcon {
-	fill: var(--light-gray);
+#mainWindow .resultsContainer .registBtn:focus-visible::before {
+	--plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+}
+
+#mainWindow .resultsContainer #plusBtn:focus-visible::before {
+	background-color: var(--light-green);
+}
+
+#mainWindow .resultsContainer #minusBtn:focus-visible::before {
+	background-color: var(--yellow);
+}
+
+#mainWindow .resultsContainer .registBtn>.selectIcon {
 	width: calc(var(--plus_sideLength) * 0.7);
 	height: calc(var(--plus_sideLength) * 0.7);
 	z-index: 1;
 	transition-timing-function: ease-in-out;
 	transition-duration: 0.2s;
+	fill: var(--light-gray);
 }
 
-#mainWindow .resultsContainer #selectIcon:hover > .selectIcon {
-	fill: var(--medium-green);
+#mainWindow .resultsContainer .registBtn:hover>.selectIcon {
 	transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer #selectIcon:focus-visible > .selectIcon {
+#mainWindow .resultsContainer .registBtn:hover>#plus{
 	fill: var(--medium-green);
+}
+
+#mainWindow .resultsContainer .registBtn:hover>#minus{
+	fill: var(--light-red);
+}
+
+#mainWindow .resultsContainer .registBtn:focus-visible>.selectIcon {
 	transform: rotate(180deg);
 }
 
-/*!BinButton */ /*!BinButton */ /*!BinButton */ /*!BinButton */
-/*!BinButton */ /*!BinButton */ /*!BinButton */ /*!BinButton */
+#mainWindow .resultsContainer .registBtn:focus-visible>#plus{
+	fill: var(--medium-green);
+}
+
+#mainWindow .resultsContainer .registBtn:focus-visible>#minus{
+	fill: var(--yellow);
+}
+
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
+/*!BinButton */
 
 #mainWindow .resultsContainer #bin-button {
 	display: flex;
@@ -106,8 +155,14 @@
 	transform: scale(0.9);
 }
 
-/*!SubmitBtn */ /*!SubmitBtn */ /*!SubmitBtn */ /*!SubmitBtn */
-/*!SubmitBtn */ /*!SubmitBtn */ /*!SubmitBtn */ /*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
+/*!SubmitBtn */
 
 #mainWindow .resultWindow .submit {
 	font-family: Poppins-Regular;

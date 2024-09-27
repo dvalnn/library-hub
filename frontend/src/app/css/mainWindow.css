@@ -27,6 +27,7 @@
 
 #mainWindow .resultWindow .title {
 	font-family: Poppins-Regular;
+	color: var(--medium-black);
 	max-width: max-content;
 	padding-top: 12px;
 	margin: -15px auto 0px auto;
@@ -112,19 +113,19 @@
 	align-items: center;
 	height: max-content;
 	margin: 5px;
-	border: 2px black solid;
+	border: 2px var(--dark-yellow) solid;
 	border-radius: 1em;
 	padding: 2px 5px 2px 5px;
 }
 
-#mainWindow .resultsContainer #notSelected{
-	/* background-color: ; */
+/* TODO TODO TODO!! */
+#mainWindow .resultsContainer #selected{
+	background-color: var();
 }
-
-
 
 #mainWindow .resultsContainer .newRegist {
 	font-family: Poppins-SemiBold;
+	color: var(--medium-black);
 	display: flex;
 	flex-direction: column;
 	text-align: left;

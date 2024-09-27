@@ -10,10 +10,16 @@
 	--medium-green: #A1C398;
 	--dark-green: #7A9B78;
 
-	--yellow: #F4E8B4;
+	--light-yellow: #F4E8B4;
+	--medium-yellow:#F6D78D ;
+	--dark-yellow: #FFC107;
 
 	--light-blue: #A8D8EA;
 	--medium-blue: #85AFC2;
+	--dark-blue: #001F3F;
+
+	--light-black: #2F4F4F;
+	--medium-black: #333333;
 }
 
 @font-face {
