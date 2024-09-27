@@ -113,6 +113,12 @@
 	padding: 2px 5px 2px 5px;
 }
 
+#mainWindow .resultsContainer #notSelected{
+	/* background-color: ; */
+}
+
+
+
 #mainWindow .resultsContainer .newRegist {
 	font-family: Poppins-SemiBold;
 	display: flex;

@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import notfound from "../assets/images/not-found.png";
 import Agent from "./agent.jsx";
 import performSearch from "./search.js";
+import {SubmitBtn} from "./buttons.jsx";
 
 //*MIGUEL:
 //TODO: Tratar de toda a parte direita dos Registos
 //TODO: Tratar de meter o dropdown a funcionar com bootstrap
-//TODO: Meter fontes fixes no títulos e etc..
 
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
@@ -26,7 +26,7 @@ function MainWindow({ searchArgs, selectionFuncs }) {
 					selectionFuncs={selectionFuncs}
 				/>
 				{showSubmit !== false && (
-					<WindowBtn BtnId={"RegBtn"} BtnTxt="Registar" />
+					<SubmitBtn BtnId={"RegBtn"} BtnTxt="Registar" />
 				)}
 			</div>
 			<div id="rightWindow" className="resultWindow">
@@ -34,25 +34,6 @@ function MainWindow({ searchArgs, selectionFuncs }) {
 				{/* <RegistList agent={agent} btnType={2} /> */}
 			</div>
 		</div>
-	);
-}
-
-//TODO: rever títulos dos svgs
-//TODO: Adicionar button type
-function WindowBtn({ BtnId, BtnTxt }) {
-	return (
-		<button type="button" className="submit" id={BtnId}>
-			<svg viewBox="0 0 24 24" className="arr-2">
-				<title>submeter</title>
-				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-			</svg>
-			<span className="text">{BtnTxt}</span>
-			<span className="circle" />
-			<svg viewBox="0 0 24 24" className="arr-1">
-				<title>placeholder</title>
-				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-			</svg>
-		</button>
 	);
 }
 
