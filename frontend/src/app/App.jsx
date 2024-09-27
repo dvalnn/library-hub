@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./css/mainWindow.css";
 import "./css/searchBar.css";
 import "./css/buttons.css";

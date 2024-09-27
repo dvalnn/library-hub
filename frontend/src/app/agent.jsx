@@ -1,39 +1,45 @@
-import { useState } from "react";
-
 import AgentDetails from "./agentDetails.jsx";
 
 function Agent({ agent, selectionFuncs, btnType }) {
 	const [appendFunc, removeFunc, checkFunc] = selectionFuncs;
 
 	const isSelected = checkFunc(agent.ID);
+	const clickFunc = isSelected ? removeFunc : appendFunc;
 	const handleClick = () => {
-		if (!isSelected) {
-			appendFunc(agent.ID);
-		} else {
-			removeFunc(agent.ID);
-		}
+		clickFunc(agent.ID)
 	};
 
+	const divID = isSelected ? "Selected" : "NotSelected";
+
+	const plusButton = () => (
+		<svg className="selectIcon" viewBox="0 0 30 30">
+			<title>Selecionar</title>
+			<path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z" />
+		</svg>
+	)
+
+	const minusButton = () => (
+		<svg className="selectIcon" viewBox="0 0 30 30">
+			<title>Desselecionar</title>
+			<path d="M6.25 16.25H23.75V13.75H6.25V16.25Z" />
+		</svg>
+	)
+
+	const selectBtn = isSelected ? minusButton : plusButton;
+
 	// Renders the "plus" button (button type 1)
-	const renderPlusButton = () => (
+	const renderSelectButton = (svg) => (
 		<button
 			type="button"
 			className="registBtn"
-			id="plusButton"
+			id="selectIcon"
 			onClick={handleClick}
 		>
-			<svg
-				className="plusIcon"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 30 30"
-			>
-				<title>selecionar</title>
-				<g mask="url(#mask0_21_345)">
-					<path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z" />
-				</g>
-			</svg>
+			{svg()}
 		</button>
 	);
+
+
 
 	// Renders the "bin" button (button type other than 1)
 	const renderBinButton = () => (
@@ -77,9 +83,9 @@ function Agent({ agent, selectionFuncs, btnType }) {
 	);
 
 	return (
-		<div className="icon-and-info">
+		<div className="agentInfo" id={divID}>
 			{/* Conditionally render the button based on btnType */}
-			{btnType === 1 ? renderPlusButton() : renderBinButton()}
+			{btnType === 1 ? renderSelectButton(selectBtn) : renderBinButton()}
 
 			{/* Display agent information */}
 			<li className="newRegist">
@@ -89,4 +95,5 @@ function Agent({ agent, selectionFuncs, btnType }) {
 		</div>
 	);
 }
+
 export default Agent;

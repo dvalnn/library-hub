@@ -1,6 +1,6 @@
 @import url(./fonts.css);
 
-#mainWindow .resultsContainer #plusButton {
+#mainWindow .resultsContainer #selectIcon {
     /* Config start */
     --plus_sideLength: 5rem;
     --plus_topRightTriangleSideLength: 1.3rem;
@@ -16,7 +16,7 @@
     overflow: hidden;
 }
 
-#mainWindow .resultsContainer #plusButton::before {
+#mainWindow .resultsContainer #selectIcon::before {
     position: absolute;
     content: "";
     top: 0;
@@ -30,19 +30,19 @@
     transition-duration: 0.2s;
 }
 
-#mainWindow .resultsContainer #plusButton:hover {
+#mainWindow .resultsContainer #selectIcon:hover {
     cursor: pointer;
 }
 
-#mainWindow .resultsContainer #plusButton:hover::before {
+#mainWindow .resultsContainer #selectIcon:hover::before {
     --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
 }
 
-#mainWindow .resultsContainer #plusButton:focus-visible::before {
+#mainWindow .resultsContainer #selectIcon:focus-visible::before {
     --plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
 }
 
-#mainWindow .resultsContainer #plusButton>.plusIcon {
+#mainWindow .resultsContainer #selectIcon>.selectIcon {
     fill: white;
     width: calc(var(--plus_sideLength) * 0.7);
     height: calc(var(--plus_sideLength) * 0.7);
@@ -51,15 +51,18 @@
     transition-duration: 0.2s;
 }
 
-#mainWindow .resultsContainer #plusButton:hover>.plusIcon {
+#mainWindow .resultsContainer #selectIcon:hover>.selectIcon {
     fill: black;
     transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer #plusButton:focus-visible>.plusIcon {
+#mainWindow .resultsContainer #selectIcon:focus-visible>.selectIcon {
     fill: black;
     transform: rotate(180deg);
 }
+
+/*!BinButton */ /*!BinButton */ /*!BinButton */ /*!BinButton */
+/*!BinButton */ /*!BinButton */ /*!BinButton */ /*!BinButton */
 
 #mainWindow .resultsContainer #bin-button {
     display: flex;

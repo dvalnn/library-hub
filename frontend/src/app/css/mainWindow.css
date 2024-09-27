@@ -94,7 +94,7 @@
     background-attachment: fixed; */
 }
 
-#mainWindow .resultsContainer .icon-and-info {
+#mainWindow .resultsContainer .agentInfo {
     display: flex;
     flex-direction: row;
     align-items: center;
