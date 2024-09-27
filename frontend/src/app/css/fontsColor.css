@@ -1,3 +1,21 @@
+:root{
+	--light-gray: #F5F4EF;
+	--white: #FEFDED;
+	--dark-white: #EAE9D7;
+
+	--light-red: #FA7070;
+	--dark-red: #D55656;
+
+	--light-green: #C6EBC5;
+	--medium-green: #A1C398;
+	--dark-green: #7A9B78;
+
+	--yellow: #F4E8B4;
+
+	--light-blue: #A8D8EA;
+	--medium-blue: #85AFC2;
+}
+
 @font-face {
 	font-family: "Poppins-Black";
 	src: url("../../assets/fonts/Poppins-Black.ttf");
