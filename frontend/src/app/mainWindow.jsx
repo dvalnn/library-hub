@@ -12,9 +12,8 @@ import performSearch from "./search.js";
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
 
-function MainWindow({ searchArgs }) {
+function MainWindow({ searchArgs, selectionFuncs }) {
 	const [showSubmit, setShowSubmit] = useState(false);
-	const [selectedAgents, setSelectedAgents] = useState([]);
 
 	return (
 		<div id="mainWindow">
@@ -24,6 +23,7 @@ function MainWindow({ searchArgs }) {
 					searchArgs={searchArgs}
 					btnType={1}
 					setShowSubmit={setShowSubmit}
+					selectionFuncs={selectionFuncs}
 				/>
 				{showSubmit !== false && (
 					<WindowBtn BtnId={"RegBtn"} BtnTxt="Registar" />
@@ -56,24 +56,23 @@ function WindowBtn({ BtnId, BtnTxt }) {
 	);
 }
 
-function AgentList({ searchArgs, btnType, setShowSubmit }) {
+function AgentList({ searchArgs, btnType, setShowSubmit, selectionFuncs }) {
 	const [elements, setElements] = useState([]);
 	const [error, setError] = useState(null); //TODO: make this work
 
 	useEffect(() => {
-		setElements([]);
-		performSearch(searchArgs.name, searchArgs.filter)
+		const { name, filter, search, setSearch } = searchArgs;
+		if (!search) return;
+		setSearch(false);
+		performSearch(name, filter)
 			.then((res) => {
-				console.log(`results: ${res}`);
 				setElements(res);
 			})
 			.catch((err) => {
 				console.error(`error: ${err}`);
-			})
-			.finally(() => {
-				console.log("promise resolved");
+				// TODO: display error
 			});
-	}, [searchArgs.name, searchArgs.filter]);
+	}, [searchArgs]);
 
 	if (elements.length === 0) {
 		setShowSubmit(false);
@@ -87,13 +86,16 @@ function AgentList({ searchArgs, btnType, setShowSubmit }) {
 
 	setShowSubmit(true);
 	return (
-		// <div className="fadeWrapper">
-			<ul className="resultsContainer">
-				{elements.map((agent, index) => (
-					<Agent agent={agent} key={agent.id || index} btnType={btnType} />
-				))}
-			</ul>
-		/* </div> */
+		<ul className="resultsContainer">
+			{elements.map((agent, index) => (
+				<Agent
+					agent={agent}
+					selectionFuncs={selectionFuncs}
+					btnType={btnType}
+					key={agent.id || index}
+				/>
+			))}
+		</ul>
 	);
 }
 
