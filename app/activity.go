@@ -9,10 +9,11 @@ const (
 	Recreation                             // All Agents
 	ExpulsionFromClass                     // Students
 	BookRequisition                        // Teachers
+	TestTaking                             // Teachers
 )
 
 var AgentActivityMap = map[AgentKind][]Activity{
-	STUDENT:   {Computers, IndivitualWork, GroupWork, Recreation, ExpulsionFromClass},
+	STUDENT:   {Computers, IndivitualWork, GroupWork, Recreation, ExpulsionFromClass, TestTaking},
 	TEACHER:   {Computers, IndivitualWork, Recreation, BookRequisition},
 	ASSISTANT: {Computers, Recreation},
 }
@@ -26,5 +27,6 @@ func (a Activity) String() string {
 		"recreation",
 		"expelled from class",
 		"book requisition",
+		"test taking",
 	}[a]
 }

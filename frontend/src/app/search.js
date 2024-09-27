@@ -25,7 +25,7 @@ async function performSearch(query, filterStr) {
 	try {
 		// Wait for the search results to resolve
 		const matches = await SearchAgent(query, filter);
-		console.log(`${JSON.stringify(matches)}`);
+		console.log(`found ${matches.length} matches`);
 		return matches; // Return the matches if needed elsewhere
 	} catch (error) {
 		console.error("Error performing search:", error);
