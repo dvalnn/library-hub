@@ -87,11 +87,13 @@ function AgentList({ searchArgs, btnType, setShowSubmit }) {
 
 	setShowSubmit(true);
 	return (
-		<ul className="resultsContainer">
-			{elements.map((agent, index) => (
-				<Agent agent={agent} key={agent.id || index} btnType={btnType} />
-			))}
-		</ul>
+		// <div className="fadeWrapper">
+			<ul className="resultsContainer">
+				{elements.map((agent, index) => (
+					<Agent agent={agent} key={agent.id || index} btnType={btnType} />
+				))}
+			</ul>
+		/* </div> */
 	);
 }
 
