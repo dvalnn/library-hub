@@ -14,7 +14,7 @@ function useRecordsState() {
 		selectionState.map((element) => {
 			const record = {
 				activity: element.act,
-				agent_id: element.id,
+				agent: element.agent,
 			};
 
 			CreateRecord(record)
@@ -24,14 +24,30 @@ function useRecordsState() {
 				})
 				.catch((err) => {
 					console.error(`error: ${err}`);
-				})
-				.finally(() => {
-					console.log("record promise resolved");
 				});
 		});
 	};
 
-	return [records, createRecords];
+	const deleteRecord = (idToDelete) => {
+		const deleteIdx = records.findIndex((item) => item.ID === idToDelete);
+		if (existingItemIndex === -1) {
+			console.erro("Trying to delete record not present in state");
+			return;
+		}
+
+		DeleteRecord({ id: records[deleteIdx].ID })
+			.then(() => {
+				const updatedRecords = [...records];
+				updatedRecords.splice(deleteIdx);
+				setRecords(updatedRecords);
+				console.log(`deleted record ${deleteIdx}`);
+			})
+			.catch((err) => {
+				console.error(`error deleting record: ${err}`);
+			});
+	};
+
+	return [records, createRecords, deleteRecord];
 }
 
 export default useRecordsState;

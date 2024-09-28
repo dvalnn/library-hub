@@ -1,6 +1,6 @@
 import ActivitySelect from "./activitySelect.jsx";
 
-function AgentDetails({ agent, setActivity }) {
+function AgentDetails({ agent, isSelected, setActivity }) {
 	let role = "";
 	switch (agent.agent_kind) {
 		case 1:
@@ -16,11 +16,12 @@ function AgentDetails({ agent, setActivity }) {
 			role = "Não Definido";
 			break;
 	}
+    //TODO: Miguel, centra o agent.class mesmo quando não existe o activitySelect
 	return (
 		<div className="details">
 			<h2>{role}</h2>
 			{agent.agent_kind === 1 && <h2>{agent.class}</h2>}
-			<ActivitySelect userType={agent.agent_kind} setActivity={setActivity} />
+			{isSelected && <ActivitySelect agent={agent} setActivity={setActivity} />}
 		</div>
 	);
 }

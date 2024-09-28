@@ -5,16 +5,17 @@ import AgentDetails from "./agentDetails.jsx";
 
 function Agent({ agent, selectionFuncs, btnType }) {
 	const [upsertFunc, removeFunc, checkFunc] = selectionFuncs;
-	const [activity, setActivity] = useState(0); // TODO: integrate this
+	const [activity, setActivity] = useState(0);
 
 	const isSelected = checkFunc(agent.ID);
 	const clickFunc = isSelected ? removeFunc : upsertFunc;
+
 	const handleClick = () => {
-		clickFunc({ id: agent.ID, act: activity });
+		clickFunc({ agent: agent, act: activity });
 	};
 
-	const selectFunc = (activity) => {
-		upsertFunc({ id: agent.ID, act: activity });
+	const actSelectFunc = (newAct) => {
+		upsertFunc({ agent: agent, act: newAct });
 	};
 
 	const divID = isSelected ? "selected" : "notSelected";
@@ -28,7 +29,11 @@ function Agent({ agent, selectionFuncs, btnType }) {
 			)}
 			<li className="newRegist">
 				<h1 className="name">{agent.name}</h1>
-				<AgentDetails agent={agent} setActivity={selectFunc} />
+				<AgentDetails
+					agent={agent}
+					isSelected={isSelected}
+					setActivity={actSelectFunc}
+				/>
 			</li>
 		</div>
 	);

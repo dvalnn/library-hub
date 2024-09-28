@@ -17,7 +17,7 @@ type Record struct {
 func (r *Record) validate() error {
 	allowedActivities, ok := AgentActivityMap[r.Agent.AgentKind]
 	if !ok {
-		return fmt.Errorf("invalid agent kind")
+		return fmt.Errorf("invalid agent kind: %s", r.Agent.AgentKind)
 	}
 
 	for _, activity := range allowedActivities {
@@ -34,9 +34,9 @@ func (r *Record) validate() error {
 }
 
 func (r *Record) create(db *gorm.DB) error {
-	// if err := r.validate(); err != nil {
-	// 	return err
-	// }
+	if err := r.validate(); err != nil {
+		return err
+	}
 
 	if err := db.Create(r).Error; err != nil {
 		return err

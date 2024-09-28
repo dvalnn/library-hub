@@ -8,7 +8,7 @@ function useSelectionState() {
 
 		// Check if the item with the same id already exists in the selection
 		const existingItemIndex = selection.findIndex(
-			(item) => item.id === itemToAppend.id,
+			(item) => item.agent.ID === itemToAppend.agent.ID,
 		);
 
 		if (existingItemIndex !== -1) {
@@ -25,14 +25,14 @@ function useSelectionState() {
 	const removeFromSelection = (itemToRemove) => {
 		console.log(`removing: ${JSON.stringify(itemToRemove)}`);
 		const updatedSelection = selection.filter(
-			(item) => item.id !== itemToRemove.id,
+			(item) => item.agent.ID !== itemToRemove.agent.ID,
 		);
 		setSelection(updatedSelection);
 	};
 
 	const checkSelection = (itemIdToFind) => {
 		// Check if an item with the specified id exists in the selection
-		return selection.some((item) => item.id === itemIdToFind);
+		return selection.some((item) => item.agent.ID === itemIdToFind);
 	};
 
 	const clearSelection = () => {

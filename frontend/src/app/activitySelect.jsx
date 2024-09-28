@@ -1,4 +1,6 @@
-function ActivitySelect({ userType, setActivity }) {
+import { useEffect, useState } from "react";
+
+function ActivitySelect({ agent, setActivity }) {
 	// Enum for activity types
 	const Activity = {
 		Computers: 1,
@@ -16,9 +18,9 @@ function ActivitySelect({ userType, setActivity }) {
 		Assistant: 3,
 	};
 
-	// Mapping activity options for the select box based on userType
+	// Mapping activity options for the select box based on agentKind
 	const getOptions = () => {
-		switch (userType) {
+		switch (agent.agent_kind) {
 			case Agents.Student: // Students
 				return [
 					{ label: "Computadores", value: Activity.Computers },
@@ -48,14 +50,15 @@ function ActivitySelect({ userType, setActivity }) {
 		}
 	};
 
+	const handleChange = (e) => {
+		const value = e.target.value;
+		setActivity(Number.parseInt(value));
+	};
+
 	const options = getOptions();
 
 	return (
-		<select
-			id="drop_act"
-			defaultValue=""
-			onChange={(e) => setActivity(Number.parseInt(e.target.value))} // Setting the activity based on the selected option
-		>
+		<select id="drop_act" defaultValue="" onChange={handleChange}>
 			<option value="" disabled>
 				Selecione atividade
 			</option>
