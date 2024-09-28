@@ -1,14 +1,14 @@
 //TODO: rever títulos dos svgs
 //TODO: Adicionar button type
 
-function SubmitBtn({ BtnId, BtnTxt }) {
+function SubmitBtn({ btnId, btnText, handleClick }) {
 	return (
-		<button type="button" className="submit" id={BtnId}>
+		<button type="button" className="submit" id={btnId} onClick={handleClick}>
 			<svg viewBox="0 0 24 24" className="arr-2">
 				<title>submeter</title>
 				<path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
 			</svg>
-			<span className="text">{BtnTxt}</span>
+			<span className="text">{btnText}</span>
 			<span className="circle" />
 			<svg viewBox="0 0 24 24" className="arr-1">
 				<title>placeholder</title>
@@ -19,7 +19,6 @@ function SubmitBtn({ BtnId, BtnTxt }) {
 }
 
 function SelectButton({ isSelected, handleClick }) {
-
 	const plusButton = () => (
 		<svg className="selectIcon" id="plus" viewBox="0 0 30 30">
 			<title>Selecionar</title>
@@ -42,21 +41,18 @@ function SelectButton({ isSelected, handleClick }) {
 			type="button"
 			className="registBtn"
 			id={btnID}
-			onClick={handleClick}>
-			<style>{`transition: transform 0.3s ease;`}</style>
+			onClick={handleClick}
+		>
+			<style>{"transition: transform 0.3s ease;"}</style>
 			{selectBtn}
-		</button >
+		</button>
 	);
 }
 
 function BinButton() {
 	return (
 		<button type="button" id="bin-button">
-			<svg
-				className="bin-top"
-				viewBox="0 0 39 7"
-				fill="none"
-			>
+			<svg className="bin-top" viewBox="0 0 39 7" fill="none">
 				<title>apagar</title>
 				<line y1="5" x2="39" y2="5" stroke="white" strokeWidth="4" />
 				<line
@@ -68,11 +64,7 @@ function BinButton() {
 					strokeWidth="3"
 				/>
 			</svg>
-			<svg
-				className="bin-bottom"
-				viewBox="0 0 33 39"
-				fill="none"
-			>
+			<svg className="bin-bottom" viewBox="0 0 33 39" fill="none">
 				<title>apagar</title>
 				<mask fill="white">
 					<path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z" />
@@ -89,4 +81,4 @@ function BinButton() {
 	);
 }
 
-export { SubmitBtn, SelectButton, BinButton }
+export { SubmitBtn, SelectButton, BinButton };

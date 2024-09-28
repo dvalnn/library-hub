@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
-
 import AgentList from "./agentList.jsx";
 import { SubmitBtn } from "./buttons.jsx";
-
 
 //*MIGUEL:
 //TODO: Tratar de toda a parte direita dos Registos
@@ -12,7 +10,7 @@ import { SubmitBtn } from "./buttons.jsx";
 //*TIAGO:
 //TODO: Meter botões a trabalhar -> Selecionar (botão plus) + clicar submeter => enviar agent para RegistList
 
-function MainWindow({ searchArgs, selectionFuncs }) {
+function MainWindow({ searchArgs, selectionFuncs, submitFunc }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 
 	return (
@@ -26,7 +24,11 @@ function MainWindow({ searchArgs, selectionFuncs }) {
 					selectionFuncs={selectionFuncs}
 				/>
 				{showSubmit !== false && (
-					<SubmitBtn BtnId={"RegBtn"} BtnTxt="Registar" />
+					<SubmitBtn
+						btnId="RegBtn"
+						btnText="Registar"
+						handleClick={submitFunc}
+					/>
 				)}
 			</div>
 			<div id="rightWindow" className="resultWindow">

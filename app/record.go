@@ -8,7 +8,7 @@ import (
 
 type Record struct {
 	gorm.Model
-	Activity Activity `gorm:"NotNull" json:"event"`
+	Activity Activity `gorm:"NotNull" json:"activity"`
 	AgentID  uint     `gorm:"NotNull" json:"agent_id"`
 	Agent    Agent
 }
@@ -34,9 +34,9 @@ func (r *Record) validate() error {
 }
 
 func (r *Record) create(db *gorm.DB) error {
-	if err := r.validate(); err != nil {
-		return err
-	}
+	// if err := r.validate(); err != nil {
+	// 	return err
+	// }
 
 	if err := db.Create(r).Error; err != nil {
 		return err

@@ -10,8 +10,6 @@ import MainWindow from "./mainWindow.jsx";
 import useSelectionState from "./useSelectionState.js";
 import useRecordsState from "./useRecordsState.js";
 
-import { CreateRecord, DeleteRecord } from "../../wailsjs/go/app/App.js";
-
 //* Main HTML Body
 function App() {
 	const [name, setName] = useState("");
@@ -20,6 +18,11 @@ function App() {
 	const [last, setLast] = useState({ name, filter });
 	const [selection, upsertFunc, removeFunc, checkFunc, resetFunc] =
 		useSelectionState();
+	const [records, createRecords] = useRecordsState();
+
+	const createRecordsWrapper = () => {
+		createRecords(selection);
+	};
 
 	if (name !== last.name || filter !== last.filter) {
 		setLast({ name, filter });
@@ -41,6 +44,7 @@ function App() {
 				searchArgs={{ name, filter, search, setSearch }}
 				selection={selection}
 				selectionFuncs={[upsertFunc, removeFunc, checkFunc]}
+				submitFunc={createRecordsWrapper}
 			/>
 		</div>
 	);

@@ -10,10 +10,16 @@ function ActivitySelect({ userType, setActivity }) {
 		TestTaking: 7,
 	};
 
+	const Agents = {
+		Student: 1,
+		Teacher: 2,
+		Assistant: 3,
+	};
+
 	// Mapping activity options for the select box based on userType
 	const getOptions = () => {
 		switch (userType) {
-			case 1: // Students
+			case Agents.Student: // Students
 				return [
 					{ label: "Computadores", value: Activity.Computers },
 					{ label: "Espaço Lúdico", value: Activity.Recreation },
@@ -25,14 +31,14 @@ function ActivitySelect({ userType, setActivity }) {
 						value: Activity.ExpulsionFromClass,
 					},
 				];
-			case 2: // Teachers
+			case Agents.Teacher: // Teachers
 				return [
 					{ label: "Computadores", value: Activity.Computers },
 					{ label: "Espaço Lúdico", value: Activity.Recreation },
 					{ label: "Trabalho individual", value: Activity.IndividualWork },
 					// { label: "Requisição de livros", value: Activity.BookRequisition },
 				];
-			case 3: // Assistants
+			case Agents.Assistant: // Assistants
 				return [
 					{ label: "Computadores", value: Activity.Computers },
 					{ label: "Espaço Lúdico", value: Activity.Recreation },
@@ -48,7 +54,7 @@ function ActivitySelect({ userType, setActivity }) {
 		<select
 			id="drop_act"
 			defaultValue=""
-			onChange={(e) => setActivity(e.target.value)} // Setting the activity based on the selected option
+			onChange={(e) => setActivity(Number.parseInt(e.target.value))} // Setting the activity based on the selected option
 		>
 			<option value="" disabled>
 				Selecione atividade

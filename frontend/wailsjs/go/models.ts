@@ -17,7 +17,7 @@ export namespace app {
 	    }
 	}
 	export class Record {
-	    event: number;
+	    activity: number;
 	    agent_id: number;
 	
 	    static createFrom(source: any = {}) {
@@ -26,7 +26,7 @@ export namespace app {
 	
 	    constructor(source: any = {}) {
 	        if ('string' === typeof source) source = JSON.parse(source);
-	        this.event = source["event"];
+	        this.activity = source["activity"];
 	        this.agent_id = source["agent_id"];
 	    }
 	}
