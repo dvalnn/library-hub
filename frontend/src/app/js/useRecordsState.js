@@ -5,10 +5,6 @@ import { CreateRecord, DeleteRecord } from "../../../wailsjs/go/app/App.js";
 function useRecordsState() {
 	const [records, setRecords] = useState([]);
 
-	const appendToRecords = (newRecord) => {
-		setRecords([...records, newRecord]);
-	};
-
 	// TODO: ImplementThis
 	const createRecords = (selectionState) => {
 		// Map over selectionState to create promises from CreateRecord
@@ -42,7 +38,7 @@ function useRecordsState() {
 
 	const deleteRecord = (idToDelete) => {
 		const deleteIdx = records.findIndex((item) => item.ID === idToDelete);
-		if (existingItemIndex === -1) {
+		if (deleteIdx === -1) {
 			console.erro("Trying to delete record not present in state");
 			return;
 		}
