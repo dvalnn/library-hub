@@ -1,55 +1,42 @@
-import { useEffect, useState } from "react";
+import { ActivityEnum } from "./js/ActivityEnum";
+import { AgentEnum } from "./js/AgentEnum";
 
 function ActivitySelect({ agent, setActivity }) {
-	// Enum for activity types
-	const Activity = {
-		Computers: 1,
-		IndividualWork: 2,
-		GroupWork: 3,
-		Recreation: 4,
-		ExpulsionFromClass: 5,
-		BookRequisition: 6,
-		TestTaking: 7,
-	};
-
-	const Agents = {
-		Student: 1,
-		Teacher: 2,
-		Assistant: 3,
+	const enumObject = (enumMember) => {
+		return {
+			label: ActivityEnum.getLabel(enumMember),
+			value: enumMember,
+		};
 	};
 
 	// Mapping activity options for the select box based on agentKind
 	const getOptions = () => {
 		switch (agent.agent_kind) {
-			case Agents.Student: // Students
+			case AgentEnum.Student: // Students
 				return [
-					{ label: "Computadores", value: Activity.Computers },
-					{ label: "Espaço Lúdico", value: Activity.Recreation },
-					{ label: "Trabalho de grupo", value: Activity.GroupWork },
-					{ label: "Trabalho individual", value: Activity.IndividualWork },
-					{ label: "Realização de Testes", value: Activity.TestTaking },
-					{
-						label: "Expulso da Sala de Aula",
-						value: Activity.ExpulsionFromClass,
-					},
+					enumObject(ActivityEnum.Computers),
+					enumObject(ActivityEnum.Recreation),
+					enumObject(ActivityEnum.GroupWork),
+					enumObject(ActivityEnum.IndividualWork),
+					enumObject(ActivityEnum.TestTaking),
+					enumObject(ActivityEnum.ExpulsionFromClass),
 				];
-			case Agents.Teacher: // Teachers
+			case AgentEnum.Teacher: // Teachers
 				return [
-					{ label: "Computadores", value: Activity.Computers },
-					{ label: "Espaço Lúdico", value: Activity.Recreation },
-					{ label: "Trabalho individual", value: Activity.IndividualWork },
-					// { label: "Requisição de livros", value: Activity.BookRequisition },
+					enumObject(ActivityEnum.Computers),
+					enumObject(ActivityEnum.Recreation),
+					enumObject(ActivityEnum.IndividualWork),
+					// enumObject(ActivityEnum.BookRequisition), // Uncomment if needed
 				];
-			case Agents.Assistant: // Assistants
+			case AgentEnum.Assistant: // Assistants
 				return [
-					{ label: "Computadores", value: Activity.Computers },
-					{ label: "Espaço Lúdico", value: Activity.Recreation },
+					enumObject(ActivityEnum.Computers),
+					enumObject(ActivityEnum.Recreation),
 				];
 			default:
 				return [];
 		}
 	};
-
 	const handleChange = (e) => {
 		const value = e.target.value;
 		setActivity(Number.parseInt(value));

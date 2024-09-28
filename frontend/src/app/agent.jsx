@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BinButton, SelectButton } from "./buttons.jsx";
 import AgentDetails from "./agentDetails.jsx";
 
-function Agent({ agent, selectionFuncs, btnType }) {
+function Agent({ agent, selectionFuncs }) {
 	const [upsertFunc, removeFunc, checkFunc] = selectionFuncs;
 	const [activity, setActivity] = useState(0);
 
@@ -22,11 +22,7 @@ function Agent({ agent, selectionFuncs, btnType }) {
 
 	return (
 		<div className="agentInfo" id={divID}>
-			{btnType === 1 ? (
-				<SelectButton isSelected={isSelected} handleClick={handleClick} />
-			) : (
-				<BinButton />
-			)}
+			<SelectButton isSelected={isSelected} handleClick={handleClick} />
 			<li className="newRegist">
 				<h1 className="name">{agent.name}</h1>
 				<AgentDetails

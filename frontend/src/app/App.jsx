@@ -12,6 +12,11 @@ function App() {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
 
+	const searchReset = () => {
+		setName("");
+		setFilter("everyone");
+	};
+
 	return (
 		<div id="App">
 			<SearchBar
@@ -19,7 +24,7 @@ function App() {
 				radioSelection={filter}
 				setRadioSelection={setFilter}
 			/>
-			<MainWindow name={name} filter={filter} />
+			<MainWindow name={name} filter={filter} windowReset={searchReset} />
 		</div>
 	);
 }

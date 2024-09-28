@@ -10,7 +10,7 @@ type Record struct {
 	gorm.Model
 	Activity Activity `gorm:"NotNull" json:"activity"`
 	AgentID  uint     `gorm:"NotNull" json:"agent_id"`
-	Agent    Agent
+	Agent    Agent    `json:"agent"`
 }
 
 // TODO: make this more robust. Look into how gorm handles fk references

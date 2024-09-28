@@ -1,4 +1,4 @@
-import { SearchAgent } from "./../../wailsjs/go/app/App.js";
+import { SearchAgent } from "./../../../wailsjs/go/app/App.js";
 
 function filterFromString(filter) {
 	switch (filter) {

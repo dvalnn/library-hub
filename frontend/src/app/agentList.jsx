@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 
 import notfound from "../assets/images/not-found.png";
 
-import performSearch from "./search.js";
+import performSearch from "./js/search.js";
 
 import Agent from "./agent.jsx";
 
-function AgentList({ searchArgs, btnType, setShowSubmit, selectionFuncs }) {
+function AgentList({ searchArgs, setShowSubmit, selectionFuncs }) {
 	const [elements, setElements] = useState([]);
 	const [error, setError] = useState(null); //TODO: make this work
 
@@ -41,8 +41,7 @@ function AgentList({ searchArgs, btnType, setShowSubmit, selectionFuncs }) {
 				<Agent
 					agent={agent}
 					selectionFuncs={selectionFuncs}
-					btnType={btnType}
-					key={agent.id || index}
+					key={agent.ID || index}
 				/>
 			))}
 		</ul>

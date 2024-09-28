@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CreateRecord, DeleteRecord } from "../../wailsjs/go/app/App.js";
+import { CreateRecord, DeleteRecord } from "../../../wailsjs/go/app/App.js";
 
 function useRecordsState() {
 	const [records, setRecords] = useState([]);
@@ -11,20 +11,32 @@ function useRecordsState() {
 
 	// TODO: ImplementThis
 	const createRecords = (selectionState) => {
-		selectionState.map((element) => {
+		// Map over selectionState to create promises from CreateRecord
+		const recordPromises = selectionState.map((element) => {
 			const record = {
 				activity: element.act,
 				agent: element.agent,
 			};
 
-			CreateRecord(record)
-				.then((record) => {
-					console.log(`created: ${JSON.stringify(record)}`);
-					appendToRecords(record);
+			// Return the promise from CreateRecord
+			return CreateRecord(record)
+				.then((created) => {
+					console.log(`created: ${JSON.stringify(created)}`);
+					return created; // Return created record to resolve in Promise.all
 				})
 				.catch((err) => {
 					console.error(`error: ${err}`);
+					return null; // Handle errors but allow Promise.all to continue
 				});
+		});
+
+		// Wait for all promises to resolve
+		Promise.all(recordPromises).then((newRecords) => {
+			// Filter out any null values from failed record creation
+			const validRecords = newRecords.filter((record) => record !== null);
+
+			// Update the state by appending the new records
+			setRecords((prevRecords) => [...prevRecords, ...validRecords]);
 		});
 	};
 
