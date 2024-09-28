@@ -10,19 +10,23 @@
 	width: var(--plus_sideLength);
 	height: var(--plus_sideLength);
 	overflow: hidden;
-	transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
 #mainWindow .resultsContainer #plusBtn {
 	border: 1px solid var(--gray);
 	background-color: var(--dark-green);
-	transition: background-color 0.3s ease, transform 0.3s ease;
+	transition: all 0.3s ease, transform 0.3s ease;
 }
 
 #mainWindow .resultsContainer #minusBtn {
 	border: 1px solid var(--dark-sand);
 	background-color: var(--dark-red);
-	transition: background-color 0.3s ease, transform 0.3s ease;
+	transition: all 0.3s ease, transform 0.3s ease;
+}
+
+#mainWindow .resultsContainer #selected:has(#valid) #minusBtn {
+	border: 1px solid var(--medium-green);
 }
 
 #mainWindow .resultsContainer .registBtn::before {
@@ -32,8 +36,7 @@
 	right: 0;
 	width: 0;
 	height: 0;
-	border-width: 0 var(--plus_topRightTriangleSideLength)
-		var(--plus_topRightTriangleSideLength) 0;
+	border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
 	border-style: solid;
 	border-color: transparent var(--white) transparent transparent;
 	transition-timing-function: ease-in-out;
@@ -51,6 +54,11 @@
 }
 
 #mainWindow .resultsContainer #minusBtn:hover {
+	border: 2px solid var(--dark-red);
+	background-color: var(--light-red);
+}
+
+#mainWindow .resultsContainer #selected:has(#valid) #minusBtn:hover {
 	border: 2px solid var(--dark-red);
 	background-color: var(--light-red);
 }
@@ -79,7 +87,7 @@
 	background-color: var(--yellow);
 }
 
-#mainWindow .resultsContainer .registBtn > .selectIcon {
+#mainWindow .resultsContainer .registBtn>.selectIcon {
 	width: calc(var(--plus_sideLength) * 0.7);
 	height: calc(var(--plus_sideLength) * 0.7);
 	z-index: 1;
@@ -88,27 +96,27 @@
 	fill: var(--light-gray);
 }
 
-#mainWindow .resultsContainer .registBtn:hover > .selectIcon {
+#mainWindow .resultsContainer .registBtn:hover>.selectIcon {
 	transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer .registBtn:hover > #plus {
+#mainWindow .resultsContainer .registBtn:hover>#plus {
 	fill: var(--medium-green);
 }
 
-#mainWindow .resultsContainer .registBtn:hover > #minus {
+#mainWindow .resultsContainer .registBtn:hover>#minus {
 	fill: var(--light-red);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible > .selectIcon {
+#mainWindow .resultsContainer .registBtn:focus-visible>.selectIcon {
 	transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible > #plus {
+#mainWindow .resultsContainer .registBtn:focus-visible>#plus {
 	fill: var(--medium-green);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible > #minus {
+#mainWindow .resultsContainer .registBtn:focus-visible>#minus {
 	fill: var(--yellow);
 }
 

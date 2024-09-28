@@ -28,6 +28,7 @@
 #mainWindow .resultWindow .title {
 	font-family: Poppins-Regular;
 	color: var(--medium-black);
+	background-color: var(--white);
 	max-width: max-content;
 	padding-top: 12px;
 	margin: -15px auto 0px auto;
@@ -50,7 +51,7 @@
 	border-block-start: 3px solid;
 	border-image-source: radial-gradient(
 		circle at top left,
-		#818df8,
+		var(--sand),
 		transparent 23%
 	);
 	border-image-slice: 1;
@@ -63,7 +64,7 @@
 	border-block-end: 3px solid;
 	border-image-source: radial-gradient(
 		circle at bottom right,
-		#818df8,
+		var(--sand),
 		transparent 23%
 	);
 	border-image-slice: 1;
@@ -109,7 +110,7 @@
 	align-items: center;
 	height: max-content;
 	margin: 5px;
-	background-color: var(--gray); /* Initial color */
+	background-color: var(--gray);
 	border-radius: 1em;
 	padding: 2px 5px 2px 5px;
 	position: relative;
@@ -135,8 +136,12 @@
 	margin: 7px;
 }
 
-#mainWindow .resultsContainer #selected .newRegist {
+#mainWindow .resultsContainer #selected .newRegist:has(#invalid) {
 	color: var(--brown);
+}
+
+#mainWindow .resultsContainer #selected .newRegist:has(#valid) {
+	color: var(--dark-blue);
 }
 
 #mainWindow .resultsContainer .newRegist .details {
