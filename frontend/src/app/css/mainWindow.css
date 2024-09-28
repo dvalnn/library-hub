@@ -98,30 +98,30 @@
 	margin: 0;
 }
 
-#mainWindow .resultsContainer::-webkit-scrollbar{
+#mainWindow .resultsContainer::-webkit-scrollbar {
 	display: none;
 }
 
 /* Non-selected state */
 #mainWindow .resultsContainer .agentInfo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: max-content;
-    margin: 5px;
-    background-color: var(--gray); /* Initial color */
-    border-radius: 1em;
-    padding: 2px 5px 2px 5px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.7s ease;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: max-content;
+	margin: 5px;
+	background-color: var(--gray); /* Initial color */
+	border-radius: 1em;
+	padding: 2px 5px 2px 5px;
+	position: relative;
+	overflow: hidden;
+	transition: all 0.7s ease;
 }
 
-#mainWindow .resultsContainer #selected {
-    background-color: var(--dark-sand);
+#mainWindow .resultsContainer #selected:has(#invalid) {
+	background-color: var(--dark-sand);
 }
 
-#mainWindow .resultsContainer #selected:has(select:not([value=0])){
+#mainWindow .resultsContainer #selected:has(#valid) {
 	background-color: var(--medium-green);
 }
 
@@ -135,7 +135,7 @@
 	margin: 7px;
 }
 
-#mainWindow .resultsContainer #selected .newRegist{
+#mainWindow .resultsContainer #selected .newRegist {
 	color: var(--brown);
 }
 

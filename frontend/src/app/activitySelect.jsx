@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ActivityEnum } from "./js/ActivityEnum";
 import { AgentEnum } from "./js/AgentEnum";
 
@@ -37,16 +38,25 @@ function ActivitySelect({ agent, setActivity }) {
 				return [];
 		}
 	};
+
+	const [selection, setSelection] = useState("0");
+
 	const handleChange = (e) => {
 		const value = e.target.value;
+		setSelection(value);
 		setActivity(Number.parseInt(value));
 	};
+
+	const selectID = selection === "0" ? "invalid" : "valid";
+	useEffect(() => {
+		console.log(`select id is ${selectID}`);
+	}, [selectID]);
 
 	const options = getOptions();
 
 	return (
-		<select id="drop_act" defaultValue="" onChange={handleChange}>
-			<option value="" disabled>
+		<select id={selectID} value={selection} onChange={handleChange}>
+			<option value="0" disabled>
 				Selecione atividade
 			</option>
 			{options.map((option) => (
