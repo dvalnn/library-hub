@@ -47,13 +47,8 @@ function ActivitySelect({ agent, setActivity }) {
 		setActivity(Number.parseInt(value));
 	};
 
-	const selectID = selection === "0" ? "invalid" : "valid";
-	useEffect(() => {
-		console.log(`select id is ${selectID}`);
-	}, [selectID]);
-
 	const options = getOptions();
-
+    const selectID = selection === "0" ? "invalid" : "valid";
 	return (
 		<select id={selectID} value={selection} onChange={handleChange}>
 			<option value="0" disabled>

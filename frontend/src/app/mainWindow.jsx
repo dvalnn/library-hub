@@ -62,7 +62,7 @@ function MainWindow({ name, filter, windowReset }) {
 			</div>
 			<div id="rightWindow" className="resultWindow">
 				<h1 className="title">Registos</h1>
-				<RecordList records={records} />
+				<RecordList records={records} deleteHandler={deleteRecord}/>
 			</div>
 		</div>
 	);
