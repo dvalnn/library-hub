@@ -32,7 +32,6 @@
 	padding-top: 12px;
 	margin: -15px auto 0px auto;
 	z-index: 1;
-	background-color: var(--white);
 }
 
 #mainWindow .resultWindow::before,
@@ -97,30 +96,33 @@
 	grid-template-rows: auto;
 	padding: 5px;
 	margin: 0;
-
-	/* background-color: linear-gradient(transparent 12% currentColor 30% currentColor 70% transparent 86%);
-    background-clip: text;
-    background-attachment: fixed; */
 }
 
 #mainWindow .resultsContainer::-webkit-scrollbar{
 	display: none;
 }
 
+/* Non-selected state */
 #mainWindow .resultsContainer .agentInfo {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: max-content;
-	margin: 5px;
-	border: 2px var(--dark-yellow) solid;
-	border-radius: 1em;
-	padding: 2px 5px 2px 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: max-content;
+    margin: 5px;
+    background-color: var(--gray); /* Initial color */
+    border-radius: 1em;
+    padding: 2px 5px 2px 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.7s ease;
 }
 
-/* TODO TODO TODO!! */
-#mainWindow .resultsContainer #selected{
-	background-color: var();
+#mainWindow .resultsContainer #selected {
+    background-color: var(--dark-sand);
+}
+
+#mainWindow .resultsContainer #selected:has(select:not([value=0])){
+	background-color: var(--medium-green);
 }
 
 #mainWindow .resultsContainer .newRegist {
@@ -131,6 +133,10 @@
 	text-align: left;
 	flex: 1;
 	margin: 7px;
+}
+
+#mainWindow .resultsContainer #selected .newRegist{
+	color: var(--brown);
 }
 
 #mainWindow .resultsContainer .newRegist .details {

@@ -1,5 +1,7 @@
 :root{
 	--light-gray: #F5F4EF;
+	--gray: #E0E0E0;
+
 	--white: #FEFDED;
 	--dark-white: #EAE9D7;
 
@@ -9,10 +11,17 @@
 	--light-green: #C6EBC5;
 	--medium-green: #A1C398;
 	--dark-green: #7A9B78;
+	--olive-green: #3C4C24;
+	--forest-green: #264E36;
 
 	--light-yellow: #F4E8B4;
 	--medium-yellow:#F6D78D ;
 	--dark-yellow: #FFC107;
+
+	--sand: #E8D8C3;
+	--dark-sand:  #E3C7A7;
+
+	--brown: #5C4033;
 
 	--light-blue: #A8D8EA;
 	--medium-blue: #85AFC2;

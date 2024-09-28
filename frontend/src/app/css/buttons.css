@@ -10,16 +10,17 @@
 	width: var(--plus_sideLength);
 	height: var(--plus_sideLength);
 	overflow: hidden;
-	border: 1px solid var(--white);
 	transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
 }
 
 #mainWindow .resultsContainer #plusBtn {
+	border: 1px solid var(--gray);
 	background-color: var(--dark-green);
 	transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #mainWindow .resultsContainer #minusBtn {
+	border: 1px solid var(--dark-sand);
 	background-color: var(--dark-red);
 	transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -165,7 +166,7 @@
 /*!SubmitBtn */
 
 #mainWindow .resultWindow .submit {
-	font-family: Poppins-Regular;
+	font-family: Poppins-SemiBold;
 	position: relative;
 	justify-self: flex-end;
 	width: max-content;
@@ -177,8 +178,8 @@
 	border-color: transparent;
 	background-color: inherit;
 	border-radius: 100px;
-	color: greenyellow;
-	box-shadow: 0 0 0 2px greenyellow;
+	color: var(--dark-green);
+	box-shadow: 0 0 0 2px var(--medium-green);
 	cursor: pointer;
 	overflow: hidden;
 	transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -188,7 +189,7 @@
 #mainWindow .resultWindow .submit svg {
 	position: absolute;
 	width: 17px;
-	fill: greenyellow;
+	fill: var(--dark-green);
 	z-index: 9;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
@@ -208,7 +209,7 @@
 	transform: translate(-50%, -50%);
 	width: 10px;
 	height: 10px;
-	background-color: greenyellow;
+	background-color: var(--light-green);
 	border-radius: 50%;
 	opacity: 0;
 	transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
@@ -223,9 +224,9 @@
 }
 
 #mainWindow .resultWindow .submit:hover {
-	font-family: Poppins-SemiBold;
+	font-family: Poppins-Bold;
 	box-shadow: 0 0 0 12px transparent;
-	color: #212121;
+	color: var(--forest-green);
 	border-radius: 12px;
 	margin: 0 7px 8px 0;
 }
@@ -243,13 +244,13 @@
 }
 
 #mainWindow .resultWindow .submit:hover svg {
-	fill: #212121;
+	fill: var(--forest-green);
 }
 
 #mainWindow .resultWindow .submit:active {
 	font-family: Poppins-Bold;
 	scale: 0.95;
-	box-shadow: 0 0 0 4px greenyellow;
+	box-shadow: 0 0 0 4px var(--medium-green);
 }
 
 #mainWindow .resultWindow .submit:hover .circle {
