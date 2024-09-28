@@ -51,7 +51,7 @@
 	border-block-start: 3px solid;
 	border-image-source: radial-gradient(
 		circle at top left,
-		var(--sand),
+		var(--medium-blue),
 		transparent 23%
 	);
 	border-image-slice: 1;
@@ -64,13 +64,13 @@
 	border-block-end: 3px solid;
 	border-image-source: radial-gradient(
 		circle at bottom right,
-		var(--sand),
+		var(--medium-blue),
 		transparent 23%
 	);
 	border-image-slice: 1;
 }
 
-#mainWindow .resultWindow #NoResults {
+#mainWindow .resultWindow .noResults {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -79,12 +79,12 @@
 	opacity: 20%;
 }
 
-#mainWindow .resultWindow #NoResults li {
+#mainWindow .resultWindow .noResults li {
 	font-family: Poppins-SemiBoldItalic;
 	font-size: 1.5em;
 }
 
-#mainWindow .resultWindow #NoResults img {
+#mainWindow .resultWindow .noResults img {
 	width: 50%;
 }
 
@@ -104,7 +104,7 @@
 }
 
 /* Non-selected state */
-#mainWindow .resultsContainer .agentInfo {
+#mainWindow .resultsContainer .agentBox {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -126,7 +126,7 @@
 	background-color: var(--medium-green);
 }
 
-#mainWindow .resultsContainer .newRegist {
+#mainWindow .resultsContainer .agentInfo {
 	font-family: Poppins-SemiBold;
 	color: var(--medium-black);
 	display: flex;
@@ -136,18 +136,35 @@
 	margin: 7px;
 }
 
-#mainWindow .resultsContainer #selected .newRegist:has(#invalid) {
+#mainWindow .resultsContainer #selected .agentInfo:has(#invalid) {
 	color: var(--brown);
 }
 
-#mainWindow .resultsContainer #selected .newRegist:has(#valid) {
+#mainWindow .resultsContainer #selected .agentInfo:has(#valid) {
 	color: var(--dark-blue);
 }
 
-#mainWindow .resultsContainer .newRegist .details {
+#mainWindow .resultsContainer .agentInfo .details {
 	font-family: Poppins-Regular;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+
+/*! Right Window Settings */
+
+#mainWindow .resultWindow .noResults #Doc {
+	width: 40%;
+}
+
+#rightWindow .agentBox .agentInfo .nameTime{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#rightWindow .resultsContainer .agentBox:has(#bin-up){
+    background-color: var(--dark-sand);
 }

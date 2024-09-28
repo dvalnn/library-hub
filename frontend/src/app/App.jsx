@@ -1,6 +1,7 @@
 import "./css/mainWindow.css";
 import "./css/searchBar.css";
 import "./css/buttons.css";
+import "./css/dropdown.css";
 
 import { useState } from "react";
 

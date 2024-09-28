@@ -6,14 +6,13 @@
 	align-items: center;
 	margin: 10px;
 	padding: 0.5rem;
-	border: 2px solid var(--sand);
+	border: 2px solid var(--medium-blue);
 	border-radius: 0.5rem;
 	background-color: var(--light-gray);
 }
 
 #searchBar label {
 	font-size: 1.5rem;
-	color: var(--sand);
 	margin-left: 7px;
 	background: var(--light-gray);
 }
@@ -25,6 +24,7 @@
 	flex: 1;
 	margin-left: 1rem;
 	background: var(--light-gray);
+	color: var(--dark-blue);
 	outline: none;
 	border: none;
 	border-radius: 5px;
@@ -33,9 +33,8 @@
 
 #searchBar input[type="text"].input:focus {
 	font-family: "Poppins-Regular";
-	border-bottom: 2px dotted var(--sand);
-	border-image: radial-gradient(circle at center, var(--sand), transparent 80%) 0 0
-		100% 0;
+	border-bottom: 2px solid var(--light-blue);
+	border-image: radial-gradient(circle at center, var(--light-blue), transparent 80%) 0 0 100% 0;
 }
 
 #searchBar #user-selector {
@@ -56,19 +55,19 @@
 	font-family: "Poppins-Regular", sans-serif;
 	cursor: pointer;
 	padding: 0.5rem;
-	color: var(--medium-black);
+	color: var(--dark-blue);
 	border-radius: 0.5rem;
-	background-color: #fff;
+	border: 2px solid var(--medium-blue);
+	background-color: var(--white);
 	transition: all 0.2s ease-in-out;
 }
 
-#searchBar #user-selector .radio input:checked + .name {
+#searchBar #user-selector .radio input:checked+.name {
 	font-family: "Poppins-Medium";
-	background-color: black;
 	font-size: larger;
-	color: #fff;
 	font-weight: 600;
-	border-color: #fff;
+	border: 2px solid var(--light-blue);
+	box-shadow: 0 0 0 2px var(--medium-blue)
 }
 
 #searchBar .LupaBtn {
@@ -76,7 +75,7 @@
 	justify-content: center;
 	align-items: center;
 	background-color: var(--light-gray);
-	border: 2px var(--dark-yellow) dotted;
+	border: 2px var(--medium-blue) dotted;
 	border-radius: 50%;
 	cursor: pointer;
 	width: 3em;
@@ -85,11 +84,9 @@
 
 #searchBar .LupaBtn:hover {
 	border: transparent;
-	background-image: radial-gradient(
-		circle,
-		rgba(226, 173, 130, 0.6) 0%,
-		rgb(226, 173, 130, 0) 100%
-	);
+	background-image: radial-gradient(circle,
+			var(--medium-blue) 0%,
+			var(--medium-blue) 100%);
 	transition: all 0.2s ease;
 	transform: scale(1.1);
 }
@@ -100,11 +97,11 @@
 }
 
 #searchBar .LupaBtn .lupa {
-	fill: var(--medium-yellow);
-	stroke: var(--medium-yellow);
+	fill: var(--medium-blue);
+	stroke: var(--medium-blue);
 }
 
-#searchBar .LupaBtn:hover > svg .lupa {
+#searchBar .LupaBtn:hover>svg .lupa {
 	fill: white;
 	stroke: white;
 }

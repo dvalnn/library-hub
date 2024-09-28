@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ActivityEnum } from "./js/ActivityEnum";
 import { AgentEnum } from "./js/AgentEnum";
 

@@ -27,7 +27,7 @@ function AgentList({ searchArgs, setShowSubmit, selectionFuncs }) {
 	if (elements.length === 0) {
 		setShowSubmit(false);
 		return (
-			<ul id="NoResults">
+			<ul className="noResults">
 				<img src={notfound} alt="Imagem nenhum item encontrado" />
 				<li>Sem resultados de pesquisa</li>
 			</ul>
