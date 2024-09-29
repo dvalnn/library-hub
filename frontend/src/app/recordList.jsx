@@ -1,8 +1,6 @@
 import Record from "./record.jsx";
 import noDoc from "../assets/images/noDoc.png";
 
-//TODO: Tratar do deleteHandler
-
 function RecordList({ records, recordHandlers, setShowDelete }) {
 	if (records.length === 0) {
 		setShowDelete(false);
@@ -15,9 +13,10 @@ function RecordList({ records, recordHandlers, setShowDelete }) {
 	}
 
 	setShowDelete(true);
+	const sortedRecords = [...records].sort((a, b) => b.ID - a.ID);
 	return (
 		<ul className="resultsContainer">
-			{records.map((record, index) => (
+			{sortedRecords.map((record, index) => (
 				<Record
 					record={record}
 					handlers={recordHandlers}
