@@ -25,7 +25,15 @@ function MainWindow({ name, filter, windowReset }) {
 	const [showDelete, setShowDelete] = useState(false);
 	const [search, setSearch] = useState(false);
 
-	const [records, createRecords, deleteRecord] = useRecordsState();
+	const [
+		records,
+		createRecords,
+		markRecord,
+		removeMark,
+		checkMark,
+		deleteMarked,
+	] = useRecordsState();
+
 	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
 		useSelectionState();
 
@@ -76,14 +84,14 @@ function MainWindow({ name, filter, windowReset }) {
 				<h1 className="title">Registos</h1>
 				<RecordList
 					records={records}
-					deleteHandler={deleteRecord}
+					recordHandlers={{ markRecord, removeMark, checkMark }}
 					setShowDelete={setShowDelete}
 				/>
 				{showDelete !== false && (
 					<SubmitBtn
 						btnId="DelBtn"
 						btnText="Eliminar"
-						//TODO: handleClick={deleteRecordsWrapper}
+						handleClick={deleteMarked}
 					/>
 				)}
 			</div>

@@ -1,33 +1,26 @@
 import { useState } from "react";
 import { BinButton } from "./buttons.jsx";
 import { ActivityEnum } from "./js/ActivityEnum.js";
+import { AgentEnum } from "./js/AgentEnum.js";
 
-function Record({ record, deleteHandler }) {
-	const [binId, setBinId] = useState("bin-down")
+function Record({ record, handlers }) {
+	const [binId, setBinId] = useState("bin-down");
 	const date = new Date(record.CreatedAt);
-	let role = "";
-	switch (record.agent.agent_kind) {
-		case 1:
-			role = "Aluno" + " " + record.agent.class;
-			break;
-		case 2:
-			role = "Professor";
-			break;
-		case 3:
-			role = "Assistente";
-			break;
-		default:
-			role = "Não Definido";
-			break;
-	}
+	const role = `${AgentEnum.getLabel(record.agent.agent_kind)} ${record.agent.class}`;
+
+	const clickHandler = () => {
+		if (handlers.checkMark(record.ID)) {
+			setBinId("bin-down");
+			handlers.removeMark(record.ID);
+		} else {
+			setBinId("bin-up");
+			handlers.markRecord(record.ID);
+		}
+	};
+
 	return (
 		<div className="agentBox" id="record">
-			<BinButton
-				handleClick={() => {
-					binId === "bin-down" ? setBinId("bin-up") : setBinId("bin-down");
-				}}
-				binID={binId}
-			/>
+			<BinButton handleClick={clickHandler} binID={binId} />
 			<li className="agentInfo">
 				<div className="nameTime">
 					<h1 className="name">{record.agent.name}</h1>

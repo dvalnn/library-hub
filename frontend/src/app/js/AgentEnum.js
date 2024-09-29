@@ -7,9 +7,9 @@ export const AgentEnum = {
 	// Helper function to get label based on value
 	getLabel(value) {
 		const labels = {
-			[this.Student]: "Student",
-			[this.Teacher]: "Teacher",
-			[this.Assistant]: "Assistant",
+			[this.Student]: "Aluno",
+			[this.Teacher]: "Professor",
+			[this.Assistant]: "Assistente",
 		};
 
 		return labels[value] || "Unknown Agent";

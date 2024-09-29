@@ -3,7 +3,7 @@ import noDoc from "../assets/images/noDoc.png";
 
 //TODO: Tratar do deleteHandler
 
-function RecordList({ records, deleteHandler, setShowDelete }) {
+function RecordList({ records, recordHandlers, setShowDelete }) {
 	if (records.length === 0) {
 		setShowDelete(false);
 		return (
@@ -20,7 +20,7 @@ function RecordList({ records, deleteHandler, setShowDelete }) {
 			{records.map((record, index) => (
 				<Record
 					record={record}
-					deleteHandler={deleteHandler}
+					handlers={recordHandlers}
 					key={record.ID || index}
 				/>
 			))}
