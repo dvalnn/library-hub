@@ -98,6 +98,10 @@
 	transform: scale(1.1);
 }
 
+#searchBar .LupaBtn:active{
+	transform: scale(1);
+}
+
 #searchBar .LupaBtn svg {
 	width: 1.5em;
 	height: 1.5em;

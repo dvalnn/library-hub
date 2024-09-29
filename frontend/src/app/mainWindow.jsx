@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 
 import AgentList from "./agentList.jsx";
 import RecordList from "./recordList.jsx";
-import { SubmitBtn } from "./buttons.jsx";
+import {SubmitBtn} from "./buttons.jsx";
+import AlertEvents from "./alert.jsx"
 
 import useSelectionState from "./js/useSelectionState.js";
 import useRecordsState from "./js/useRecordsState.js";
 
 //*MIGUEL:
 //TODO: Error and Success notifications
-//TODO: Fazer um calendário para selecionar os dias
 //TODO: Implementar TABs
 //TODO: Fades de Scroll
+
+//TODO: Fazer um calendário para selecionar os dias
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
@@ -75,6 +77,7 @@ function MainWindow({ name, filter, windowReset }) {
 						handleClick={createRecordsWrapper}
 					/>
 				)}
+				<AlertEvents/>
 			</div>
 
 			<div id="rightWindow" className="resultWindow">

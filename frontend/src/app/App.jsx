@@ -2,6 +2,8 @@ import "./css/mainWindow.css";
 import "./css/searchBar.css";
 import "./css/buttons.css";
 import "./css/dropdown.css";
+import "./css/alerts.css";
+import "./css/loader.css";
 
 import { useState } from "react";
 
