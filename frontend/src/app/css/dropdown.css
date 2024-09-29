@@ -1,56 +1,56 @@
 @import url(./fontsColor.css);
 
 #leftWindow .agentBox .agentInfo .details .dropDown {
-    width: 33%;
-    position: relative;
-    font-family: Poppins-Regular;
+	width: 33%;
+	position: relative;
+	font-family: Poppins-Regular;
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown select {
-    width: 100%;
-    padding: 0.3rem 1rem 0.3rem 1rem;
-    background-color: var(--light-gray);
-    border: 2px solid transparent;
-    border-radius: 0.7rem;
-    color: var(--medium-black);
-    cursor: pointer;
-    appearance: none;
-    box-sizing: border-box;
+	width: 100%;
+	padding: 0.3rem 1rem 0.3rem 1rem;
+	background-color: var(--light-gray);
+	border: 2px solid transparent;
+	border-radius: 0.7rem;
+	color: var(--medium-black);
+	cursor: pointer;
+	appearance: none;
+	box-sizing: border-box;
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown::before,
 .dropDown::after {
-    --size: 0.3rem;
-    position: absolute;
-    content: "";
-    right: 1rem;
-    pointer-events: none;
+	--size: 0.3rem;
+	position: absolute;
+	content: "";
+	right: 1rem;
+	pointer-events: none;
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown::before,
 .dropDown::after {
-    --size: 0.3rem;
-    position: absolute;
-    content: "";
-    right: 1rem;
-    pointer-events: none;
+	--size: 0.3rem;
+	position: absolute;
+	content: "";
+	right: 1rem;
+	pointer-events: none;
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown:before {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid black;
-    top: 50%;
+	border-left: var(--size) solid transparent;
+	border-right: var(--size) solid transparent;
+	border-top: var(--size) solid black;
+	top: 50%;
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown #invalid:focus {
-    outline: none;
-    border-color: var(--medium-red);
-    box-shadow: 0 0 3px var(--vivid-red);
+	outline: none;
+	border-color: var(--medium-red);
+	box-shadow: 0 0 3px var(--vivid-red);
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown #valid:focus {
-    outline: none;
-    border-color: var(--sky-blue);
-    box-shadow: 0 0 3px var(--electric-blue);
+	outline: none;
+	border-color: var(--sky-blue);
+	box-shadow: 0 0 3px var(--electric-blue);
 }

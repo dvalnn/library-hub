@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import {SelectButton } from "./buttons.jsx";
+import { SelectButton } from "./buttons.jsx";
 import AgentDetails from "./agentDetails.jsx";
 
 function Agent({ agent, selectionFuncs }) {

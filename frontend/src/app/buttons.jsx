@@ -48,7 +48,12 @@ function SelectButton({ isSelected, handleClick }) {
 
 function BinButton({ handleClick, binID }) {
 	return (
-		<button type="button" className="bin-button" id={binID} onClick={handleClick}>
+		<button
+			type="button"
+			className="bin-button"
+			id={binID}
+			onClick={handleClick}
+		>
 			<svg className="bin-top" viewBox="0 0 39 7" fill="none">
 				<title>apagar</title>
 				<line y1="5" x2="39" y2="5" stroke="white" strokeWidth="4" />

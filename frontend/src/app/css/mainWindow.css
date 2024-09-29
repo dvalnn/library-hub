@@ -158,13 +158,13 @@
 	width: 40%;
 }
 
-#rightWindow .agentBox .agentInfo .nameTime{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+#rightWindow .agentBox .agentInfo .nameTime {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 
-#rightWindow .resultsContainer .agentBox:has(#bin-up){
-    background-color: var(--dark-sand);
+#rightWindow .resultsContainer .agentBox:has(#bin-up) {
+	background-color: var(--dark-sand);
 }

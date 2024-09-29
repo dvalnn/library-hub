@@ -4,15 +4,14 @@ import noDoc from "../assets/images/noDoc.png";
 //TODO: Tratar do deleteHandler
 
 function RecordList({ records, deleteHandler, setShowDelete }) {
-
-	if(records.length === 0){
+	if (records.length === 0) {
 		setShowDelete(false);
-		return(
-		<ul className="noResults">
-			<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
-			<li>Sem registos recentes</li>
-		</ul>
-		)
+		return (
+			<ul className="noResults">
+				<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
+				<li>Sem registos recentes</li>
+			</ul>
+		);
 	}
 
 	setShowDelete(true);

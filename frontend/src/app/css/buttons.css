@@ -37,7 +37,8 @@
 	right: 0;
 	width: 0;
 	height: 0;
-	border-width: 0 var(--plus_topRightTriangleSideLength) var(--plus_topRightTriangleSideLength) 0;
+	border-width: 0 var(--plus_topRightTriangleSideLength)
+		var(--plus_topRightTriangleSideLength) 0;
 	border-style: solid;
 	border-color: transparent var(--white) transparent transparent;
 	transition-timing-function: ease-in-out;
@@ -88,7 +89,7 @@
 	background-color: var(--light-yellow);
 }
 
-#mainWindow .resultsContainer .registBtn>.selectIcon {
+#mainWindow .resultsContainer .registBtn > .selectIcon {
 	width: calc(var(--plus_sideLength) * 0.7);
 	height: calc(var(--plus_sideLength) * 0.7);
 	z-index: 1;
@@ -97,31 +98,31 @@
 	fill: var(--light-gray);
 }
 
-#mainWindow .resultsContainer .registBtn:hover>.selectIcon {
+#mainWindow .resultsContainer .registBtn:hover > .selectIcon {
 	transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer .registBtn:hover>#plus {
+#mainWindow .resultsContainer .registBtn:hover > #plus {
 	fill: var(--medium-green);
 }
 
-#mainWindow .resultsContainer .registBtn:hover>#minus {
+#mainWindow .resultsContainer .registBtn:hover > #minus {
 	fill: var(--medium-red);
 }
 
-#mainWindow .resultsContainer #selected:has(#valid) .registBtn:hover>#minus {
+#mainWindow .resultsContainer #selected:has(#valid) .registBtn:hover > #minus {
 	fill: var(--light-red);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible>.selectIcon {
+#mainWindow .resultsContainer .registBtn:focus-visible > .selectIcon {
 	transform: rotate(180deg);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible>#plus {
+#mainWindow .resultsContainer .registBtn:focus-visible > #plus {
 	fill: var(--medium-green);
 }
 
-#mainWindow .resultsContainer .registBtn:focus-visible>#minus {
+#mainWindow .resultsContainer .registBtn:focus-visible > #minus {
 	fill: var(--light-yellow);
 }
 
@@ -162,7 +163,7 @@
 	transform: rotate(30deg);
 }
 
-#mainWindow .resultsContainer #bin-up{
+#mainWindow .resultsContainer #bin-up {
 	background-color: var(--medium-red);
 	border: 3px solid var(--light-red);
 }
@@ -171,7 +172,7 @@
 	background-color: var(--vivid-red);
 }
 
-#mainWindow .resultsContainer #bin-up:hover{
+#mainWindow .resultsContainer #bin-up:hover {
 	background-color: var(--vivid-red);
 	border: 3px solid var(--light-red);
 }
