@@ -15,10 +15,7 @@ import useRecordsState from "./js/useRecordsState.js";
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
-//TODO: Meter o botão SubmitBtn id="DelBtn" a dar delete dos registos selecionados. Os registos selecionados são aqueles
-//? Se quiseres determinar quais é que estão selecionados para eliminar, podes ver se o <div className="agentBox"> contém
-//? um <button id="bin-up">, se quiseres tbm podes atribuir um id de tipo "Selected" ao div "agentBox", eu n usei nada no CSS com o ID
-//? de "record" que tinhas dado, por isso podes mexer ou eliminar esse id se n precisares dele
+//TODO: Implementar os Loads comentados dentro do agentList e recordList
 
 function MainWindow({ name, filter, windowReset }) {
 	const [showSubmit, setShowSubmit] = useState(false);

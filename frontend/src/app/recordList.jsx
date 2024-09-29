@@ -16,6 +16,7 @@ function RecordList({ records, recordHandlers, setShowDelete }) {
 	const sortedRecords = [...records].sort((a, b) => b.ID - a.ID);
 	return (
 		<ul className="resultsContainer">
+			{/* <div class="loader"></div> */}
 			{sortedRecords.map((record, index) => (
 				<Record
 					record={record}

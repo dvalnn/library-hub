@@ -37,6 +37,7 @@ function AgentList({ searchArgs, setShowSubmit, selectionFuncs }) {
 	setShowSubmit(true);
 	return (
 		<ul className="resultsContainer">
+			{/* <div class="loader"></div> */}
 			{elements.map((agent, index) => (
 				<Agent
 					agent={agent}
