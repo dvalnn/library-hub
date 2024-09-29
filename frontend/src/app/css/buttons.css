@@ -73,7 +73,7 @@
 }
 
 #mainWindow .resultsContainer #minusBtn:hover::before {
-	background-color: var(--yellow);
+	background-color: var(--light-yellow);
 }
 
 #mainWindow .resultsContainer .registBtn:focus-visible::before {
@@ -85,7 +85,7 @@
 }
 
 #mainWindow .resultsContainer #minusBtn:focus-visible::before {
-	background-color: var(--yellow);
+	background-color: var(--light-yellow);
 }
 
 #mainWindow .resultsContainer .registBtn>.selectIcon {
@@ -122,7 +122,7 @@
 }
 
 #mainWindow .resultsContainer .registBtn:focus-visible>#minus {
-	fill: var(--yellow);
+	fill: var(--light-yellow);
 }
 
 /*!BinButton */

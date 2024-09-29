@@ -8,7 +8,6 @@ import useSelectionState from "./js/useSelectionState.js";
 import useRecordsState from "./js/useRecordsState.js";
 
 //*MIGUEL:
-//TODO: Tratar de meter o dropdown a funcionar com bootstrap
 //TODO: Error and Success notifications
 //TODO: Fazer um calendário para selecionar os dias
 //TODO: Implementar TABs

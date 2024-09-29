@@ -48,18 +48,20 @@ function ActivitySelect({ agent, setActivity }) {
 	};
 
 	const options = getOptions();
-    const selectID = selection === "0" ? "invalid" : "valid";
+	const selectID = selection === "0" ? "invalid" : "valid";
 	return (
-		<select id={selectID} value={selection} onChange={handleChange}>
-			<option value="0" disabled>
-				Selecione atividade
-			</option>
-			{options.map((option) => (
-				<option key={option.value} value={option.value}>
-					{option.label}
+		<div className="dropDown">
+			<select id={selectID} value={selection} onChange={handleChange}>
+				<option value="0" disabled>
+					Selecione atividade
 				</option>
-			))}
-		</select>
+				{options.map((option) => (
+					<option key={option.value} value={option.value}>
+						{option.label}
+					</option>
+				))}
+			</select>
+		</div>
 	);
 }
 
