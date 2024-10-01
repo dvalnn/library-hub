@@ -34,7 +34,7 @@ function MainWindow({ name, filter, windowReset }) {
 		removeMark,
 		checkMark,
 		deleteMarked,
-	] = useRecordsState();
+	] = useRecordsState(eventSetters);
 
 	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
 		useSelectionState();

@@ -2,9 +2,11 @@ import { useState } from "react";
 
 import { CreateRecord, DeleteRecord } from "../../../wailsjs/go/app/App.js";
 
-function useRecordsState() {
+function useRecordsState(eventSetters) {
 	const [records, setRecords] = useState([]);
 	const [deleteIds, setDeleteIds] = useState([]);
+
+	const [success, warning, error] = eventSetters;
 
 	const createRecords = (selectionState) => {
 		// Map over selectionState to create promises for CreateRecord
@@ -17,11 +19,10 @@ function useRecordsState() {
 			// Return the promise from CreateRecord
 			return CreateRecord(record)
 				.then((created) => {
-					console.log(`Created record: ${JSON.stringify(created)}`);
 					return created;
 				})
 				.catch((err) => {
-					console.error(`Error creating record: ${err}`);
+					error("Selecione uma atividade!");
 					return null; // Allow Promise.all to continue even on failure
 				});
 		});
@@ -30,22 +31,27 @@ function useRecordsState() {
 		Promise.all(recordPromises)
 			.then((newRecords) => {
 				const validRecords = newRecords.filter((record) => record !== null);
-
+                if(!validRecords.length){
+                    warning("Nenhum registo criado.")
+                    return
+                }
 				// Update records state
 				setRecords((prevRecords) => [...prevRecords, ...validRecords]);
+				success(`${validRecords.length} registos criados com sucesso!`);
 			})
 			.catch((err) => {
-				console.error(`Error resolving promises: ${err}`);
+				console.error(`Error creating records: ${err}`);
+				error(`Erro ao criar registos: ${err}`);
 			});
 	};
 
 	const deleteRecord = (idToDelete) => {
 		const recordToDelete = records.find((record) => record.ID === idToDelete);
-
 		if (!recordToDelete) {
 			console.error(
 				`Delete record ${idToDelete}: not present in records state`,
 			);
+            error("Erro ao apagar registo");
 			return Promise.reject();
 		}
 
@@ -57,9 +63,11 @@ function useRecordsState() {
 					prevRecords.filter((record) => record.ID !== idToDelete),
 				);
 				console.log(`Deleted record ${recordToDelete.ID}`);
+				success("Registo apagado.");
 			})
 			.catch((err) => {
 				console.error(`Error deleting record: ${err}`);
+                error("Erro ao apagar registo.")
 				Promise.reject(err);
 			});
 	};
