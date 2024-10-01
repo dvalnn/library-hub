@@ -53,17 +53,17 @@ function AlertEvents({ eventText, eventSetters }) {
 		}
 	};
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
 	useEffect(
 		() => triggerAlert("success", eventText.success, setSuccess),
 		[eventText.success],
 	);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
 	useEffect(
 		() => triggerAlert("error", eventText.error, setError),
 		[eventText.error],
 	);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
 	useEffect(
 		() => triggerAlert("warning", eventText.warning, setWarning),
 		[eventText.warning],
