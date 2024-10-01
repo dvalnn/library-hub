@@ -19,7 +19,6 @@
 	margin: 5px 0;
 	display: flex;
 	align-items: center;
-	overflow: hidden; /* Ensure the overflow is hidden */
 }
 
 #leftWindow #alertBox .alert::after {
@@ -29,15 +28,19 @@
 	left: 0;
 	width: 100%;
 	height: 4px;
-	background-color: transparent; /* Set a default color */
+	/* animation: bar 5s linear forwards; */
+	/* O chatgipitty sugeriu assim */
+	animation: bar linear forwards;
 }
 
+/* Define the keyframes for the animation */
+/* isto também foi alterado pelo gippity */
 @keyframes bar {
 	from {
-		width: 100%; /* Start from full width */
+		width: 100%;
 	}
 	to {
-		width: 0; /* End at 0 width */
+		width: 0;
 	}
 }
 
@@ -54,7 +57,6 @@
 	margin-right: 3%;
 }
 
-/* Success Alert Styles */
 #leftWindow #alertBox #success {
 	background-color: var(--medium-green);
 	box-shadow: 0 0 12px var(--light-green);
@@ -62,10 +64,14 @@
 
 #leftWindow #alertBox #success::after {
 	background-color: var(--light-green);
-	animation: bar linear forwards; /* Make sure to set animation */
 }
 
-/* Error Alert Styles */
+#leftWindow #alertBox #success svg,
+#success h3 {
+	fill: var(--olive-green);
+	color: var(--olive-green);
+}
+
 #leftWindow #alertBox #error {
 	background-color: var(--medium-red);
 	box-shadow: 0 0 12px var(--light-red);
@@ -73,10 +79,14 @@
 
 #leftWindow #alertBox #error::after {
 	background-color: var(--light-red);
-	animation: bar linear forwards; /* Make sure to set animation */
 }
 
-/* Warning Alert Styles */
+#leftWindow #alertBox #error svg,
+#error h3 {
+	fill: var(--dark-red);
+	color: var(--dark-red);
+}
+
 #leftWindow #alertBox #warning {
 	background-color: var(--medium-blue);
 	box-shadow: 0 0 12px var(--light-blue);
@@ -84,24 +94,8 @@
 
 #leftWindow #alertBox #warning::after {
 	background-color: var(--light-blue);
-	animation: bar linear forwards; /* Make sure to set animation */
 }
 
-/* Set colors for the SVG and text in success alerts */
-#leftWindow #alertBox #success svg,
-#success h3 {
-	fill: var(--olive-green);
-	color: var(--olive-green);
-}
-
-/* Set colors for the SVG and text in error alerts */
-#leftWindow #alertBox #error svg,
-#error h3 {
-	fill: var(--dark-red);
-	color: var(--dark-red);
-}
-
-/* Set colors for the SVG and text in warning alerts */
 #leftWindow #alertBox #warning svg,
 #warning h3 {
 	fill: var(--dark-blue);

@@ -21,6 +21,8 @@ function AlertEvents({ eventText, eventSetters }) {
 		warning: 0,
 	});
 
+	const NOTIFICATION_TIME_MS = 5000; // 5 seconds
+
 	const triggerAlert = (type, text, setter) => {
 		if (text) {
 			// Show the alert
@@ -34,9 +36,6 @@ function AlertEvents({ eventText, eventSetters }) {
 				clearTimeout(timers[type].current);
 			}
 
-			// Reset remaining time
-			remainingTime.current[type] = 5000; // 5 seconds in milliseconds
-
 			// Start a new timer
 			timers[type].current = setTimeout(() => {
 				setVisibleAlerts((prev) => ({
@@ -44,11 +43,25 @@ function AlertEvents({ eventText, eventSetters }) {
 					[type]: false,
 				}));
 				setter(null); // Clear the event text to allow re-triggering
-			}, 5000); // 5 seconds
+			}, NOTIFICATION_TIME_MS);
+
+			// Reset remaining time
+			remainingTime.current[type] = NOTIFICATION_TIME_MS; // 5 seconds in milliseconds
+
+			// Timer interval to reduce remaining time
+			const interval = setInterval(() => {
+				remainingTime.current[type] -= 100; // Decrease by 100ms
+				//TODO: Isto funfa. tirar log
+				console.log(`remaining time: ${remainingTime.current[type]}`);
+				if (remainingTime.current[type] <= 0) {
+					clearInterval(interval);
+				}
+			}, 100); // Update every 100ms
 
 			// Clear the interval when the alert disappears
 			return () => {
 				clearTimeout(timers[type].current);
+				clearInterval(interval);
 			};
 		}
 	};
@@ -69,6 +82,9 @@ function AlertEvents({ eventText, eventSetters }) {
 		[eventText.warning],
 	);
 
+	// TODO: MIGUEL: usar os valores de remainingTime.success/.warning/.error
+	// para fazer a duração das animações. O modo atual foi o chatgpt que sugeriu
+	// mas o CSS não parece estar a curtir.
 	return (
 		<div id="alertBox">
 			{visibleAlerts.success && (
@@ -76,8 +92,10 @@ function AlertEvents({ eventText, eventSetters }) {
 					className="alert"
 					id="success"
 					style={{
-						animation: "bar linear forwards",
+						// Não sei se isto está correto. Não parece estar a funcionar
 						animationDuration: `${remainingTime.current.success}ms`,
+						// Pode ser possível que tenha de ser assim, but not sure.
+						// animationDuration: `${remainingTime.current[eventText.success]}ms`,
 					}}
 				>
 					<Event eventId="success" />
@@ -89,7 +107,7 @@ function AlertEvents({ eventText, eventSetters }) {
 					className="alert"
 					id="error"
 					style={{
-						animation: "bar linear forwards",
+						// Não sei se isto está correto. Não parece estar a funcionar
 						animationDuration: `${remainingTime.current.error}ms`,
 					}}
 				>
@@ -102,7 +120,7 @@ function AlertEvents({ eventText, eventSetters }) {
 					className="alert"
 					id="warning"
 					style={{
-						animation: "bar linear forwards",
+						// Não sei se isto está correto. Não parece estar a funcionar
 						animationDuration: `${remainingTime.current.warning}ms`,
 					}}
 				>
