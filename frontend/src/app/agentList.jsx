@@ -6,25 +6,34 @@ import performSearch from "./js/search.js";
 
 import Agent from "./agent.jsx";
 
-function AgentList({ searchArgs, setShowSubmit, selectionFuncs }) {
+function AgentList({
+	searchArgs,
+	setShowSubmit,
+	selectionFuncs,
+	eventSetters,
+}) {
 	const [elements, setElements] = useState([]);
-	const [error, setError] = useState(null); //TODO: make this work
-
 	useEffect(() => {
 		const { name, filter, search, setSearch } = searchArgs;
+		const [success, warning, error] = eventSetters;
 		if (!search) return;
 		setSearch(false);
 		performSearch(name, filter)
 			.then((res) => {
 				setElements(res);
+				if (!res.length) {
+					warning("Sem resultados");
+				} else {
+					success(`Encontrados ${res.length} resultados`);
+				}
 			})
 			.catch((err) => {
 				console.error(`error: ${err}`);
-				// TODO: display error
+				error(err);
 			});
-	}, [searchArgs]);
+	}, [searchArgs, eventSetters]);
 
-	if (elements.length === 0) {
+	if (!elements.length) {
 		setShowSubmit(false);
 		return (
 			<ul className="noResults">

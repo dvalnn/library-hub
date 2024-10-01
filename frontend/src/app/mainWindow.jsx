@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 
 import AgentList from "./agentList.jsx";
-import RecordList from "./recordList.jsx";
-import { SubmitBtn } from "./buttons.jsx";
 import AlertEvents from "./alert.jsx";
+import { SubmitBtn } from "./buttons.jsx";
+import RecordList from "./recordList.jsx";
 
-import useSelectionState from "./js/useSelectionState.js";
+import useEvents from "./js/useEvents.js";
 import useRecordsState from "./js/useRecordsState.js";
+import useSelectionState from "./js/useSelectionState.js";
 
 //*MIGUEL:
 //TODO: Error and Success notifications
@@ -18,11 +19,13 @@ import useRecordsState from "./js/useRecordsState.js";
 
 //*TIAGO:
 //TODO: Implementar os Loads comentados dentro do agentList e recordList
-
 function MainWindow({ name, filter, windowReset }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 	const [showDelete, setShowDelete] = useState(false);
 	const [search, setSearch] = useState(false);
+
+	const [eventText, setSuccess, setWarning, setError] = useEvents();
+	const eventSetters = [setSuccess, setWarning, setError];
 
 	const [
 		records,
@@ -41,14 +44,6 @@ function MainWindow({ name, filter, windowReset }) {
 		selectionReset();
 		windowReset();
 	};
-
-	// useEffect(() => {
-	// 	console.log(`selection: ${JSON.stringify(selection)}`);
-	// }, [selection]);
-
-	// useEffect(() => {
-	// 	console.log(`records: ${JSON.stringify(records)}`);
-	// }, [records]);
 
 	const [last, setLast] = useState({ name, filter });
 
@@ -69,6 +64,7 @@ function MainWindow({ name, filter, windowReset }) {
 					setShowSubmit={setShowSubmit}
 					selectionFuncs={[upsertFunc, removeFunc, checkFunc]}
 					searchArgs={{ name, filter, search, setSearch }}
+					eventSetters={eventSetters}
 				/>
 				{showSubmit !== false && (
 					<SubmitBtn
@@ -77,7 +73,8 @@ function MainWindow({ name, filter, windowReset }) {
 						handleClick={createRecordsWrapper}
 					/>
 				)}
-				<AlertEvents />
+
+				<AlertEvents eventText={eventText} eventSetters={eventSetters} />
 			</div>
 
 			<div id="rightWindow" className="resultWindow">

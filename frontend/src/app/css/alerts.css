@@ -1,98 +1,109 @@
 @import url(./fontsColor.css);
 
 #leftWindow #alertBox {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 10px;
-    z-index: 10;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-end;
+	flex-direction: column;
+	overflow: hidden;
+	padding: 10px;
+	z-index: 10;
 }
 
 #leftWindow #alertBox .alert {
-    position: relative;
-    width: 400px;
-    height: 60px;
-    margin: 5px 0;
-    display: flex;
-    align-items: center;
+	position: relative;
+	width: 400px;
+	height: 60px;
+	margin: 5px 0;
+	display: flex;
+	align-items: center;
+	overflow: hidden; /* Ensure the overflow is hidden */
 }
 
-
-#leftWindow #alertBox .alert::after{
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    animation: bar 5s linear forwards;
+#leftWindow #alertBox .alert::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: transparent; /* Set a default color */
 }
 
-@keyframes bar{
-    100%{
-       width: 0; 
-    }
+@keyframes bar {
+	from {
+		width: 100%; /* Start from full width */
+	}
+	to {
+		width: 0; /* End at 0 width */
+	}
 }
 
 #leftWindow #alertBox .alert h3 {
-    font-family: Poppins-Light;
-    font-size: 1.2em;
-    margin-right: 15%;
+	font-family: Poppins-Light;
+	font-size: 1.2em;
+	margin-right: 15%;
 }
 
 #leftWindow #alertBox .alert svg {
-    width: 35px;
-    height: 35px;
-    margin-left: 3%;
-    margin-right: 3%;
+	width: 35px;
+	height: 35px;
+	margin-left: 3%;
+	margin-right: 3%;
 }
 
+/* Success Alert Styles */
 #leftWindow #alertBox #success {
-    background-color: var(--medium-green);
-    box-shadow: 0 0 12px var(--light-green);
+	background-color: var(--medium-green);
+	box-shadow: 0 0 12px var(--light-green);
 }
 
-#leftWindow #alertBox #success::after{
-    background-color: var(--light-green);
+#leftWindow #alertBox #success::after {
+	background-color: var(--light-green);
+	animation: bar linear forwards; /* Make sure to set animation */
 }
 
+/* Error Alert Styles */
+#leftWindow #alertBox #error {
+	background-color: var(--medium-red);
+	box-shadow: 0 0 12px var(--light-red);
+}
+
+#leftWindow #alertBox #error::after {
+	background-color: var(--light-red);
+	animation: bar linear forwards; /* Make sure to set animation */
+}
+
+/* Warning Alert Styles */
+#leftWindow #alertBox #warning {
+	background-color: var(--medium-blue);
+	box-shadow: 0 0 12px var(--light-blue);
+}
+
+#leftWindow #alertBox #warning::after {
+	background-color: var(--light-blue);
+	animation: bar linear forwards; /* Make sure to set animation */
+}
+
+/* Set colors for the SVG and text in success alerts */
 #leftWindow #alertBox #success svg,
 #success h3 {
-    fill: var(--olive-green);
-    color: var(--olive-green);
+	fill: var(--olive-green);
+	color: var(--olive-green);
 }
 
-#leftWindow #alertBox #error {
-    background-color: var(--medium-red);
-    box-shadow: 0 0 12px var(--light-red);
-}
-
-#leftWindow #alertBox #error::after{
-    background-color: var(--light-red);
-}
-
+/* Set colors for the SVG and text in error alerts */
 #leftWindow #alertBox #error svg,
 #error h3 {
-    fill: var(--dark-red);
-    color: var(--dark-red);
+	fill: var(--dark-red);
+	color: var(--dark-red);
 }
 
-#leftWindow #alertBox #warning {
-    background-color: var(--medium-blue);
-    box-shadow: 0 0 12px var(--light-blue);
-}
-
-#leftWindow #alertBox #warning::after{
-    background-color: var(--light-blue);
-}
-
+/* Set colors for the SVG and text in warning alerts */
 #leftWindow #alertBox #warning svg,
 #warning h3 {
-    fill: var(--dark-blue);
-    color: var(--dark-blue);
+	fill: var(--dark-blue);
+	color: var(--dark-blue);
 }
-
