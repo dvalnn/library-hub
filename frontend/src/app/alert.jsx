@@ -1,138 +1,86 @@
 import { useEffect, useRef, useState } from "react";
 
 function AlertEvents({ eventText, eventSetters }) {
-	const [setSuccess, setWarning, setError] = eventSetters;
-	const [visibleAlerts, setVisibleAlerts] = useState({
-		success: false,
-		error: false,
-		warning: false,
-	});
+    const [setSuccess, setWarning, setError] = eventSetters;
+    const NOTIFICATION_TIME_MS = 5000; // 5 seconds
 
-	const timers = {
-		success: useRef(null),
-		error: useRef(null),
-		warning: useRef(null),
-	};
+    const alertTypes = {
+        success: { setter: setSuccess },
+        error: { setter: setError },
+        warning: { setter: setWarning },
+    };
 
-	// Store the remaining time for the animation
-	const remainingTime = useRef({
-		success: 0,
-		error: 0,
-		warning: 0,
-	});
+    // Custom hook to manage each alert type
+    const useAlert = (type) => {
+        const [visible, setVisible] = useState(false);
+        const timerRef = useRef(null);
+        const remainingTime = useRef(NOTIFICATION_TIME_MS);
 
-	const NOTIFICATION_TIME_MS = 5000; // 5 seconds
+        const triggerAlert = (text) => {
+            if (text) {
+                setVisible(true);
+                // Clear existing timer
+                if (timerRef.current) clearTimeout(timerRef.current);
 
-	const triggerAlert = (type, text, setter) => {
-		if (text) {
-			// Show the alert
-			setVisibleAlerts((prev) => ({
-				...prev,
-				[type]: true,
-			}));
+                // Set the timeout for hiding the alert
+                timerRef.current = setTimeout(() => {
+                    setVisible(false);
+                    alertTypes[type].setter(null); // Reset the event text
+                }, NOTIFICATION_TIME_MS);
 
-			// Clear any existing timer for the type
-			if (timers[type].current) {
-				clearTimeout(timers[type].current);
-			}
+                remainingTime.current = NOTIFICATION_TIME_MS;
 
-			// Start a new timer
-			timers[type].current = setTimeout(() => {
-				setVisibleAlerts((prev) => ({
-					...prev,
-					[type]: false,
-				}));
-				setter(null); // Clear the event text to allow re-triggering
-			}, NOTIFICATION_TIME_MS);
+                // Interval to update the remaining time
+                const interval = setInterval(() => {
+                    remainingTime.current -= 100;
+                    if (remainingTime.current <= 0) {
+                        clearInterval(interval);
+                    }
+                }, 100);
 
-			// Reset remaining time
-			remainingTime.current[type] = NOTIFICATION_TIME_MS; // 5 seconds in milliseconds
+                // Cleanup the interval on alert disappearance
+                return () => {
+                    clearTimeout(timerRef.current);
+                    clearInterval(interval);
+                };
+            }
+        };
 
-			// Timer interval to reduce remaining time
-			const interval = setInterval(() => {
-				remainingTime.current[type] -= 100; // Decrease by 100ms
-				//TODO: Isto funfa. tirar log
-				// console.log(`remaining time: ${remainingTime.current[type]}`);
-				if (remainingTime.current[type] <= 0) {
-					clearInterval(interval);
-				}
-			}, 100); // Update every 100ms
+        return { visible, triggerAlert, remainingTime: remainingTime.current };
+    };
 
-			// Clear the interval when the alert disappears
-			return () => {
-				clearTimeout(timers[type].current);
-				clearInterval(interval);
-			};
-		}
-	};
+    // Create alert state and handlers for each type
+    const alerts = {
+        success: useAlert('success'),
+        error: useAlert('error'),
+        warning: useAlert('warning'),
+    };
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
-	useEffect(
-		() => triggerAlert("success", eventText.success, setSuccess),
-		[eventText.success],
-	);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
-	useEffect(
-		() => triggerAlert("error", eventText.error, setError),
-		[eventText.error],
-	);
-	// biome-ignore lint/correctness/useExhaustiveDependencies: not necessary
-	useEffect(
-		() => triggerAlert("warning", eventText.warning, setWarning),
-		[eventText.warning],
-	);
+    // Generalized useEffect for all alert types
+    useEffect(() => {
+        Object.keys(alertTypes).forEach((type) => {
+            alerts[type].triggerAlert(eventText[type]);
+        });
+    }, [eventText, alerts]);
 
-	// TODO: MIGUEL: usar os valores de remainingTime.success/.warning/.error
-	// para fazer a duração das animações. O modo atual foi o chatgpt que sugeriu
-	// mas o CSS não parece estar a curtir.
-	return (
-		<div id="alertBox">
-			{visibleAlerts.success && (
-				<div
-					className="alert"
-					id="success"
-					style={{
-						// Não sei se isto está correto. Não parece estar a funcionar
-						// animation: "bar linear forwards" // descomenta esta linha e vê o que acontece
-						// animationDuration: `${remainingTime.current.success}ms`,
-						// Pode ser possível que tenha de ser assim, but not sure.
-						animationDuration: `${remainingTime.current[eventText.success]}ms`,
-						// Aparentement é possível que tenha de ser feito de maneira diferente.
-						// Em vez de usar o ::after no css deve ser necessário fazer as coisas logo pelo react
-					}}
-				>
-					<Event eventId="success" />
-					<h3>{eventText.success}</h3>
-				</div>
-			)}
-			{visibleAlerts.error && (
-				<div
-					className="alert"
-					id="error"
-					style={{
-						// Não sei se isto está correto. Não parece estar a funcionar
-						animationDuration: `${remainingTime.current.error}ms`,
-					}}
-				>
-					<Event eventId="error" />
-					<h3>{eventText.error}</h3>
-				</div>
-			)}
-			{visibleAlerts.warning && (
-				<div
-					className="alert"
-					id="warning"
-					style={{
-						// Não sei se isto está correto. Não parece estar a funcionar
-						animationDuration: `${remainingTime.current.warning}ms`,
-					}}
-				>
-					<Event eventId="warning" />
-					<h3>{eventText.warning}</h3>
-				</div>
-			)}
-		</div>
-	);
+    return (
+        <div id="alertBox">
+            {Object.keys(alerts).map((type) => {
+                const { visible, remainingTime } = alerts[type];
+                return visible && (
+                    <div
+                        className="alert"
+                        id={type}
+                        key={`${eventText[type]}-${Date.now()}`}
+                        style={{ "--timer": `${remainingTime}ms` }}
+                    >
+                        <Event eventId={type} />
+                        <h3>{eventText[type]}</h3>
+                    </div>
+                );
+            })}
+        </div>
+    );
 }
 
 function Event({ eventId }) {
