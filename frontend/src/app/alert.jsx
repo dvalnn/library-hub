@@ -52,7 +52,7 @@ function AlertEvents({ eventText, eventSetters }) {
 			const interval = setInterval(() => {
 				remainingTime.current[type] -= 100; // Decrease by 100ms
 				//TODO: Isto funfa. tirar log
-				console.log(`remaining time: ${remainingTime.current[type]}`);
+				// console.log(`remaining time: ${remainingTime.current[type]}`);
 				if (remainingTime.current[type] <= 0) {
 					clearInterval(interval);
 				}
@@ -93,9 +93,12 @@ function AlertEvents({ eventText, eventSetters }) {
 					id="success"
 					style={{
 						// Não sei se isto está correto. Não parece estar a funcionar
-						animationDuration: `${remainingTime.current.success}ms`,
+						// animation: "bar linear forwards" // descomenta esta linha e vê o que acontece
+						// animationDuration: `${remainingTime.current.success}ms`,
 						// Pode ser possível que tenha de ser assim, but not sure.
-						// animationDuration: `${remainingTime.current[eventText.success]}ms`,
+						animationDuration: `${remainingTime.current[eventText.success]}ms`,
+						// Aparentement é possível que tenha de ser feito de maneira diferente.
+						// Em vez de usar o ::after no css deve ser necessário fazer as coisas logo pelo react
 					}}
 				>
 					<Event eventId="success" />
