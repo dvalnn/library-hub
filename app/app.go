@@ -107,8 +107,9 @@ var debugAgents = []Agent{
 	},
 }
 
-// const _DATABASE_NAME string = "libraryHub-24-25"
-const _DATABASE_NAME string = "debug"
+const _DATABASE_NAME string = "libraryHub-24-25"
+
+// const _DATABASE_NAME string = "debug"
 
 // startup is called when the app starts. The context is saved
 // so we can call the runtime methods
@@ -123,14 +124,14 @@ func (a *App) Startup(ctx context.Context) {
 		log.Fatalf("could not migrate database: %v", err)
 	}
 
-	for _, agent := range debugAgents {
-		err = db.Where(
-			&Agent{Name: agent.Name},
-		).Attrs(&agent).FirstOrCreate(&agent).Error
-		if err != nil {
-			log.Fatalf("failed to insert test data: %v", err)
-		}
-	}
+	// for _, agent := range debugAgents {
+	// 	err = db.Where(
+	// 		&Agent{Name: agent.Name},
+	// 	).Attrs(&agent).FirstOrCreate(&agent).Error
+	// 	if err != nil {
+	// 		log.Fatalf("failed to insert test data: %v", err)
+	// 	}
+	// }
 
 	a.ctx = ctx
 	a.db = db
