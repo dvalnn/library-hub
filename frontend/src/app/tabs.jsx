@@ -5,27 +5,33 @@ export default function Tabs({ activeTab, setActiveTab }) {
     };
 
     return (
-        <div className="tabs-navigation" >
-            <button
-                className={`tabBtn ${activeTab === "regists" ? "active" : ""}`}
+        <div className="tab-container" >
+            <input
+                type="radio"
+                id="regists"
+                className="tabRadio"
                 onClick={() => handleTabClick("regists")}
-            >
-                <span>Registos</span>
-            </button>
+                checked = {activeTab==="regists"}
+            />
+            <label className="tabLabel" for="regists">Registos</label>
 
-            <button
-                className={`tabBtn ${activeTab === "requests" ? "active" : ""}`}
+            <input
+                type="radio"
+                id="requests"
+                className="tabRadio"
                 onClick={() => handleTabClick("requests")}
-            >
-                <span>Requisições</span>
-            </button>
+                checked = {activeTab==="requests"}
+            />
+            <label className="tabLabel" for="requests">Requisições</label>
 
-            <button
-                className={`tabBtn ${activeTab === "stats" ? "active" : ""}`}
+            <input
+                type="radio"
+                id="stats"
+                className="tabRadio"
                 onClick={() => handleTabClick("stats")}
-            >
-                <span>Estatística</span>
-            </button>
+                checked = {activeTab==="stats"}
+            />
+            <label className="tabLabel" for="stats">Estatística</label>
         </div>
     );
 }

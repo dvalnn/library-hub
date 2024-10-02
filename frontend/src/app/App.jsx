@@ -4,8 +4,9 @@ import "./css/buttons.css";
 import "./css/dropdown.css";
 import "./css/alerts.css";
 import "./css/loader.css";
+import "./css/tabs.css";
 
-import { act, useState } from "react";
+import { useState } from "react";
 
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
@@ -14,6 +15,7 @@ import Tabs from "./tabs.jsx";
 
 //*MIGUEL:
 //TODO: Implementar TABs
+	//! fazer um css de jeito para as TABs. Arranjar a altura da mainWindow
 //TODO: Fazer um calendário para selecionar os dias
 //TODO: Loader
 //TODO: Fades de Scroll

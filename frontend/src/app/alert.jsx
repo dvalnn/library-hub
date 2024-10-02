@@ -2,8 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 function AlertEvents({ eventText, eventSetters }) {
 	const [setSuccess, setWarning, setError] = eventSetters;
-	const NOTIFICATION_TIME_MS = 5000; // 5 seconds
-
+	const NOTIFICATION_TIME_MS = 2250;
 	const alertTypes = {
 		success: { setter: setSuccess },
 		error: { setter: setError },

@@ -84,10 +84,6 @@
 	height: 3em;
 }
 
-#searchBar .sBarBtn:active {
-	transform: scale(1);
-}
-
 #searchBar .sBarBtn svg {
 	width: 1.5em;
 	height: 1.5em;
@@ -102,6 +98,10 @@
 			var(--medium-blue) 100%);
 	transition: all 0.2s ease;
 	transform: scale(1.1);
+}
+
+#searchBar .sBarBtn:active {
+	transform: scale(1);
 }
 
 #searchBar .sBarBtn:hover>svg path {

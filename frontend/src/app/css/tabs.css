@@ -1,0 +1,41 @@
+@import url(./fontsColor.css);
+
+/* General Container Styling */
+.tab-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+}
+
+/* Hide Radio Inputs */
+.tabRadio {
+    display: none;
+}
+
+/* Tab Label Styling */
+.tabLabel {
+    padding: 10px 20px;
+    background-color: #d0d0d0;
+    color: #666;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active Tab Styling */
+.tabRadio:checked + .tabLabel {
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect */
+.tabLabel:hover {
+    background-color: #c0c0c0;
+}
