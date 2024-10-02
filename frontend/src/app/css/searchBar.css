@@ -34,12 +34,9 @@
 #searchBar input[type="text"].input:focus {
 	font-family: "Poppins-Regular";
 	border-bottom: 2px solid var(--light-blue);
-	border-image: radial-gradient(
-			circle at center,
+	border-image: radial-gradient(circle at center,
 			var(--light-blue),
-			transparent 80%
-		)
-		0 0 100% 0;
+			transparent 80%) 0 0 100% 0;
 }
 
 #searchBar #user-selector {
@@ -67,7 +64,7 @@
 	transition: all 0.2s ease-in-out;
 }
 
-#searchBar #user-selector .radio input:checked + .name {
+#searchBar #user-selector .radio input:checked+.name {
 	font-family: "Poppins-Medium";
 	font-size: larger;
 	font-weight: 600;
@@ -75,7 +72,7 @@
 	box-shadow: 0 0 0 2px var(--medium-blue);
 }
 
-#searchBar .LupaBtn {
+#searchBar .sBarBtn {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -87,32 +84,27 @@
 	height: 3em;
 }
 
-#searchBar .LupaBtn:hover {
-	border: transparent;
-	background-image: radial-gradient(
-		circle,
-		var(--medium-blue) 0%,
-		var(--medium-blue) 100%
-	);
-	transition: all 0.2s ease;
-	transform: scale(1.1);
-}
-
-#searchBar .LupaBtn:active{
+#searchBar .sBarBtn:active {
 	transform: scale(1);
 }
 
-#searchBar .LupaBtn svg {
+#searchBar .sBarBtn svg {
 	width: 1.5em;
 	height: 1.5em;
-}
-
-#searchBar .LupaBtn .lupa {
 	fill: var(--medium-blue);
 	stroke: var(--medium-blue);
 }
 
-#searchBar .LupaBtn:hover > svg .lupa {
+#searchBar .sBarBtn:hover {
+	border: transparent;
+	background-image: radial-gradient(circle,
+			var(--medium-blue) 0%,
+			var(--medium-blue) 100%);
+	transition: all 0.2s ease;
+	transform: scale(1.1);
+}
+
+#searchBar .sBarBtn:hover>svg path {
 	fill: white;
 	stroke: white;
 }
