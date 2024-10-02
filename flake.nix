@@ -26,6 +26,14 @@
 
           # js lsp/lint
           biome
+
+          ### Python stuff
+          python312
+          python312Packages.polars
+
+          python312Packages.python-lsp-ruff
+          python312Packages.python-lsp-black
+          python312Packages.python-lsp-server
         ];
         buildInputs = with pkgs; [
           # Desktop App builder
