@@ -1,13 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 
-//TODO: Debug esta função. Ao clicar no botão de adicionar reinicia o temporizador
-//TODO: Quando é clicado registar e ninguém está selecionado e ocorre o alert "warning" os resultados de pesquisa NÃO desaparecem
-//TODO: Meter o alert de eliminação de registos tbm a dizer quantos registos foram eliminados com sucesso
-//TODO: Quando clicar no botão de eliminar registos, mas nenhum está selecionado dá trigger a um "warning" a dizer "nenhum registo selecionado"
-
-//! Tiago meti o chatGPT a adicionar umas linhas de debug. Pelo que vi na consola, sempre que clicamos em qualquer botão
-//! esta função está a ser chamada e ele dá reset aos alerts gerados e reinicia o timer. Boa sorte ahahah
-
 function AlertEvents({ eventText, eventSetters }) {
 	const [setSuccess, setWarning, setError] = eventSetters;
 	const NOTIFICATION_TIME_MS = 5000; // 5 seconds
@@ -18,95 +10,68 @@ function AlertEvents({ eventText, eventSetters }) {
 		warning: { setter: setWarning },
 	};
 
-	// Custom hook to manage each alert type
-	const useAlert = (type) => {
-		const [visible, setVisible] = useState(false);
-		const timerRef = useRef(null);
-		const remainingTime = useRef(NOTIFICATION_TIME_MS);
+	// Custom hook to manage alert stack for each alert type
+	const useAlertStack = (type) => {
+		const [alerts, setAlerts] = useState([]);
 
-		const triggerAlert = (text) => {
+		const addAlert = (text) => {
 			if (!text) return;
 
-			console.log(`[DEBUG] Triggering alert for ${type}: ${text}`);
-			setVisible(true);
+			// Add a new alert to the stack
+			const newAlert = { id: Date.now(), text, remainingTime: NOTIFICATION_TIME_MS };
+			setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
 
-			// Clear existing timer
-			if (timerRef.current) {
-				console.log(`[DEBUG] Clearing previous timer for ${type}`);
-				clearTimeout(timerRef.current);
-			}
-
-			// Set the timeout for hiding the alert
-			timerRef.current = setTimeout(() => {
-				setVisible(false);
-				alertTypes[type].setter(null); // Reset the event text
-
-				console.log(
-					`[DEBUG] Alert for ${type} hidden after ${NOTIFICATION_TIME_MS}ms`,
+			// Set a timeout to remove the alert after the specified time
+			setTimeout(() => {
+				setAlerts((prevAlerts) =>
+					prevAlerts.filter((alert) => alert.id !== newAlert.id)
 				);
+				alertTypes[type].setter(null); // Reset the event text after it's removed
 			}, NOTIFICATION_TIME_MS);
-
-			remainingTime.current = NOTIFICATION_TIME_MS;
-
-			// Interval to update the remaining time
-			const interval = setInterval(() => {
-				remainingTime.current -= 100;
-				if (remainingTime.current <= 0) {
-					clearInterval(interval);
-				}
-			}, 100);
-
-			// Cleanup the interval on alert disappearance
-			return () => {
-				clearTimeout(timerRef.current);
-				clearInterval(interval);
-			};
 		};
 
-		return { visible, triggerAlert, remainingTime: remainingTime.current };
+		return { alerts, addAlert };
 	};
 
 	// Create alert state and handlers for each type
-	const alerts = {
-		success: useAlert("success"),
-		error: useAlert("error"),
-		warning: useAlert("warning"),
+	const alertStacks = {
+		success: useAlertStack("success"),
+		error: useAlertStack("error"),
+		warning: useAlertStack("warning"),
 	};
 
-	// Generalized useEffect for all alert types
-	// biome-ignore lint/correctness/useExhaustiveDependencies: not needed
+	// Generalized useEffect for all alert types to trigger the alert
 	useEffect(() => {
-		console.log("[DEBUG] AlertEvents useEffect triggered");
 		for (const type of Object.keys(alertTypes)) {
-			alerts[type].triggerAlert(eventText[type]);
+			if (eventText[type]) {
+				alertStacks[type].addAlert(eventText[type]);
+			}
 		}
-	}, [eventText]);
-
-	// Debugging: Log when the component renders
-	console.log("[DEBUG] Rendering AlertEvents component");
+	}, [eventText]); // Re-run when eventText changes
 
 	return (
 		<div id="alertBox">
-			{Object.keys(alerts).map((type) => {
-				const { visible, remainingTime } = alerts[type];
-
+			{Object.keys(alertStacks).map((type) => {
 				return (
-					visible && (
-						<div
-							className="alert"
-							id={type}
-							key={`${eventText[type]}-${Date.now()}`}
-							style={{ "--timer": `${remainingTime}ms` }}
-						>
-							<Event eventId={type} />
-							<h3>{eventText[type]}</h3>
-						</div>
-					)
+					<div key={type} className={`${type}-alerts`}>
+						{alertStacks[type].alerts.map((alert) => (
+							<div
+								className="alert"
+								id={type}
+								key={alert.id}
+								style={{ "--timer": `${alert.remainingTime}ms` }}
+							>
+								<Event eventId={type} />
+								<h3>{alert.text}</h3>
+							</div>
+						))}
+					</div>
 				);
 			})}
 		</div>
 	);
 }
+
 
 function Event({ eventId }) {
 	switch (eventId) {
