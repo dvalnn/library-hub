@@ -50,7 +50,8 @@ function MainWindow({ name, filter, windowReset }) {
 	useEffect(() => {
 		if (name !== last.name || filter !== last.filter) {
 			setLast({ name, filter });
-			setSearch(true);
+			if (name)
+				setSearch(true);
 			selectionReset();
 			console.log("Reset!");
 		}
