@@ -21,7 +21,6 @@ function AgentList({
 		performSearch(name, filter)
 			.then((res) => {
 				setElements(res);
-                //TODO: remove this from final ver
 				if (res.length) {
 					success(`Encontrados ${res.length} resultados`);
 				}

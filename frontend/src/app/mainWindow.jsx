@@ -9,16 +9,6 @@ import useEvents from "./js/useEvents.js";
 import useRecordsState from "./js/useRecordsState.js";
 import useSelectionState from "./js/useSelectionState.js";
 
-//*MIGUEL:
-//TODO: Error and Success notifications
-//TODO: Implementar TABs
-//TODO: Fades de Scroll
-
-//TODO: Fazer um calendário para selecionar os dias
-//TODO: Verificar cores usadas e remover cores n utilizadas
-
-//*TIAGO:
-//TODO: Implementar os Loads comentados dentro do agentList e recordList
 function MainWindow({ name, filter}) {
 	const [showSubmit, setShowSubmit] = useState(false);
 	const [showDelete, setShowDelete] = useState(false);
