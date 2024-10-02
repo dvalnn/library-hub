@@ -11,6 +11,20 @@ import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
 import Tabs from "./tabs.jsx";
 
+
+//*MIGUEL:
+//TODO: Implementar TABs
+//TODO: Fazer um calendário para selecionar os dias
+//TODO: Loader
+//TODO: Fades de Scroll
+//TODO: Verificar cores usadas e remover cores n utilizadas
+
+//*TIAGO:
+//TODO: Implementar pesquisa por turmas
+//TODO: Loader
+//TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
+//TODO: Identificar qual o dia da semana dependendo da data
+
 //* Main HTML Body
 function App() {
 	const [name, setName] = useState("");
