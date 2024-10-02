@@ -9,3 +9,5 @@ result.*
 
 # project specific
 Sqlite/
+*.db
+pyimporter/data

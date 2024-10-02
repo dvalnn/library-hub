@@ -5,7 +5,7 @@ import (
 	"gorm.io/gorm"
 )
 
-const SQLITE_DB_DIR = "./Sqlite/"
+const SQLITE_DB_DIR = "./"
 const SQLITE_DB_FILE_EXT = ".db"
 
 func openSqliteDB(name string) (*gorm.DB, error) {
