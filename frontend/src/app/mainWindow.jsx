@@ -42,7 +42,6 @@ function MainWindow({ name, filter, windowReset }) {
 	const createRecordsWrapper = () => {
 		createRecords(selection);
 		selectionReset();
-		windowReset();
 	};
 
 	const [last, setLast] = useState({ name, filter });
@@ -50,8 +49,7 @@ function MainWindow({ name, filter, windowReset }) {
 	useEffect(() => {
 		if (name !== last.name || filter !== last.filter) {
 			setLast({ name, filter });
-			if (name)
-				setSearch(true);
+			setSearch(true);
 			selectionReset();
 			console.log("Reset!");
 		}
