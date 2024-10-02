@@ -5,10 +5,11 @@ import "./css/dropdown.css";
 import "./css/alerts.css";
 import "./css/loader.css";
 
-import { useState } from "react";
+import { act, useState } from "react";
 
 import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
+import Tabs from "./tabs.jsx";
 
 //* Main HTML Body
 function App() {
@@ -20,14 +21,36 @@ function App() {
 		setFilter("everyone");
 	};
 
+	const [activeTab, setActiveTab] = useState("regists");
+
+
 	return (
 		<div id="App">
-			<SearchBar
-				inputCallback={setName}
-				radioSelection={filter}
-				setRadioSelection={setFilter}
-			/>
-			<MainWindow name={name} filter={filter} windowReset={searchReset} />
+			<Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+
+
+			{activeTab === "regists" && (
+				<div className="tab" id="registTab">
+					<SearchBar
+						inputCallback={setName}
+						radioSelection={filter}
+						setRadioSelection={setFilter}
+					/>
+					<MainWindow name={name} filter={filter} windowReset={searchReset} />
+				</div>
+			)}
+
+			{activeTab === "requests" && (
+				<div className="tab" id="requestTab">
+					<h1>Isto é a página das Requisições</h1>
+				</div>
+			)}
+
+			{activeTab === "stats" && (
+				<div className="tab" id="statsTab">
+					<h1>Isto é a página da Estatística</h1>
+				</div>
+			)}
 		</div>
 	);
 }
