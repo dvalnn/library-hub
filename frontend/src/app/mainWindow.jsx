@@ -19,7 +19,7 @@ import useSelectionState from "./js/useSelectionState.js";
 
 //*TIAGO:
 //TODO: Implementar os Loads comentados dentro do agentList e recordList
-function MainWindow({ name, filter, windowReset }) {
+function MainWindow({ name, filter}) {
 	const [showSubmit, setShowSubmit] = useState(false);
 	const [showDelete, setShowDelete] = useState(false);
 	const [search, setSearch] = useState(false);
@@ -42,7 +42,6 @@ function MainWindow({ name, filter, windowReset }) {
 	const createRecordsWrapper = () => {
 		createRecords(selection);
 		selectionReset();
-		windowReset();
 	};
 
 	const [last, setLast] = useState({ name, filter });

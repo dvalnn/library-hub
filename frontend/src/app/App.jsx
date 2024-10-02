@@ -15,14 +15,7 @@ import Tabs from "./tabs.jsx";
 function App() {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
-
-	const searchReset = () => {
-		setName("");
-		setFilter("everyone");
-	};
-
 	const [activeTab, setActiveTab] = useState("regists");
-
 
 	return (
 		<div id="App">
@@ -36,7 +29,7 @@ function App() {
 						radioSelection={filter}
 						setRadioSelection={setFilter}
 					/>
-					<MainWindow name={name} filter={filter} windowReset={searchReset} />
+					<MainWindow name={name} filter={filter}/>
 				</div>
 			)}
 

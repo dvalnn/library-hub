@@ -26,51 +26,81 @@ function AlertEvents({ eventText, eventSetters }) {
 				setAlerts((prevAlerts) =>
 					prevAlerts.filter((alert) => alert.id !== newAlert.id)
 				);
-				alertTypes[type].setter(null); // Reset the event text after it's removed
+			alertTypes[type].setter(null);
 			}, NOTIFICATION_TIME_MS);
 		};
 
 		return { alerts, addAlert };
 	};
 
-	// Create alert state and handlers for each type
-	const alertStacks = {
-		success: useAlertStack("success"),
-		error: useAlertStack("error"),
-		warning: useAlertStack("warning"),
-	};
+	// Create independent alert state and handlers for each type
+	const successAlerts = useAlertStack("success");
+	const errorAlerts = useAlertStack("error");
+	const warningAlerts = useAlertStack("warning");
 
-	// Generalized useEffect for all alert types to trigger the alert
+	// Effect to trigger alerts for each type independently
 	useEffect(() => {
-		for (const type of Object.keys(alertTypes)) {
-			if (eventText[type]) {
-				alertStacks[type].addAlert(eventText[type]);
-			}
+		if (eventText.success) {
+			successAlerts.addAlert(eventText.success);
 		}
-	}, [eventText]); // Re-run when eventText changes
+	}, [eventText.success]); // Re-run when eventText changes
+
+	useEffect(() => {
+		if (eventText.error) {
+			errorAlerts.addAlert(eventText.error);
+		}
+	}, [eventText.error]); // Re-run when eventText changes
+
+	useEffect(() => {
+		if (eventText.warning) {
+			warningAlerts.addAlert(eventText.warning);
+		}
+	}, [eventText.warning]); // Re-run when eventText changes
 
 	return (
 		<div id="alertBox">
-			{Object.keys(alertStacks).map((type) => {
-				return (
-					<div key={type} className={`${type}-alerts`}>
-						{alertStacks[type].alerts.map((alert) => (
-							<div
-								className="alert"
-								id={type}
-								key={alert.id}
-								style={{ "--timer": `${alert.remainingTime}ms` }}
-							>
-								<Event eventId={type} />
-								<h3>{alert.text}</h3>
-							</div>
-						))}
-					</div>
-				);
-			})}
+			{/* Success Alerts */}
+			{successAlerts.alerts.map((alert) => (
+				<div
+					className="alert"
+					id="success"
+					key={alert.id}
+					style={{ "--timer": `${alert.remainingTime}ms` }}
+				>
+					<Event eventId="success" />
+					<h3>{alert.text}</h3>
+				</div>
+			))}
+
+			{/* Error Alerts */}
+			{errorAlerts.alerts.map((alert) => (
+				<div
+					className="alert"
+					id="error"
+					key={alert.id}
+					style={{ "--timer": `${alert.remainingTime}ms` }}
+				>
+					<Event eventId="error" />
+					<h3>{alert.text}</h3>
+				</div>
+			))}
+
+			{/* Warning Alerts */}
+			{warningAlerts.alerts.map((alert) => (
+				<div
+					className="alert"
+					id="warning"
+					key={alert.id}
+					style={{ "--timer": `${alert.remainingTime}ms` }}
+				>
+					<Event eventId="warning" />
+					<h3>{alert.text}</h3>
+				</div>
+			))}
 		</div>
 	);
 }
+
 
 
 function Event({ eventId }) {
