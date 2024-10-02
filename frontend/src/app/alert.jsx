@@ -25,43 +25,42 @@ function AlertEvents({ eventText, eventSetters }) {
 		const remainingTime = useRef(NOTIFICATION_TIME_MS);
 
 		const triggerAlert = (text) => {
-			// Debugging: Log when an alert is triggered
+			if (!text) return;
+
 			console.log(`[DEBUG] Triggering alert for ${type}: ${text}`);
+			setVisible(true);
 
-			if (text) {
-				setVisible(true);
-
-				// Clear existing timer
-				if (timerRef.current) {
-					console.log(`[DEBUG] Clearing previous timer for ${type}`);
-					clearTimeout(timerRef.current);
-				}
-
-				// Set the timeout for hiding the alert
-				timerRef.current = setTimeout(() => {
-					setVisible(false);
-					alertTypes[type].setter(null); // Reset the event text
-
-					// Debugging: Log when the alert is hidden
-					console.log(`[DEBUG] Alert for ${type} hidden after ${NOTIFICATION_TIME_MS}ms`);
-				}, NOTIFICATION_TIME_MS);
-
-				remainingTime.current = NOTIFICATION_TIME_MS;
-
-				// Interval to update the remaining time
-				const interval = setInterval(() => {
-					remainingTime.current -= 100;
-					if (remainingTime.current <= 0) {
-						clearInterval(interval);
-					}
-				}, 100);
-
-				// Cleanup the interval on alert disappearance
-				return () => {
-					clearTimeout(timerRef.current);
-					clearInterval(interval);
-				};
+			// Clear existing timer
+			if (timerRef.current) {
+				console.log(`[DEBUG] Clearing previous timer for ${type}`);
+				clearTimeout(timerRef.current);
 			}
+
+			// Set the timeout for hiding the alert
+			timerRef.current = setTimeout(() => {
+				setVisible(false);
+				alertTypes[type].setter(null); // Reset the event text
+
+				console.log(
+					`[DEBUG] Alert for ${type} hidden after ${NOTIFICATION_TIME_MS}ms`,
+				);
+			}, NOTIFICATION_TIME_MS);
+
+			remainingTime.current = NOTIFICATION_TIME_MS;
+
+			// Interval to update the remaining time
+			const interval = setInterval(() => {
+				remainingTime.current -= 100;
+				if (remainingTime.current <= 0) {
+					clearInterval(interval);
+				}
+			}, 100);
+
+			// Cleanup the interval on alert disappearance
+			return () => {
+				clearTimeout(timerRef.current);
+				clearInterval(interval);
+			};
 		};
 
 		return { visible, triggerAlert, remainingTime: remainingTime.current };
@@ -69,18 +68,19 @@ function AlertEvents({ eventText, eventSetters }) {
 
 	// Create alert state and handlers for each type
 	const alerts = {
-		success: useAlert('success'),
-		error: useAlert('error'),
-		warning: useAlert('warning'),
+		success: useAlert("success"),
+		error: useAlert("error"),
+		warning: useAlert("warning"),
 	};
 
 	// Generalized useEffect for all alert types
+	// biome-ignore lint/correctness/useExhaustiveDependencies: not needed
 	useEffect(() => {
 		console.log("[DEBUG] AlertEvents useEffect triggered");
-		Object.keys(alertTypes).forEach((type) => {
+		for (const type of Object.keys(alertTypes)) {
 			alerts[type].triggerAlert(eventText[type]);
-		});
-	}, [eventText, alerts]);
+		}
+	}, [eventText]);
 
 	// Debugging: Log when the component renders
 	console.log("[DEBUG] Rendering AlertEvents component");
@@ -90,25 +90,23 @@ function AlertEvents({ eventText, eventSetters }) {
 			{Object.keys(alerts).map((type) => {
 				const { visible, remainingTime } = alerts[type];
 
-				// Debugging: Log alert visibility
-				console.log(`[DEBUG] Alert for ${type} is ${visible ? "visible" : "hidden"}`);
-
-				return visible && (
-					<div
-						className="alert"
-						id={type}
-						key={`${eventText[type]}-${Date.now()}`}
-						style={{ "--timer": `${remainingTime}ms` }}
-					>
-						<Event eventId={type} />
-						<h3>{eventText[type]}</h3>
-					</div>
+				return (
+					visible && (
+						<div
+							className="alert"
+							id={type}
+							key={`${eventText[type]}-${Date.now()}`}
+							style={{ "--timer": `${remainingTime}ms` }}
+						>
+							<Event eventId={type} />
+							<h3>{eventText[type]}</h3>
+						</div>
+					)
 				);
 			})}
 		</div>
 	);
 }
-
 
 function Event({ eventId }) {
 	switch (eventId) {
