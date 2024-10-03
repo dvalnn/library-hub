@@ -1,4 +1,4 @@
-import { SearchAgent } from "./../../../wailsjs/go/app/App.js";
+import { SearchAgent, SearchByClass } from "./../../../wailsjs/go/app/App.js";
 
 function filterFromString(filter) {
 	switch (filter) {
@@ -18,6 +18,21 @@ async function performSearch(query, filterStr) {
 	if (!query) {
 		console.log("empty search - skipping");
 		return [];
+	}
+
+	// Check if the query starts with "turma: "
+	if (query.startsWith("turma: ")) {
+		// Extract the "xxxx" part
+		const turmaCode = query.slice(7).toUpperCase(); // Remove the "turma: " part (7 characters)
+		// Call the async dedicated handler with turmaCode and await its result
+		try {
+			const turmaMatches = await SearchByClass(turmaCode);
+			console.log(`found ${turmaMatches.length} turma matches`);
+			return turmaMatches; // Return the matches from the dedicated handler
+		} catch (error) {
+			console.error("Error in dedicated handler:", error);
+			return []; // Return empty array in case of error in the dedicated handler
+		}
 	}
 
 	console.log(`Performing search for: ${query} (filter = ${filterStr})`);

@@ -124,14 +124,14 @@ func (a *App) Startup(ctx context.Context) {
 		log.Fatalf("could not migrate database: %v", err)
 	}
 
-	// for _, agent := range debugAgents {
-	// 	err = db.Where(
-	// 		&Agent{Name: agent.Name},
-	// 	).Attrs(&agent).FirstOrCreate(&agent).Error
-	// 	if err != nil {
-	// 		log.Fatalf("failed to insert test data: %v", err)
-	// 	}
-	// }
+	for _, agent := range debugAgents {
+		err = db.Where(
+			&Agent{Name: agent.Name},
+		).Attrs(&agent).FirstOrCreate(&agent).Error
+		if err != nil {
+			log.Fatalf("failed to insert test data: %v", err)
+		}
+	}
 
 	a.ctx = ctx
 	a.db = db
@@ -159,11 +159,18 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 	return matches, nil
 }
 
+func (a *App) SearchByClass(class string) ([]*Agent, error) {
+	matches, err := agentClassSearch(a.db, class)
+	if err != nil {
+		return nil, err
+	}
+	return matches, nil
+}
+
 func (a *App) CreateRecord(r *Record) (*Record, error) {
 	if err := r.create(a.db); err != nil {
 		return nil, err
 	}
-
 	return r, nil
 }
 

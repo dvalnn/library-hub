@@ -116,3 +116,7 @@ func agentNameSearchFiltered(db *gorm.DB, name string, kind AgentKind) ([]*Agent
 	nameSearchStr := "%" + strings.Join(nameTokens, "%") + "%"
 	return agentSearch(db, "name LIKE ? AND agent_kind = ?", nameSearchStr, kind)
 }
+
+func agentClassSearch(db *gorm.DB, class string) ([]*Agent, error) {
+	return agentSearch(db, "class = ?", class)
+}

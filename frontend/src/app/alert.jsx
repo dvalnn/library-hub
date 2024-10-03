@@ -18,15 +18,19 @@ function AlertEvents({ eventText, eventSetters }) {
 			if (!text) return;
 
 			// Add a new alert to the stack
-			const newAlert = { id: Date.now(), text, remainingTime: NOTIFICATION_TIME_MS };
+			const newAlert = {
+				id: Date.now(),
+				text,
+				remainingTime: NOTIFICATION_TIME_MS,
+			};
 			setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
 
 			// Set a timeout to remove the alert after the specified time
 			setTimeout(() => {
 				setAlerts((prevAlerts) =>
-					prevAlerts.filter((alert) => alert.id !== newAlert.id)
+					prevAlerts.filter((alert) => alert.id !== newAlert.id),
 				);
-			alertTypes[type].setter(null);
+				alertTypes[type].setter(null);
 			}, NOTIFICATION_TIME_MS);
 		};
 
@@ -38,24 +42,26 @@ function AlertEvents({ eventText, eventSetters }) {
 	const errorAlerts = useAlertStack("error");
 	const warningAlerts = useAlertStack("warning");
 
-	// Effect to trigger alerts for each type independently
+	// biome-ignore lint/correctness/useExhaustiveDependencies:
 	useEffect(() => {
 		if (eventText.success) {
 			successAlerts.addAlert(eventText.success);
 		}
-	}, [eventText.success]); // Re-run when eventText changes
+	}, [eventText.success]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies:
 	useEffect(() => {
 		if (eventText.error) {
 			errorAlerts.addAlert(eventText.error);
 		}
-	}, [eventText.error]); // Re-run when eventText changes
+	}, [eventText.error]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies:
 	useEffect(() => {
 		if (eventText.warning) {
 			warningAlerts.addAlert(eventText.warning);
 		}
-	}, [eventText.warning]); // Re-run when eventText changes
+	}, [eventText.warning]);
 
 	return (
 		<div id="alertBox">
@@ -100,8 +106,6 @@ function AlertEvents({ eventText, eventSetters }) {
 		</div>
 	);
 }
-
-
 
 function Event({ eventId }) {
 	switch (eventId) {
