@@ -3,12 +3,13 @@
 #mainWindow {
 	display: inline-grid;
 	width: 100%;
-	height: 89vh;
+	height: 84vh;
 	grid-template-columns: 1fr 1fr;
 	margin: auto 0 auto 0;
 	padding: 10px;
 	flex-grow: 1;
 	flex-shrink: 0;
+	overflow-y: hidden;
 }
 
 #mainWindow .resultWindow {
@@ -18,7 +19,6 @@
 	position: relative;
 	align-items: start;
 	text-align: center;
-	max-height: 86vh;
 	border-inline-start: 3px solid transparent;
 	border-block-start: 3px solid transparent;
 	overflow-y: hidden;

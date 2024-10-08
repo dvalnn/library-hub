@@ -13,7 +13,7 @@ export default function Tabs({ activeTab, setActiveTab }) {
                 onClick={() => handleTabClick("regists")}
                 checked = {activeTab==="regists"}
             />
-            <label className="tabLabel" for="regists">Registos</label>
+            <label className="tabLabel" htmlFor="regists" id="registsLabel">Registos</label>
 
             <input
                 type="radio"
@@ -22,7 +22,7 @@ export default function Tabs({ activeTab, setActiveTab }) {
                 onClick={() => handleTabClick("requests")}
                 checked = {activeTab==="requests"}
             />
-            <label className="tabLabel" for="requests">Requisições</label>
+            <label className="tabLabel" htmlFor="requests" id="requestsLabel">Requisições</label>
 
             <input
                 type="radio"
@@ -31,7 +31,7 @@ export default function Tabs({ activeTab, setActiveTab }) {
                 onClick={() => handleTabClick("stats")}
                 checked = {activeTab==="stats"}
             />
-            <label className="tabLabel" for="stats">Estatística</label>
+            <label className="tabLabel" htmlFor="stats" id="statsLabel">Estatística</label>
         </div>
     );
 }

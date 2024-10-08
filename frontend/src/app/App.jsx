@@ -14,15 +14,14 @@ import Tabs from "./tabs.jsx";
 
 
 //*MIGUEL:
-//TODO: Implementar TABs
-	//! fazer um css de jeito para as TABs. Arranjar a altura da mainWindow
+
 //TODO: Fazer um calendário para selecionar os dias
+//TODO: Arranjar a height da mainWindow
 //TODO: Loader
 //TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
-//*TIAGO:
-//TODO: Implementar pesquisa por turmas
+//*TIAGO: 
 //TODO: Loader
 //TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
 //TODO: Identificar qual o dia da semana dependendo da data
