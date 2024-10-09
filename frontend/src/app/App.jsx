@@ -12,16 +12,16 @@ import SearchBar from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
 import Tabs from "./tabs.jsx";
 
-
 //*MIGUEL:
 
-//TODO: Fazer um calendário para selecionar os dias
-//TODO: Arranjar a height da mainWindow
+//TODO: Fazer um calendário para selecionar os dias na tab do histórico
+//TODO: Arranjar a height da mainWindow -- aumentei o tamanho da janela, já não deve ser problema - Tiago
 //TODO: Loader
 //TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
-//*TIAGO: 
+//*TIAGO:
+//TODO: Histórico de registos
 //TODO: Loader
 //TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
 //TODO: Identificar qual o dia da semana dependendo da data
@@ -30,21 +30,26 @@ import Tabs from "./tabs.jsx";
 function App() {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
-	const [activeTab, setActiveTab] = useState("regists");
+	const [activeTab, setActiveTab] = useState("records");
 
 	return (
 		<div id="App">
 			<Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
 
-
-			{activeTab === "regists" && (
-				<div className="tab" id="registTab">
+			{activeTab === "records" && (
+				<div className="tab" id="recordsTab">
 					<SearchBar
 						inputCallback={setName}
 						radioSelection={filter}
 						setRadioSelection={setFilter}
 					/>
-					<MainWindow name={name} filter={filter}/>
+					<MainWindow name={name} filter={filter} />
+				</div>
+			)}
+
+			{activeTab === "history" && (
+				<div className="tab" id="historyTab">
+					<h1>Isto é a página do histórico de registos</h1>
 				</div>
 			)}
 

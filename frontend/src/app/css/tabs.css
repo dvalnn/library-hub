@@ -2,63 +2,63 @@
 
 /* General Container Styling */
 .tab-container {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    border: 2px solid var(--medium-blue);
-    background-color: var(--light-gray);
-    width: 50%;
-    margin: 10px 0 0 10px;
-    position: relative;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 7px;
+	border: 2px solid var(--medium-blue);
+	background-color: var(--light-gray);
+	width: 50%;
+	margin: 10px 0 0 10px;
+	position: relative;
 }
 
 /* Hide Radio Inputs */
 .tabRadio {
-    display: none;
+	display: none;
 }
 
 /* Tab Label Styling */
 .tabLabel {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-grow: 1;
-    padding: 10px 20px;
-    font-size: 1.7em;
-    font-family: Poppins-Medium;
-    color: var(--dark-blue);
-    border-bottom: 2px solid transparent;
-    border-top: 2px solid transparent;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
-    opacity: 60%;
-    position: relative;
-    z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+	padding: 10px 20px;
+	font-size: 1.7em;
+	font-family: Poppins-Medium;
+	color: var(--dark-blue);
+	border-bottom: 2px solid transparent;
+	border-top: 2px solid transparent;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s, opacity 0.3s;
+	opacity: 60%;
+	position: relative;
+	z-index: 1;
 }
 
 /* Active Tab Styling */
-.tabRadio:checked+.tabLabel {
-    background-color: var(--white);
-    color: var(--dark-blue);
-    border-bottom: 2px solid var(--light-blue);
-    border-top: 2px solid var(--light-blue);
-    font-family: Poppins-SemiBold;
-    opacity: 100%;
+.tabRadio:checked + .tabLabel {
+	background-color: var(--white);
+	color: var(--dark-blue);
+	border-bottom: 2px solid var(--light-blue);
+	border-top: 2px solid var(--light-blue);
+	font-family: Poppins-SemiBold;
+	opacity: 100%;
 }
 
 /* Hover Effect */
 .tabLabel:hover {
-    background-color: var(--gray);
-    opacity: 90%;
+	background-color: var(--gray);
+	opacity: 90%;
 }
 
-#registsLabel {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+#recordsLabel {
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 #statsLabel {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
