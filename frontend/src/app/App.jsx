@@ -8,14 +8,13 @@ import "./css/tabs.css";
 
 import { useState } from "react";
 
-import SearchBar from "./searchBar.jsx";
+import {SearchBar} from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
 import Tabs from "./tabs.jsx";
+import { HistoryWindow } from "./history.jsx";
 
 //*MIGUEL:
-
 //TODO: Fazer um calendário para selecionar os dias na tab do histórico
-//TODO: Arranjar a height da mainWindow -- aumentei o tamanho da janela, já não deve ser problema - Tiago
 //TODO: Loader
 //TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
@@ -25,6 +24,7 @@ import Tabs from "./tabs.jsx";
 //TODO: Loader
 //TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
 //TODO: Identificar qual o dia da semana dependendo da data
+//TODO: Substitui o atual hora e data nos resgistos adicionados (o que tá escrito) por turno (manhã tarde) e dia da semana
 
 //* Main HTML Body
 function App() {
@@ -49,6 +49,7 @@ function App() {
 
 			{activeTab === "history" && (
 				<div className="tab" id="historyTab">
+					<HistoryWindow/>
 					<h1>Isto é a página do histórico de registos</h1>
 				</div>
 			)}

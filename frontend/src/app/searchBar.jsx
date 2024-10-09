@@ -118,4 +118,4 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 	);
 }
 
-export default SearchBar;
+export { SearchBar, RadioSelector };

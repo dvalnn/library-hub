@@ -9,8 +9,10 @@
 	border: 2px solid var(--medium-blue);
 	background-color: var(--light-gray);
 	width: 50%;
+	min-width: 700px;
 	margin: 10px 0 0 10px;
 	position: relative;
+	overflow-x: hidden;
 }
 
 /* Hide Radio Inputs */
@@ -24,8 +26,8 @@
 	align-items: center;
 	justify-content: center;
 	flex-grow: 1;
-	padding: 10px 20px;
-	font-size: 1.7em;
+	padding: 10px 3vw;
+	font-size: calc(1rem + 0.4vw);
 	font-family: Poppins-Medium;
 	color: var(--dark-blue);
 	border-bottom: 2px solid transparent;
@@ -35,6 +37,7 @@
 	opacity: 60%;
 	position: relative;
 	z-index: 1;
+	white-space: nowrap;
 }
 
 /* Active Tab Styling */
