@@ -21,6 +21,21 @@ const ActivityEnum = {
 
 		return labels[value] || "Unknown Activity";
 	},
+
+	// Helper function to get value based on label
+	getValue(label) {
+		const values = {
+			Computers: this.Computers,
+			IndividualWork: this.IndividualWork,
+			GroupWork: this.GroupWork,
+			Recreation: this.Recreation,
+			ExpulsionFromClass: this.ExpulsionFromClass,
+			BookRequisition: this.BookRequisition,
+			TestTaking: this.TestTaking,
+		};
+
+		return values[label] || null; // return null if label is not found
+	},
 };
 
 export default ActivityEnum;

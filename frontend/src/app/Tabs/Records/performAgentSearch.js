@@ -1,26 +1,15 @@
 import { SearchAgent } from "./../../../../wailsjs/go/app/App.js";
 
+import AgentEnum from "../Common/agentEnum.js"
+
 async function performAgentSearch(query, filterStr) {
 	// Return early if the search query is empty
 	if (!query) {
 		return [];
 	}
 
-	const filterFromString = (filter) => {
-		switch (filter) {
-			case "student":
-				return 1;
-			case "teacher":
-				return 2;
-			case "assistant":
-				return 3;
-			default:
-				return 0;
-		}
-	};
-
 	console.log(`Performing search for: ${query} (filter = ${filterStr})`);
-	const filter = filterFromString(filterStr);
+	const filter = AgentEnum.getValue(filterStr)
 	try {
 		// Wait for the search results to resolve
 		const matches = await SearchAgent(query, filter);

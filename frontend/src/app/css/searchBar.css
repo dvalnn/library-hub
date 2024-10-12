@@ -34,9 +34,12 @@
 #searchBar input[type="text"].input:focus {
 	font-family: "Poppins-Regular";
 	border-bottom: 2px solid var(--light-blue);
-	border-image: radial-gradient(circle at center,
+	border-image: radial-gradient(
+			circle at center,
 			var(--light-blue),
-			transparent 80%) 0 0 100% 0;
+			transparent 80%
+		)
+		0 0 100% 0;
 }
 
 #searchBar #user-selector {
@@ -49,7 +52,7 @@
 	text-align: center;
 }
 
-#searchBar #user-selector .radio input{
+#searchBar #user-selector .radio input {
 	display: none;
 }
 
@@ -64,7 +67,7 @@
 	transition: all 0.2s ease-in-out;
 }
 
-#searchBar #user-selector .radio input:checked+.name {
+#searchBar #user-selector .radio input:checked + .name {
 	font-family: "Poppins-Medium";
 	font-size: larger;
 	font-weight: 600;
@@ -93,9 +96,11 @@
 
 #searchBar .sBarBtn:hover {
 	border: transparent;
-	background-image: radial-gradient(circle,
-			var(--medium-blue) 0%,
-			var(--medium-blue) 100%);
+	background-image: radial-gradient(
+		circle,
+		var(--medium-blue) 0%,
+		var(--medium-blue) 100%
+	);
 	transition: all 0.2s ease;
 	transform: scale(1.1);
 }
@@ -104,7 +109,7 @@
 	transform: scale(1);
 }
 
-#searchBar .sBarBtn:hover>svg path {
+#searchBar .sBarBtn:hover > svg path {
 	fill: white;
 	stroke: white;
 }

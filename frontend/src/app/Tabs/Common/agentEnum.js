@@ -13,6 +13,17 @@ const AgentEnum = {
 
 		return labels[value] || "Unknown Agent";
 	},
+
+	// Helper function to get value based on label
+	getValue(label) {
+		const values = {
+			student: this.Student,
+			teacher: this.Teacher,
+			assistant: this.Assistant,
+		};
+
+		return values[label] || 0; // return null if label is not found
+	},
 };
 
 export default AgentEnum;

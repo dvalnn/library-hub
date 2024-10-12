@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import ActivityEnum from "./activityEnum.js";
-import AgentEnum from "./agentEnum.js";
+import ActivityEnum from "../Common/activityEnum.js";
+import AgentEnum from "../Common/agentEnum.js";
 
 function ActivityDropDown({ agent, setActivity }) {
 	const enumObject = (enumMember) => {

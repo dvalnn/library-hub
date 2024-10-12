@@ -1,9 +1,8 @@
 import { useState } from "react";
 
 import BinButton from "../Common/BinButton.jsx";
-
-import ActivityEnum from "./activityEnum.js";
-import AgentEnum from "./agentEnum.js";
+import ActivityEnum from "../Common/activityEnum.js";
+import AgentEnum from "../Common/agentEnum.js";
 
 function Record({ record, handlers }) {
 	const [binId, setBinId] = useState("bin-down");

@@ -37,7 +37,7 @@
 	white-space: nowrap;
 }
 
-.tabRadio:checked+.tabLabel {
+.tabRadio:checked + .tabLabel {
 	background-color: var(--white);
 	color: var(--dark-blue);
 	border-bottom: 2px solid var(--light-blue);

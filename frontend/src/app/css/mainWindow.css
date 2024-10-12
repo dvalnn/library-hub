@@ -1,6 +1,6 @@
 @import url(./fontsColor.css);
 
-#recordsTab{
+#recordsTab {
 	display: flex;
 	flex-direction: column;
 	width: 100%;

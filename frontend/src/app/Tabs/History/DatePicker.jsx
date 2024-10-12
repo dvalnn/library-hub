@@ -3,15 +3,23 @@ import "react-calendar/dist/Calendar.css";
 
 import AgentFilterRadio from "../Common/AgentFilterRadio.jsx";
 
-function DatePicker({ radioSelection, setRadioSelection }) {
-	const maxDate = new Date();
+function DatePicker({ filterState, dateState }) {
+	const onClickDay = (value, event) => {
+		dateState.setDate(value);
+	};
+
 	return (
 		<div className="datePicker">
 			<div className="calendarBox">
-				<Calendar locale="pt" maxDate={maxDate} />
+				<Calendar
+					locale="pt"
+					maxDate={new Date()}
+					onClickDay={onClickDay}
+					value={dateState.date}
+				/>
 				<AgentFilterRadio
-					selection={radioSelection}
-					setSelection={setRadioSelection}
+					selection={filterState.filter}
+					setSelection={filterState.setFilter}
 				/>
 			</div>
 		</div>
