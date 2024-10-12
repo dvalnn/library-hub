@@ -9,13 +9,11 @@ import "./css/history.css";
 
 import { useState } from "react";
 
-import {
-	HistoryTab,
-	RecordsTab,
-	RequestsTab,
-	StatisticsTab,
-	TabsRadioSelector,
-} from "./Tabs/default.jsx";
+import HistoryTab from "./Tabs/History/HistoryTab.jsx";
+import RecordsTab from "./Tabs/Records/RecordsTab.jsx";
+import RequestsTab from "./Tabs/Requests/RequestsTab.jsx";
+import StatisticsTabfrom from "./Tabs/Statistics/StatisticsTab.jsx";
+import TabsRadioSelector from "./Tabs/TabsRadioSelector.jsx";
 
 //*MIGUEL:
 //TODO: Fazer um calendário para selecionar os dias na tab do histórico
