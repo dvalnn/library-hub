@@ -84,7 +84,7 @@
 	opacity: 20%;
 }
 
-#mainWindow .resultWindow .noResults li {
+#mainWindow .resultWindow .noResults h2 {
 	font-family: Poppins-SemiBoldItalic;
 	font-size: 1.5em;
 }
@@ -108,7 +108,6 @@
 	display: none;
 }
 
-/* Non-selected state */
 #mainWindow .resultsContainer .agentBox {
 	display: flex;
 	flex-direction: row;

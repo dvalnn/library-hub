@@ -1,162 +1,128 @@
 @import url(./fontsColor.css);
 
-#historyTab {
-	display: inline-grid;
-	grid-template-columns: 1fr 1fr;
-	width: 100%;
-	height: 100%;
-	margin: 5px;
-	padding: 5px;
+#historyTab .history {
+    display: grid;
+    grid-auto-flow: row;
+    max-height: 90vh;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    align-items: start;
+    text-align: center;
+    border-inline-start: 3px solid transparent;
+    border-block-start: 3px solid transparent;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
-#historyTab .datePicker {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background: radial-gradient(
-		circle at center,
-		rgba(245, 244, 239, 1) 0%,
-		rgba(245, 244, 239, 1) 35%,
-		rgba(245, 244, 239, 0) 70%
-	);
+#historyTab .history::before,
+#historyTab .history::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
-#historyTab .datePicker .calendarBox {
-	display: inline-grid;
-	grid-template-rows: 1fr auto;
-	grid-auto-flow: row;
-	margin: auto;
-	justify-items: center;
-	align-items: center;
+#historyTab .history::before {
+    top: 15px;
+    left: 0;
+    border-inline-start: 3px solid;
+    border-block-start: 3px solid;
+    border-image-source: radial-gradient(circle at top left,
+            var(--medium-blue),
+            transparent 23%);
+    border-image-slice: 1;
 }
 
-#historyTab .datePicker .react-calendar {
-	font-family: Poppins-Regular;
-	display: flex;
-	width: 65%;
-	min-height: fit-content;
-	flex-direction: column;
-	padding: 20px 10px;
-	margin-bottom: 10px;
-	font-size: 2em;
-	background-color: transparent;
-	border: none;
+#historyTab .history::after {
+    bottom: 0;
+    right: 0;
+    border-inline-end: 3px solid;
+    border-block-end: 3px solid;
+    border-image-source: radial-gradient(circle at bottom right,
+            var(--medium-blue),
+            transparent 23%);
+    border-image-slice: 1;
 }
 
-#historyTab .datePicker .react-calendar__viewContainer {
-	height: max-content;
+#historyTab .history .resultsContainer {
+    display: grid;
+    max-height: 99%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    grid-auto-flow: row;
+    grid-template-rows: auto;
+    padding: 5px;
+    margin: 0;
 }
 
-#historyTab
-	.datePicker
-	.react-calendar__viewContainer
-	.react-calendar__month-view__weekdays {
-	font-family: Poppins-Medium;
-	color: var(--medium-black);
-	font-weight: normal;
+#historyTab .history .title {
+    font-family: Poppins-Regular;
+    color: var(--medium-black);
+    background-color: var(--white);
+    max-width: max-content;
+    padding-top: 12px;
+    margin: -15px auto 0px auto;
+    z-index: 1;
 }
 
-#historyTab .datePicker .react-calendar button:hover {
-	background-color: var(--white);
-	color: var(--dark-blue);
+#historyTab .history .resultsContainer::-webkit-scrollbar {
+    display: none;
 }
 
-#historyTab .datePicker .react-calendar__navigation button {
-	color: var(--medium-black);
+#historyTab .history .resultsContainer .agentBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: max-content;
+    margin: 5px;
+    background-color: var(--gray);
+    border-radius: 1em;
+    padding: 2px 5px 2px 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.7s ease;
 }
 
-#historyTab .datePicker .react-calendar__navigation button:focus {
-	background-color: var(--light-gray);
+#historyTab .history .resultsContainer .agentInfo {
+    font-family: Poppins-SemiBold;
+    color: var(--medium-black);
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex: 1;
+    margin: 7px;
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__tile {
-	color: var(--medium-black);
-	border-bottom: 1px var(--medium-black) solid;
+#historyTab .history .resultsContainer .agentInfo .details {
+    font-family: Poppins-Regular;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#historyTab
-	.datePicker
-	.react-calendar
-	.react-calendar__month-view__days__day--weekend {
-	color: var(--dark-red);
+#historyTab .history .resultsContainer .agentInfo .nameTime {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__tile--now {
-	color: var(--white);
-	background-color: var(--dark-green);
+#historyTab .history .noResults {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    opacity: 20%;
 }
 
-#historyTab
-	.datePicker
-	.react-calendar
-	.react-calendar__month-view__days__day--neighboringMonth {
-	color: var(--brown);
-	border: none;
+#historyTab .history .noResults #Doc {
+    width: 50%;
 }
 
-#historyTab
-	.datePicker
-	.react-calendar
-	.react-calendar__month-view__days__day--weekend:hover,
-#historyTab
-	.datePicker
-	.react-calendar
-	.react-calendar__month-view__days__day--neighboringMonth:hover {
-	background-color: var(--light-gray);
-}
-
-#historyTab .datePicker .react-calendar .react-calendar__tile--active {
-	background-color: var(--dark-blue);
-	color: var(--white);
-}
-
-#historyTab .datePicker .react-calendar button:disabled {
-	color: transparent;
-	background-color: transparent;
-	pointer-events: none;
-	border: none;
-}
-
-#historyTab #user-selector {
-	display: flex;
-	margin: 10px 0;
-	width: 65%;
-	height: max-content;
-	align-items: center;
-	justify-content: space-evenly;
-	font-size: 1.5em;
-}
-
-#historyTab #user-selector .radio {
-	text-align: center;
-}
-
-#historyTab #user-selector .radio input {
-	display: none;
-}
-
-#historyTab #user-selector .radio .name {
-	font-family: "Poppins-Medium", sans-serif;
-	cursor: pointer;
-	padding: 0.5rem;
-	color: var(--dark-blue);
-	border-radius: 0.5rem;
-	border-bottom: 2px solid var(--medium-blue);
-	border-image: radial-gradient(
-			circle at center,
-			var(--medium-blue),
-			transparent 70%
-		)
-		0 0 100% 0;
-	transition: all 0.2s ease-in-out;
-}
-
-#historyTab #user-selector .radio input:checked + .name {
-	font-family: "Poppins-Medium";
-	font-size: larger;
-	font-weight: 600;
-	border: 2px solid var(--light-blue);
-	box-shadow: 0 0 0 2px var(--dark-blue);
-	border-image: none;
+#historyTab .history .noResults h2 {
+    font-family: Poppins-SemiBoldItalic;
+    font-size: 1.5em;
 }

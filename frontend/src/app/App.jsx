@@ -5,28 +5,27 @@ import "./css/dropdown.css";
 import "./css/alerts.css";
 import "./css/loader.css";
 import "./css/tabs.css";
-import "./css/history.css";
+import "./css/calendar.css";
+import "./css/history.css" 
 
 import { useState } from "react";
 
 import HistoryTab from "./Tabs/History/HistoryTab.jsx";
 import RecordsTab from "./Tabs/Records/RecordsTab.jsx";
 import RequestsTab from "./Tabs/Requests/RequestsTab.jsx";
-import StatisticsTabfrom from "./Tabs/Statistics/StatisticsTab.jsx";
+import StatisticsTab from "./Tabs/Statistics/StatisticsTab.jsx";
 import TabsRadioSelector from "./Tabs/TabsRadioSelector.jsx";
 
 //*MIGUEL:
-//TODO: Fazer um calendário para selecionar os dias na tab do histórico
 //TODO: Loader
 //TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
-//TODO: Histórico de registos
-//TODO: Loader
 //TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
 //TODO: Identificar qual o dia da semana dependendo da data
 //TODO: Substitui o atual hora e data nos resgistos adicionados (o que tá escrito) por turno (manhã tarde) e dia da semana
+//TODO: Loader
 
 //* Main HTML Body
 function App() {

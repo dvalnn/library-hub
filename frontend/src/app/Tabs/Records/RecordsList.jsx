@@ -17,7 +17,7 @@ function RecordsList({ records, recordHandlers, setShowDelete }) {
 		return (
 			<ul className="noResults">
 				<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
-				<li>Sem registos recentes</li>
+				<h2>Sem registos recentes</h2>
 			</ul>
 		);
 	}

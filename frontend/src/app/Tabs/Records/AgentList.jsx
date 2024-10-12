@@ -56,7 +56,7 @@ function AgentList({
 		return (
 			<ul className="noResults">
 				<img src={notfound} alt="Imagem nenhum item encontrado" />
-				<li>Sem resultados de pesquisa</li>
+				<h2>Sem resultados de pesquisa</h2>
 			</ul>
 		);
 	}

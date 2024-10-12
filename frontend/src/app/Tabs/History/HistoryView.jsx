@@ -8,10 +8,8 @@ import AgentEnum from "../Common/agentEnum.js";
 import HistoricalRecord from "./HistoricalRecord.jsx";
 import getHistoricalRecords from "./getHistoricalRecords.js";
 
-//? Tou a pensar fazer esta tab sendo apenas a janela divido em dois tipo main window.
-//? A da esquerda é um calendário sempre em display com um date picker, e mais uns botões de filtros
-//? A da direita fica igual à janela de Registos mas sem o botão de eliminar
-//? Talvez simplesmente chamar o recordList e mudar a função para receber o ID do parent e dar conditional render ao butão do lixo
+//! BUG ON Agent recorded time
+
 function HistoryView({ date, filter }) {
 	const [records, setRecords] = useState([]);
 	useEffect(() => {
@@ -28,7 +26,7 @@ function HistoryView({ date, filter }) {
 	const noResults = (
 		<ul className="noResults">
 			<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
-			<li>Sem registos recentes</li>
+			<h2>Sem registos recentes</h2>
 		</ul>
 	);
 
@@ -40,7 +38,7 @@ function HistoryView({ date, filter }) {
 					<li className="agentInfo">
 						<div className="nameTime">
 							<h1 className="name">{record.agent.name}</h1>
-							<h2 className="time">{date.toLocaleString("pt-Pt")}</h2>
+							{/* <h2 className="time">{Date(.toLocaleString("pt-Pt"))}</h2> */} //!Bug here
 						</div>
 						<div className="details">
 							<h2>{`${AgentEnum.getLabel(record.agent.agent_kind)} ${record.agent.class}`}</h2>
@@ -56,9 +54,9 @@ function HistoryView({ date, filter }) {
 
 	return (
 		<div className="history">
-			<h1>Histórico</h1>
-			{results.length !== 0 && results}
-			{results.length === 0 && noResults}
+			<h1 className="title">Histórico</h1>
+			{records.length !== 0 && results}
+			{records.length === 0 && noResults}
 		</div>
 	);
 }
