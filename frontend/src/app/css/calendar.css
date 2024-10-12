@@ -93,6 +93,7 @@
 }
 
 #historyTab .datePicker .react-calendar .react-calendar__tile--active,
+#historyTab .datePicker .react-calendar .react-calendar__tile--hasActive,
 #historyTab .datePicker .react-calendar .react-calendar__tile:focus {
 	background-color: var(--dark-blue);
 	color: var(--white);
