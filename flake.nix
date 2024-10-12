@@ -34,6 +34,9 @@
           python312Packages.python-lsp-ruff
           python312Packages.python-lsp-black
           python312Packages.python-lsp-server
+
+          ## sqlite (for sqlite3 client)
+          sqlite
         ];
         buildInputs = with pkgs; [
           # Desktop App builder
