@@ -1,5 +1,4 @@
-// ActivityEnum.js
-export const ActivityEnum = {
+const ActivityEnum = {
 	Computers: 1,
 	IndividualWork: 2,
 	GroupWork: 3,
@@ -23,3 +22,5 @@ export const ActivityEnum = {
 		return labels[value] || "Unknown Activity";
 	},
 };
+
+export default ActivityEnum;

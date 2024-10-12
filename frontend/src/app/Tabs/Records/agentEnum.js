@@ -1,5 +1,4 @@
-// AgentEnum.js
-export const AgentEnum = {
+const AgentEnum = {
 	Student: 1,
 	Teacher: 2,
 	Assistant: 3,
@@ -15,3 +14,5 @@ export const AgentEnum = {
 		return labels[value] || "Unknown Agent";
 	},
 };
+
+export default AgentEnum;

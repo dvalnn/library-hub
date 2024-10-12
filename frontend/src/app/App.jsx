@@ -7,17 +7,15 @@ import "./css/loader.css";
 import "./css/tabs.css";
 import "./css/history.css";
 
-import inDev from "../assets/images/in-development.png";
-
 import { useState } from "react";
 
-import HistoryTab from "./HistoryTab.jsx";
-import RecordsTab from "./RecordsTab.jsx";
-import RequestsTab from "./RequestsTab.jsx";
-import StatisticsTab from "./StatisticsTab.jsx";
-import Tabs from "./tabs.jsx";
-
-import { DatePicker, History } from "./history.jsx";
+import {
+	HistoryTab,
+	RecordsTab,
+	RequestsTab,
+	StatisticsTab,
+	TabsRadioSelector,
+} from "./Tabs/default.jsx";
 
 //*MIGUEL:
 //TODO: Fazer um calendário para selecionar os dias na tab do histórico
@@ -37,7 +35,7 @@ function App() {
 	const [activeTab, setActiveTab] = useState("records");
 	return (
 		<div id="App">
-			<Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+			<TabsRadioSelector activeTab={activeTab} setActiveTab={setActiveTab} />
 			{activeTab === "records" && <RecordsTab />}
 			{activeTab === "history" && <HistoryTab />}
 			{activeTab === "requests" && <RequestsTab />}

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import notfound from "../assets/images/not-found.png";
+import notfound from "../../../assets/images/not-found.png";
 
-import performSearch from "./js/search.js";
+import performAgentSearch from "./performAgentSearch.js";
 
-import Agent from "./agent.jsx";
+import Agent from "./Agent.jsx";
 
 function AgentList({
 	searchArgs,
@@ -26,7 +26,7 @@ function AgentList({
 		setSearch(false);
 
 		// Perform the search and handle success or error
-		performSearch(name, filter)
+		performAgentSearch(name, filter)
 			.then((res) => {
 				setElements(res);
 

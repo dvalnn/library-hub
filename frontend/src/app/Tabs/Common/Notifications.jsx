@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function AlertEvents({ eventText, eventSetters }) {
+function Notifications({ eventText, eventSetters }) {
 	const [setSuccess, setWarning, setError] = eventSetters;
 	const NOTIFICATION_TIME_MS = 2250;
 	const alertTypes = {
@@ -17,15 +17,19 @@ function AlertEvents({ eventText, eventSetters }) {
 			if (!text) return;
 
 			// Add a new alert to the stack
-			const newAlert = { id: Date.now(), text, remainingTime: NOTIFICATION_TIME_MS };
+			const newAlert = {
+				id: Date.now(),
+				text,
+				remainingTime: NOTIFICATION_TIME_MS,
+			};
 			setAlerts((prevAlerts) => [...prevAlerts, newAlert]);
 
 			// Set a timeout to remove the alert after the specified time
 			setTimeout(() => {
 				setAlerts((prevAlerts) =>
-					prevAlerts.filter((alert) => alert.id !== newAlert.id)
+					prevAlerts.filter((alert) => alert.id !== newAlert.id),
 				);
-			alertTypes[type].setter(null);
+				alertTypes[type].setter(null);
 			}, NOTIFICATION_TIME_MS);
 		};
 
@@ -38,23 +42,55 @@ function AlertEvents({ eventText, eventSetters }) {
 	const warningAlerts = useAlertStack("warning");
 
 	// Effect to trigger alerts for each type independently
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (eventText.success) {
 			successAlerts.addAlert(eventText.success);
 		}
 	}, [eventText.success]); // Re-run when eventText changes
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (eventText.error) {
 			errorAlerts.addAlert(eventText.error);
 		}
 	}, [eventText.error]); // Re-run when eventText changes
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
 		if (eventText.warning) {
 			warningAlerts.addAlert(eventText.warning);
 		}
 	}, [eventText.warning]); // Re-run when eventText changes
+
+	const Event = ({ eventId }) => {
+		switch (eventId) {
+			case "success":
+				return (
+					<svg viewBox="0 0 512 512">
+						<title>Notificação Sucesso</title>
+						<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+					</svg>
+				);
+			case "error":
+				return (
+					<svg viewBox="0 0 512 512">
+						<title>Notificação erro</title>
+						<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
+					</svg>
+				);
+
+			case "warning":
+				return (
+					<svg viewBox="0 0 512 512">
+						<title>Notificação aviso</title>
+						<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
+					</svg>
+				);
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<div id="alertBox">
@@ -100,35 +136,4 @@ function AlertEvents({ eventText, eventSetters }) {
 	);
 }
 
-
-
-function Event({ eventId }) {
-	switch (eventId) {
-		case "success":
-			return (
-				<svg viewBox="0 0 512 512">
-					<title>Notificação Sucesso</title>
-					<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
-				</svg>
-			);
-		case "error":
-			return (
-				<svg viewBox="0 0 512 512">
-					<title>Notificação erro</title>
-					<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c9.4-9.4 24.6-9.4 33.9 0l47 47 47-47c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-47 47 47 47c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-47-47-47 47c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l47-47-47-47c-9.4-9.4-9.4-24.6 0-33.9z" />
-				</svg>
-			);
-
-		case "warning":
-			return (
-				<svg viewBox="0 0 512 512">
-					<title>Notificação aviso</title>
-					<path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-384c13.3 0 24 10.7 24 24l0 112c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-112c0-13.3 10.7-24 24-24zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z" />
-				</svg>
-			);
-		default:
-			return null;
-	}
-}
-
-export default AlertEvents;
+export default Notifications;

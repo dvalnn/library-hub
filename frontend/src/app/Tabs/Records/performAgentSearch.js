@@ -1,24 +1,23 @@
-import { SearchAgent } from "./../../../wailsjs/go/app/App.js";
+import { SearchAgent } from "./../../../../wailsjs/go/app/App.js";
 
-function filterFromString(filter) {
-	switch (filter) {
-		case "student":
-			return 1;
-		case "teacher":
-			return 2;
-		case "assistant":
-			return 3;
-		default:
-			return 0;
-	}
-}
-
-async function performSearch(query, filterStr) {
+async function performAgentSearch(query, filterStr) {
 	// Return early if the search query is empty
 	if (!query) {
-		console.log("empty search - skipping");
 		return [];
 	}
+
+	const filterFromString = (filter) => {
+		switch (filter) {
+			case "student":
+				return 1;
+			case "teacher":
+				return 2;
+			case "assistant":
+				return 3;
+			default:
+				return 0;
+		}
+	};
 
 	console.log(`Performing search for: ${query} (filter = ${filterStr})`);
 	const filter = filterFromString(filterStr);
@@ -28,9 +27,9 @@ async function performSearch(query, filterStr) {
 		console.log(`found ${matches.length} matches`);
 		return matches; // Return the matches if needed elsewhere
 	} catch (error) {
-		console.error("Error performing search:", error);
+		console.error("Error performing agent search:", error);
 		return []; // Return empty array in case of error
 	}
 }
 
-export default performSearch;
+export default performAgentSearch;

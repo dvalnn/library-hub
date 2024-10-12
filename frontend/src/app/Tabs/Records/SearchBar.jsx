@@ -1,48 +1,6 @@
 import { useState } from "react";
 
-function RadioSelector({ selection, setSelection }) {
-	return (
-		<div id="user-selector">
-			<LabelSelect
-				labelName={"Aluno"}
-				labelState={"student"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Professor"}
-				labelState={"teacher"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Assistente"}
-				labelState={"assistant"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Todos"}
-				labelState={"everyone"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-		</div>
-	);
-}
-
-function LabelSelect({ labelName, labelState, selection, setSelection }) {
-	return (
-		<label className="radio">
-			<input
-				type="radio"
-				checked={selection === labelState}
-				onChange={() => setSelection(labelState)}
-			/>
-			<span className="name">{labelName}</span>
-		</label>
-	);
-}
+import AgentFilterRadio from "../Common/AgentFilterRadio.jsx";
 
 function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 	const [userInput, setUserInput] = useState("");
@@ -75,7 +33,7 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 
 	return (
 		<div id="searchBar">
-			<RadioSelector
+			<AgentFilterRadio
 				selection={radioSelection}
 				setSelection={setRadioSelection}
 			/>
@@ -118,4 +76,4 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 	);
 }
 
-export { SearchBar, RadioSelector };
+export default SearchBar;

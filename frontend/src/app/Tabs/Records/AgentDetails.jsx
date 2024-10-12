@@ -1,4 +1,4 @@
-import ActivitySelect from "./activitySelect.jsx";
+import ActivityDropDown from "./ActivityDropDown.jsx";
 
 function AgentDetails({ agent, isSelected, setActivity }) {
 	let role = "";
@@ -20,7 +20,7 @@ function AgentDetails({ agent, isSelected, setActivity }) {
 	return (
 		<div className="details">
 			<h2>{role}</h2>
-			{isSelected && <ActivitySelect agent={agent} setActivity={setActivity} />}
+			{isSelected && <ActivityDropDown agent={agent} setActivity={setActivity} />}
 		</div>
 	);
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { SearchBar } from "./searchBar.jsx";
-import MainWindow from "./mainWindow.jsx";
+import SearchBar from "./SearchBar.jsx";
+import MainWindow from "./MainWindow.jsx";
 
 function RecordsTab() {
 	const [name, setName] = useState("");

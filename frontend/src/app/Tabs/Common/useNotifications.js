@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function useEvents() {
+function useNotifications() {
 	const [event, setEvent] = useState({
 		success: null,
 		warning: null,
@@ -31,4 +31,4 @@ function useEvents() {
 	return [event, setSuccess, setWarning, setError];
 }
 
-export default useEvents;
+export default useNotifications;

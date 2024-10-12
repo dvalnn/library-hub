@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 
-import AgentList from "./agentList.jsx";
-import AlertEvents from "./alert.jsx";
-import { SubmitBtn } from "./buttons.jsx";
-import RecordList from "./recordList.jsx";
+import SubmitButton from "../Common/SubmitButton.jsx";
+import Notifications from "../Common/Notifications.jsx";
+import useNotications from "../Common/useNotifications.js";
 
-import useEvents from "./js/useEvents.js";
-import useRecordsState from "./js/useRecordsState.js";
-import useSelectionState from "./js/useSelectionState.js";
+import AgentList from "./AgentList.jsx";
+import RecordsList from "./RecordsList.jsx";
 
-function MainWindow({ name, filter}) {
+import useRecordsState from "./useRecordsState.js";
+import useSelectionState from "./useSelectionState.js";
+
+function MainWindow({ name, filter }) {
 	const [showSubmit, setShowSubmit] = useState(false);
 	const [showDelete, setShowDelete] = useState(false);
 	const [search, setSearch] = useState(false);
 
-	const [eventText, setSuccess, setWarning, setError] = useEvents();
+	const [eventText, setSuccess, setWarning, setError] = useNotications();
 	const eventSetters = [setSuccess, setWarning, setError];
 
 	const [
@@ -41,7 +42,6 @@ function MainWindow({ name, filter}) {
 			setLast({ name, filter });
 			setSearch(true);
 			selectionReset();
-			console.log("Reset!");
 		}
 	}, [name, filter, last, selectionReset]);
 
@@ -56,25 +56,25 @@ function MainWindow({ name, filter}) {
 					eventSetters={eventSetters}
 				/>
 				{showSubmit !== false && (
-					<SubmitBtn
+					<SubmitButton
 						btnId="RegBtn"
 						btnText="Registar"
 						handleClick={createRecordsWrapper}
 					/>
 				)}
 
-				<AlertEvents eventText={eventText} eventSetters={eventSetters} />
+				<Notifications eventText={eventText} eventSetters={eventSetters} />
 			</div>
 
 			<div id="rightWindow" className="resultWindow">
 				<h1 className="title">Registos</h1>
-				<RecordList
+				<RecordsList
 					records={records}
 					recordHandlers={{ markRecord, removeMark, checkMark }}
 					setShowDelete={setShowDelete}
 				/>
 				{showDelete !== false && (
-					<SubmitBtn
+					<SubmitButton
 						btnId="DelBtn"
 						btnText="Eliminar"
 						handleClick={deleteMarked}

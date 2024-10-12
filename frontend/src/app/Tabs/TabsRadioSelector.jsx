@@ -1,4 +1,4 @@
-export default function Tabs({ activeTab, setActiveTab }) {
+function Tabs({ activeTab, setActiveTab }) {
 	const handleTabChange = (tab) => {
 		setActiveTab(tab);
 	};
@@ -51,3 +51,5 @@ export default function Tabs({ activeTab, setActiveTab }) {
 		</div>
 	);
 }
+
+export default Tabs;

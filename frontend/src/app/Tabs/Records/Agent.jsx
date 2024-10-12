@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-import { SelectButton } from "./buttons.jsx";
-import AgentDetails from "./agentDetails.jsx";
+import SelectButton from "../Common/SelectButton.jsx";
+
+import AgentDetails from "./AgentDetails.jsx";
 
 function Agent({ agent, selectionFuncs }) {
 	const [upsertFunc, removeFunc, checkFunc] = selectionFuncs;
