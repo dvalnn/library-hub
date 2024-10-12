@@ -5,13 +5,14 @@ import "./css/dropdown.css";
 import "./css/alerts.css";
 import "./css/loader.css";
 import "./css/tabs.css";
+import "./css/history.css"
 
 import { useState } from "react";
 
-import {SearchBar} from "./searchBar.jsx";
+import { SearchBar } from "./searchBar.jsx";
 import MainWindow from "./mainWindow.jsx";
 import Tabs from "./tabs.jsx";
-import { HistoryWindow } from "./history.jsx";
+import { History, DatePicker } from "./history.jsx";
 
 //*MIGUEL:
 //TODO: Fazer um calendário para selecionar os dias na tab do histórico
@@ -49,8 +50,11 @@ function App() {
 
 			{activeTab === "history" && (
 				<div className="tab" id="historyTab">
-					<HistoryWindow/>
-					<h1>Isto é a página do histórico de registos</h1>
+					<DatePicker
+						radioSelection={filter}
+						setRadioSelection={setFilter}
+					/>
+					<History />
 				</div>
 			)}
 

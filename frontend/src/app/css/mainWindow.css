@@ -15,8 +15,6 @@
 	grid-template-columns: 1fr 1fr;
 	margin: auto 0 auto 0;
 	padding: 10px;
-	flex-grow: 1;
-	overflow-y: hidden;
 }
 
 #mainWindow .resultWindow {

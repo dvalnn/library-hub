@@ -13,3 +13,7 @@ export function DeleteRecord(arg1) {
 export function SearchAgent(arg1, arg2) {
   return window['go']['app']['App']['SearchAgent'](arg1, arg2);
 }
+
+export function SearchRecordsByDay(arg1, arg2) {
+  return window['go']['app']['App']['SearchRecordsByDay'](arg1, arg2);
+}

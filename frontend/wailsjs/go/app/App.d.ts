@@ -7,3 +7,5 @@ export function CreateRecord(arg1:app.Record):Promise<app.Record>;
 export function DeleteRecord(arg1:app.Record):Promise<void>;
 
 export function SearchAgent(arg1:string,arg2:app.AgentKind):Promise<Array<app.Agent>>;
+
+export function SearchRecordsByDay(arg1:string,arg2:app.AgentKind):Promise<Array<app.Record>>;
