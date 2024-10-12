@@ -1,5 +1,5 @@
 export default function Tabs({ activeTab, setActiveTab }) {
-	const handleTabClick = (tab) => {
+	const handleTabChange = (tab) => {
 		setActiveTab(tab);
 	};
 
@@ -9,8 +9,8 @@ export default function Tabs({ activeTab, setActiveTab }) {
 				type="radio"
 				id="records"
 				className="tabRadio"
-				onClick={() => handleTabClick("records")}
 				checked={activeTab === "records"}
+				onChange={() => handleTabChange("records")}
 			/>
 			<label className="tabLabel" htmlFor="records" id="recordsLabel">
 				Registos
@@ -20,8 +20,8 @@ export default function Tabs({ activeTab, setActiveTab }) {
 				type="radio"
 				id="history"
 				className="tabRadio"
-				onClick={() => handleTabClick("history")}
 				checked={activeTab === "history"}
+				onChange={() => handleTabChange("history")}
 			/>
 			<label className="tabLabel" htmlFor="history" id="historyLabel">
 				Histórico
@@ -31,8 +31,8 @@ export default function Tabs({ activeTab, setActiveTab }) {
 				type="radio"
 				id="requests"
 				className="tabRadio"
-				onClick={() => handleTabClick("requests")}
 				checked={activeTab === "requests"}
+				onChange={() => handleTabChange("requests")}
 			/>
 			<label className="tabLabel" htmlFor="requests" id="requestsLabel">
 				Requisições
@@ -42,8 +42,8 @@ export default function Tabs({ activeTab, setActiveTab }) {
 				type="radio"
 				id="stats"
 				className="tabRadio"
-				onClick={() => handleTabClick("stats")}
 				checked={activeTab === "stats"}
+				onChange={() => handleTabChange("stats")}
 			/>
 			<label className="tabLabel" htmlFor="stats" id="statsLabel">
 				Estatística

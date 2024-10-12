@@ -1,8 +1,7 @@
 @import url(./fontsColor.css);
 
-/* General Container Styling */
 .tab-container {
-	display: inline-flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 	border-radius: 7px;
@@ -10,22 +9,20 @@
 	background-color: var(--light-gray);
 	width: 50%;
 	min-width: 700px;
-	margin: 10px 0 0 10px;
+	margin: 5px 0 5px 10px;
 	position: relative;
-	overflow-x: hidden;
 }
 
-/* Hide Radio Inputs */
 .tabRadio {
 	display: none;
 }
 
-/* Tab Label Styling */
 .tabLabel {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-grow: 1;
+	flex-basis: 0;
 	padding: 10px 3vw;
 	font-size: calc(1rem + 0.4vw);
 	font-family: Poppins-Medium;
@@ -40,8 +37,7 @@
 	white-space: nowrap;
 }
 
-/* Active Tab Styling */
-.tabRadio:checked + .tabLabel {
+.tabRadio:checked+.tabLabel {
 	background-color: var(--white);
 	color: var(--dark-blue);
 	border-bottom: 2px solid var(--light-blue);
@@ -50,18 +46,17 @@
 	opacity: 100%;
 }
 
-/* Hover Effect */
 .tabLabel:hover {
 	background-color: var(--gray);
 	opacity: 90%;
 }
 
-#recordsLabel {
+#records {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
 
-#statsLabel {
+#stats {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }

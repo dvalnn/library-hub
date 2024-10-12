@@ -7,6 +7,8 @@ import "./css/loader.css";
 import "./css/tabs.css";
 import "./css/history.css"
 
+import inDev from "../assets/images/in-development.png";
+
 import { useState } from "react";
 
 import { SearchBar } from "./searchBar.jsx";
@@ -59,14 +61,16 @@ function App() {
 			)}
 
 			{activeTab === "requests" && (
-				<div className="tab" id="requestTab">
-					<h1>Isto é a página das Requisições</h1>
+				<div className="tab" id="requestsTab">
+					<img src={inDev} alt="secção em desenvolvimento" />
+					<h1>Secção em desenvolvimento</h1>
 				</div>
 			)}
 
 			{activeTab === "stats" && (
 				<div className="tab" id="statsTab">
-					<h1>Isto é a página da Estatística</h1>
+					<img src={inDev} alt="secção em desenvolvimento" />
+					<h1>Secção em desenvolvimento</h1>
 				</div>
 			)}
 		</div>
