@@ -2,21 +2,15 @@ import { useEffect, useState } from "react";
 
 import SubmitButton from "../Common/SubmitButton.jsx";
 import Notifications from "../Common/Notifications.jsx";
-import useNotications from "../Common/useNotifications.js";
 
 import AgentList from "./AgentList.jsx";
 import RecordsList from "./RecordsList.jsx";
 
-import useRecordsState from "./useRecordsState.js";
 import useSelectionState from "./useSelectionState.js";
 
-function MainWindow({ name, filter }) {
-	const [showSubmit, setShowSubmit] = useState(false);
-	const [showDelete, setShowDelete] = useState(false);
-	const [search, setSearch] = useState(false);
-
-	const [eventText, setSuccess, setWarning, setError] = useNotications();
-	const eventSetters = [setSuccess, setWarning, setError];
+function MainWindow({ name, filter, recordsState, notifState }) {
+	const [notifText, setSuccess, setWarning, setError] = notifState;
+	const notifSetters = [setSuccess, setWarning, setError];
 
 	const [
 		records,
@@ -25,7 +19,11 @@ function MainWindow({ name, filter }) {
 		removeMark,
 		checkMark,
 		deleteMarked,
-	] = useRecordsState(eventSetters);
+	] = recordsState;
+
+	const [showSubmit, setShowSubmit] = useState(false);
+	const [showDelete, setShowDelete] = useState(false);
+	const [search, setSearch] = useState(false);
 
 	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
 		useSelectionState();
@@ -53,7 +51,7 @@ function MainWindow({ name, filter }) {
 					setShowSubmit={setShowSubmit}
 					selectionFuncs={[upsertFunc, removeFunc, checkFunc]}
 					searchArgs={{ name, filter, search, setSearch }}
-					eventSetters={eventSetters}
+					notifSetters={notifSetters}
 				/>
 				{showSubmit !== false && (
 					<SubmitButton
@@ -63,7 +61,7 @@ function MainWindow({ name, filter }) {
 					/>
 				)}
 
-				<Notifications eventText={eventText} eventSetters={eventSetters} />
+				<Notifications text={notifText} setters={notifSetters} />
 			</div>
 
 			<div id="rightWindow" className="resultWindow">

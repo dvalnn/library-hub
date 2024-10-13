@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-function Notifications({ eventText, eventSetters }) {
-	const [setSuccess, setWarning, setError] = eventSetters;
+function Notifications({ text, setters }) {
+	const [setSuccess, setWarning, setError] = setters;
 	const NOTIFICATION_TIME_MS = 2250;
+
 	const alertTypes = {
 		success: { setter: setSuccess },
 		error: { setter: setError },
@@ -44,24 +45,24 @@ function Notifications({ eventText, eventSetters }) {
 	// Effect to trigger alerts for each type independently
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		if (eventText.success) {
-			successAlerts.addAlert(eventText.success);
+		if (text.success) {
+			successAlerts.addAlert(text.success);
 		}
-	}, [eventText.success]); // Re-run when eventText changes
+	}, [text.success]); // Re-run when text changes
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		if (eventText.error) {
-			errorAlerts.addAlert(eventText.error);
+		if (text.error) {
+			errorAlerts.addAlert(text.error);
 		}
-	}, [eventText.error]); // Re-run when eventText changes
+	}, [text.error]); // Re-run when text changes
 
 	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	useEffect(() => {
-		if (eventText.warning) {
-			warningAlerts.addAlert(eventText.warning);
+		if (text.warning) {
+			warningAlerts.addAlert(text.warning);
 		}
-	}, [eventText.warning]); // Re-run when eventText changes
+	}, [text.warning]); // Re-run when text changes
 
 	const Event = ({ eventId }) => {
 		switch (eventId) {

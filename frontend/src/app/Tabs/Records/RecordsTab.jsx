@@ -3,7 +3,8 @@ import { useState } from "react";
 import SearchBar from "./SearchBar.jsx";
 import MainWindow from "./MainWindow.jsx";
 
-function RecordsTab() {
+
+function RecordsTab({ recordsState, notifState}) {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
 
@@ -14,7 +15,12 @@ function RecordsTab() {
 				radioSelection={filter}
 				setRadioSelection={setFilter}
 			/>
-			<MainWindow name={name} filter={filter} />
+			<MainWindow
+				name={name}
+				filter={filter}
+				recordsState={recordsState}
+				notifState={notifState}
+			/>
 		</div>
 	);
 }

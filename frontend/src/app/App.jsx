@@ -6,7 +6,7 @@ import "./css/alerts.css";
 import "./css/loader.css";
 import "./css/tabs.css";
 import "./css/calendar.css";
-import "./css/history.css" 
+import "./css/history.css";
 
 import { useState } from "react";
 
@@ -15,6 +15,9 @@ import RecordsTab from "./Tabs/Records/RecordsTab.jsx";
 import RequestsTab from "./Tabs/Requests/RequestsTab.jsx";
 import StatisticsTab from "./Tabs/Statistics/StatisticsTab.jsx";
 import TabsRadioSelector from "./Tabs/TabsRadioSelector.jsx";
+
+import useRecordsState from "./Tabs/Common/useRecordsState.js";
+import useNotications from "./Tabs/Common/useNotifications.js";
 
 //*MIGUEL:
 //TODO: Loader
@@ -30,10 +33,33 @@ import TabsRadioSelector from "./Tabs/TabsRadioSelector.jsx";
 //* Main HTML Body
 function App() {
 	const [activeTab, setActiveTab] = useState("records");
+
+	const [text, setSuccess, setWarning, setError] = useNotications();
+	const [
+		records,
+		createRecords,
+		markRecord,
+		removeMark,
+		checkMark,
+		deleteMarked,
+	] = useRecordsState([setSuccess, setWarning, setError]);
+
 	return (
 		<div id="App">
 			<TabsRadioSelector activeTab={activeTab} setActiveTab={setActiveTab} />
-			{activeTab === "records" && <RecordsTab />}
+			{activeTab === "records" && (
+				<RecordsTab
+					recordsState={[
+						records,
+						createRecords,
+						markRecord,
+						removeMark,
+						checkMark,
+						deleteMarked,
+					]}
+					notifState={[text, setSuccess, setWarning, setError]}
+				/>
+			)}
 			{activeTab === "history" && <HistoryTab />}
 			{activeTab === "requests" && <RequestsTab />}
 			{activeTab === "stats" && <StatisticsTab />}

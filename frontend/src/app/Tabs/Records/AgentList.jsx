@@ -10,14 +10,14 @@ function AgentList({
 	searchArgs,
 	setShowSubmit,
 	selectionFuncs,
-	eventSetters,
+	notifSetters,
 }) {
 	const [elements, setElements] = useState([]);
 
 	// Use useEffect to handle search logic and prevent updates during render
 	useEffect(() => {
 		const { name, filter, search, setSearch } = searchArgs;
-		const [success, warning, error] = eventSetters;
+		const [success, warning, error] = notifSetters;
 
 		// Only perform the search if the search flag is true
 		if (!search) return;
@@ -39,7 +39,7 @@ function AgentList({
 				console.error(`error: ${err}`);
 				error(err); // Show error message
 			});
-	}, [searchArgs, eventSetters]);
+	}, [searchArgs, notifSetters]);
 
 	// Use another useEffect to control setShowSubmit based on elements length
 	useEffect(() => {
