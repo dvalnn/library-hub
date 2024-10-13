@@ -1,6 +1,9 @@
-import { SearchAgent } from "./../../../../wailsjs/go/app/App.js";
+import {
+	SearchAgent,
+	SearchByClass,
+} from "./../../../../wailsjs/go/app/App.js";
 
-import AgentEnum from "../Common/agentEnum.js"
+import AgentEnum from "../Common/agentEnum.js";
 
 async function performAgentSearch(query, filterStr) {
 	// Return early if the search query is empty
@@ -8,12 +11,14 @@ async function performAgentSearch(query, filterStr) {
 		return [];
 	}
 
-	console.log(`Performing search for: ${query} (filter = ${filterStr})`);
-	const filter = AgentEnum.getValue(filterStr)
+	const filter = AgentEnum.getValue(filterStr);
+	const searchFunc = /^\d/.test(query.trim())
+		? () => SearchByClass(query.toUpperCase())
+		: () => SearchAgent(query, filter);
+
 	try {
 		// Wait for the search results to resolve
-		const matches = await SearchAgent(query, filter);
-		console.log(`found ${matches.length} matches`);
+		const matches = await searchFunc();
 		return matches; // Return the matches if needed elsewhere
 	} catch (error) {
 		console.error("Error performing agent search:", error);
