@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-import Record from "./record.jsx";
-import noDoc from "../assets/images/noDoc.png";
+import Record from "./Record.jsx";
+import noDoc from "../../../assets/images/noDoc.png";
 
-function RecordList({ records, recordHandlers, setShowDelete }) {
+function RecordsList({ records, recordHandlers, setShowDelete }) {
 	useEffect(() => {
 		// Only update setShowDelete when the records change
 		if (records.length === 0) {
@@ -17,7 +17,7 @@ function RecordList({ records, recordHandlers, setShowDelete }) {
 		return (
 			<ul className="noResults">
 				<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
-				<li>Sem registos recentes</li>
+				<h2>Sem registos recentes</h2>
 			</ul>
 		);
 	}
@@ -37,4 +37,4 @@ function RecordList({ records, recordHandlers, setShowDelete }) {
 	);
 }
 
-export default RecordList;
+export default RecordsList;

@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { ActivityEnum } from "./js/ActivityEnum";
-import { AgentEnum } from "./js/AgentEnum";
 
-function ActivitySelect({ agent, setActivity }) {
+import ActivityEnum from "../Common/activityEnum.js";
+import AgentEnum from "../Common/agentEnum.js";
+
+function ActivityDropDown({ agent, setActivity }) {
 	const enumObject = (enumMember) => {
 		return {
 			label: ActivityEnum.getLabel(enumMember),
@@ -65,4 +66,4 @@ function ActivitySelect({ agent, setActivity }) {
 	);
 }
 
-export default ActivitySelect;
+export default ActivityDropDown;

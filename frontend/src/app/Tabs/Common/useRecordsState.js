@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CreateRecord, DeleteRecord } from "../../../wailsjs/go/app/App.js";
+import { CreateRecord, DeleteRecord } from "../../../../wailsjs/go/app/App.js";
 
 function useRecordsState(eventSetters) {
 	const [records, setRecords] = useState([]);

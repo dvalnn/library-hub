@@ -1,22 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import SubmitButton from "../Common/SubmitButton.jsx";
+import AgentList from "./AgentList.jsx";
+import RecordsList from "./RecordsList.jsx";
+import useSelectionState from "./useSelectionState.js";
 
-import AgentList from "./agentList.jsx";
-import AlertEvents from "./alert.jsx";
-import { SubmitBtn } from "./buttons.jsx";
-import RecordList from "./recordList.jsx";
-
-import useEvents from "./js/useEvents.js";
-import useRecordsState from "./js/useRecordsState.js";
-import useSelectionState from "./js/useSelectionState.js";
-
-function MainWindow({ name, filter}) {
-	const [showSubmit, setShowSubmit] = useState(false);
-	const [showDelete, setShowDelete] = useState(false);
-	const [search, setSearch] = useState(false);
-
-	const [eventText, setSuccess, setWarning, setError] = useEvents();
-	const eventSetters = [setSuccess, setWarning, setError];
-
+function MainWindow({ name, filter, recordsState, notifSetters }) {
+	// Record state destructuring
 	const [
 		records,
 		createRecords,
@@ -24,57 +13,63 @@ function MainWindow({ name, filter}) {
 		removeMark,
 		checkMark,
 		deleteMarked,
-	] = useRecordsState(eventSetters);
+	] = recordsState;
 
+	// Selection state from custom hook
 	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
 		useSelectionState();
 
-	const createRecordsWrapper = () => {
+	// Local UI state
+	const [showSubmit, setShowSubmit] = useState(false);
+	const [showDelete, setShowDelete] = useState(false);
+	const [search, setSearch] = useState(false);
+
+	// Handle record creation and reset selection
+	const createRecordsWrapper = useCallback(() => {
 		createRecords(selection);
 		selectionReset();
-	};
+	}, [createRecords, selection, selectionReset]);
 
+	// Handle changes in name or filter props
 	const [last, setLast] = useState({ name, filter });
-
 	useEffect(() => {
 		if (name !== last.name || filter !== last.filter) {
 			setLast({ name, filter });
 			setSearch(true);
 			selectionReset();
-			console.log("Reset!");
 		}
 	}, [name, filter, last, selectionReset]);
 
 	return (
 		<div id="mainWindow">
+			{/* Left side: Agent search and submission */}
 			<div id="leftWindow" className="resultWindow">
 				<h1 className="title">Resultados da Pesquisa</h1>
 				<AgentList
 					setShowSubmit={setShowSubmit}
 					selectionFuncs={[upsertFunc, removeFunc, checkFunc]}
 					searchArgs={{ name, filter, search, setSearch }}
-					eventSetters={eventSetters}
+					notifSetters={notifSetters}
 				/>
-				{showSubmit !== false && (
-					<SubmitBtn
+				{showSubmit && (
+					<SubmitButton
 						btnId="RegBtn"
 						btnText="Registar"
 						handleClick={createRecordsWrapper}
 					/>
 				)}
-
-				<AlertEvents eventText={eventText} eventSetters={eventSetters} />
 			</div>
 
+			{/* Right side: Record list and deletion */}
 			<div id="rightWindow" className="resultWindow">
 				<h1 className="title">Registos</h1>
-				<RecordList
+				<RecordsList
 					records={records}
 					recordHandlers={{ markRecord, removeMark, checkMark }}
 					setShowDelete={setShowDelete}
 				/>
-				{showDelete !== false && (
-					<SubmitBtn
+				{showDelete && (
+					<SubmitButton
 						btnId="DelBtn"
 						btnText="Eliminar"
 						handleClick={deleteMarked}

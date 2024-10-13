@@ -142,7 +142,6 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 		return nil, nil
 	}
 
-	log.Printf("Searching for %s %s", name, kind)
 	if kind == 0 {
 		matches, err := agentNameSearch(a.db, name)
 		if err != nil {
@@ -155,7 +154,7 @@ func (a *App) SearchAgent(name string, kind AgentKind) ([]*Agent, error) {
 	if err != nil {
 		return nil, err
 	}
-	log.Printf("%d matches found: %s\n\n", len(matches), matches)
+
 	return matches, nil
 }
 
@@ -174,7 +173,27 @@ func (a *App) CreateRecord(r *Record) (*Record, error) {
 	return r, nil
 }
 
-// TODO: add record verification (maybe accept an ID, search and then delete)
 func (a *App) DeleteRecord(r *Record) error {
 	return r.delete(a.db)
+}
+
+func (a *App) SearchRecordsByDay(day string, kind AgentKind) ([]*Record, error) {
+	if day == "" {
+		return nil, nil
+	}
+
+	if kind == 0 {
+		matches, err := recordSearchByDay(a.db, day)
+		if err != nil {
+			return nil, err
+		}
+		return matches, nil
+	}
+
+	matches, err := recordSearchByDayFiltered(a.db, day, kind)
+	if err != nil {
+		return nil, err
+	}
+
+	return matches, nil
 }

@@ -1,5 +1,4 @@
-// ActivityEnum.js
-export const ActivityEnum = {
+const ActivityEnum = {
 	Computers: 1,
 	IndividualWork: 2,
 	GroupWork: 3,
@@ -22,4 +21,21 @@ export const ActivityEnum = {
 
 		return labels[value] || "Unknown Activity";
 	},
+
+	// Helper function to get value based on label
+	getValue(label) {
+		const values = {
+			Computers: this.Computers,
+			IndividualWork: this.IndividualWork,
+			GroupWork: this.GroupWork,
+			Recreation: this.Recreation,
+			ExpulsionFromClass: this.ExpulsionFromClass,
+			BookRequisition: this.BookRequisition,
+			TestTaking: this.TestTaking,
+		};
+
+		return values[label] || null; // return null if label is not found
+	},
 };
+
+export default ActivityEnum;

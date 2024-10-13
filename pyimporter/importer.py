@@ -4,6 +4,10 @@ import random
 
 from datetime import datetime, timedelta
 
+STUDENT = 1
+TEACHER = 2
+ASSISTANT = 3
+
 
 def load_csv(path: str):
     return pl.read_csv(path).drop_nulls()
@@ -17,8 +21,18 @@ def preprocess_students(sdf: pl.DataFrame) -> pl.DataFrame:
         pl.lit(current_time).alias("created_at"),
         pl.lit(current_time).alias("updated_at"),
         pl.lit(None).alias("deleted_at"),
-        pl.lit(1).alias("agent_kind"),
+        pl.lit(STUDENT).alias("agent_kind"),
         pl.col("class").str.replace("º", ""),
+    )
+
+
+def preprocess_staff(sdf: pl.DataFrame, nameColName: str, agent_kind) -> pl.DataFrame:
+    current_time = datetime.now().isoformat()
+    return sdf.rename({nameColName: "name"}).with_columns(
+        pl.lit(current_time).alias("created_at"),
+        pl.lit(current_time).alias("updated_at"),
+        pl.lit(None).alias("deleted_at"),
+        pl.lit(agent_kind).alias("agent_kind"),
     )
 
 
@@ -88,9 +102,23 @@ def preprocess_records(rdf: pl.DataFrame) -> pl.DataFrame:
 
 if __name__ == "__main__":
     students = preprocess_students(load_csv("./data/alunos.csv"))
-    print(students)
+    # print(students)
+
+    teachers = preprocess_staff(
+        load_csv("./data/professores.csv"), "Nome dos professores", TEACHER
+    )
+    # print(teachers)
+
+    assistants = preprocess_staff(
+        load_csv("./data/assistentes.csv"), "Nome dos assistentes", ASSISTANT
+    )
+    # print(assistants)
+
+    staff = pl.concat([teachers, assistants])
+    # print(staff)
+
     records = preprocess_records(load_csv("./data/registos.csv"))
-    print(records)
+    # print(records)
 
     con = sql.connect(
         "../libraryHub-24-25.db", detect_types=sql.PARSE_DECLTYPES | sql.PARSE_COLNAMES
@@ -111,6 +139,20 @@ if __name__ == "__main__":
         students.iter_rows(),
     )
     print(res.rowcount)
+    
+    res = cur.executemany(
+        """
+        INSERT INTO agents(
+            name,
+            created_at,
+            updated_at,
+            deleted_at,
+            agent_kind
+        ) VALUES(?, ?, ?, ?, ?)
+        """,
+        staff.iter_rows(),
+    )
+    print(res.rowcount)
 
     res = cur.executemany(
         """
@@ -125,5 +167,5 @@ if __name__ == "__main__":
         records.iter_rows(),
     )
     print(res.rowcount)
-
+    
     con.commit()
