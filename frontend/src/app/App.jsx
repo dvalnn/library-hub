@@ -27,9 +27,6 @@ import useRecordsState from "./Tabs/Common/useRecordsState.js";
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
-//TODO: Identificar se a hora pertence ao turno da manhã ou de tarde
-//TODO: Identificar qual o dia da semana dependendo da data
-//TODO: Substitui o atual hora e data nos resgistos adicionados (o que tá escrito) por turno (manhã tarde) e dia da semana
 //TODO: Loader
 
 //* Main HTML Body

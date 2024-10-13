@@ -25,7 +25,7 @@ function HistoryView({ date, filter }) {
 	const NoResultsMessage = () => (
 		<ul className="noResults">
 			<img id="Doc" src={noDoc} alt="No records found" />
-			<h2>Sem registos recentes</h2>
+			<h2>Sem registos</h2>
 		</ul>
 	);
 
