@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar.jsx";
 import MainWindow from "./MainWindow.jsx";
 
 
-function RecordsTab({ recordsState, notifState}) {
+function RecordsTab({ recordsState, notifSetters}) {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
 
@@ -19,7 +19,7 @@ function RecordsTab({ recordsState, notifState}) {
 				name={name}
 				filter={filter}
 				recordsState={recordsState}
-				notifState={notifState}
+				notifSetters={notifSetters}
 			/>
 		</div>
 	);

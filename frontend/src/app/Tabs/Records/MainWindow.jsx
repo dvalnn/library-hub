@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-
+import { useCallback, useEffect, useState } from "react";
 import SubmitButton from "../Common/SubmitButton.jsx";
-import Notifications from "../Common/Notifications.jsx";
-
 import AgentList from "./AgentList.jsx";
 import RecordsList from "./RecordsList.jsx";
-
 import useSelectionState from "./useSelectionState.js";
 
-function MainWindow({ name, filter, recordsState, notifState }) {
-	const [notifText, setSuccess, setWarning, setError] = notifState;
-	const notifSetters = [setSuccess, setWarning, setError];
-
+function MainWindow({ name, filter, recordsState, notifSetters }) {
+	// Record state destructuring
 	const [
 		records,
 		createRecords,
@@ -21,20 +15,23 @@ function MainWindow({ name, filter, recordsState, notifState }) {
 		deleteMarked,
 	] = recordsState;
 
+	// Selection state from custom hook
+	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
+		useSelectionState();
+
+	// Local UI state
 	const [showSubmit, setShowSubmit] = useState(false);
 	const [showDelete, setShowDelete] = useState(false);
 	const [search, setSearch] = useState(false);
 
-	const [selection, upsertFunc, removeFunc, checkFunc, selectionReset] =
-		useSelectionState();
-
-	const createRecordsWrapper = () => {
+	// Handle record creation and reset selection
+	const createRecordsWrapper = useCallback(() => {
 		createRecords(selection);
 		selectionReset();
-	};
+	}, [createRecords, selection, selectionReset]);
 
+	// Handle changes in name or filter props
 	const [last, setLast] = useState({ name, filter });
-
 	useEffect(() => {
 		if (name !== last.name || filter !== last.filter) {
 			setLast({ name, filter });
@@ -45,6 +42,7 @@ function MainWindow({ name, filter, recordsState, notifState }) {
 
 	return (
 		<div id="mainWindow">
+			{/* Left side: Agent search and submission */}
 			<div id="leftWindow" className="resultWindow">
 				<h1 className="title">Resultados da Pesquisa</h1>
 				<AgentList
@@ -53,17 +51,16 @@ function MainWindow({ name, filter, recordsState, notifState }) {
 					searchArgs={{ name, filter, search, setSearch }}
 					notifSetters={notifSetters}
 				/>
-				{showSubmit !== false && (
+				{showSubmit && (
 					<SubmitButton
 						btnId="RegBtn"
 						btnText="Registar"
 						handleClick={createRecordsWrapper}
 					/>
 				)}
-
-				<Notifications text={notifText} setters={notifSetters} />
 			</div>
 
+			{/* Right side: Record list and deletion */}
 			<div id="rightWindow" className="resultWindow">
 				<h1 className="title">Registos</h1>
 				<RecordsList
@@ -71,7 +68,7 @@ function MainWindow({ name, filter, recordsState, notifState }) {
 					recordHandlers={{ markRecord, removeMark, checkMark }}
 					setShowDelete={setShowDelete}
 				/>
-				{showDelete !== false && (
+				{showDelete && (
 					<SubmitButton
 						btnId="DelBtn"
 						btnText="Eliminar"

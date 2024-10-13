@@ -16,10 +16,12 @@ import RequestsTab from "./Tabs/Requests/RequestsTab.jsx";
 import StatisticsTab from "./Tabs/Statistics/StatisticsTab.jsx";
 import TabsRadioSelector from "./Tabs/TabsRadioSelector.jsx";
 
-import useRecordsState from "./Tabs/Common/useRecordsState.js";
+import Notifications from "./Tabs/Common/Notifications.jsx";
 import useNotications from "./Tabs/Common/useNotifications.js";
+import useRecordsState from "./Tabs/Common/useRecordsState.js";
 
 //*MIGUEL:
+//TODO: Ajeitar o CSS das notificações para elas aparecerem a partir da App em vez de só existirem na TAB de records
 //TODO: Loader
 //TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
@@ -35,6 +37,7 @@ function App() {
 	const [activeTab, setActiveTab] = useState("records");
 
 	const [text, setSuccess, setWarning, setError] = useNotications();
+	const notificationSetters = [setSuccess, setWarning, setError];
 	const [
 		records,
 		createRecords,
@@ -42,7 +45,7 @@ function App() {
 		removeMark,
 		checkMark,
 		deleteMarked,
-	] = useRecordsState([setSuccess, setWarning, setError]);
+	] = useRecordsState(notificationSetters);
 
 	return (
 		<div id="App">
@@ -57,12 +60,13 @@ function App() {
 						checkMark,
 						deleteMarked,
 					]}
-					notifState={[text, setSuccess, setWarning, setError]}
+					notifSetters={notificationSetters}
 				/>
 			)}
 			{activeTab === "history" && <HistoryTab />}
 			{activeTab === "requests" && <RequestsTab />}
 			{activeTab === "stats" && <StatisticsTab />}
+			{/*<Notifications text={text} setters={notificationSetters} />*/}
 		</div>
 	);
 }

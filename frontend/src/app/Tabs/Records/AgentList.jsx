@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-
 import notfound from "../../../assets/images/not-found.png";
-
-import performAgentSearch from "./performAgentSearch.js";
-
 import Agent from "./Agent.jsx";
+import performAgentSearch from "./performAgentSearch.js";
 
 function AgentList({
 	searchArgs,
