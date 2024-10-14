@@ -54,7 +54,8 @@ func (r *Record) delete(db *gorm.DB) error {
 	return nil
 }
 
-const _RECORD_MAX_SEARCH_HITS = 200
+//TODO: paginate the search and add a lower limit to the return
+const _RECORD_MAX_SEARCH_HITS = 300
 
 func recordSearchByDay(db *gorm.DB, day string) ([]*Record, error) {
 	var records []*Record
@@ -70,8 +71,6 @@ func recordSearchByDay(db *gorm.DB, day string) ([]*Record, error) {
 	if len(records) == 0 {
 		return nil, fmt.Errorf("no records for day %s: %w", day, gorm.ErrRecordNotFound)
 	}
-
-	fmt.Printf("records found: %+v\n", records[0])
 
 	return records, nil
 }
@@ -91,8 +90,6 @@ func recordSearchByDayFiltered(db *gorm.DB, day string, filter AgentKind) ([]*Re
 	if len(records) == 0 {
 		return nil, fmt.Errorf("no %s records for day %s: %w", filter, day, gorm.ErrRecordNotFound)
 	}
-
-	fmt.Printf("filtered records found: %+v\n", records)
 
 	return records, nil
 }
