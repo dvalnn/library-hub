@@ -59,7 +59,7 @@ const _RECORD_MAX_SEARCH_HITS = 300
 
 func recordSearchByDay(db *gorm.DB, day string) ([]*Record, error) {
 	var records []*Record
-	const query = "date(records.updated_at) = ? AND records.deleted_at IS NULL"
+	const query = "date(records.created_at) = ? AND records.deleted_at IS NULL"
 	err := db.Preload("Agent").Where(query, day).Find(&records).Limit(_RECORD_MAX_SEARCH_HITS).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -77,7 +77,7 @@ func recordSearchByDay(db *gorm.DB, day string) ([]*Record, error) {
 
 func recordSearchByDayFiltered(db *gorm.DB, day string, filter AgentKind) ([]*Record, error) {
 	var records []*Record
-	const query = "date(records.updated_at) = ? AND agents.agent_kind = ? AND records.deleted_at IS NULL"
+	const query = "date(records.created_at) = ? AND agents.agent_kind = ? AND records.deleted_at IS NULL"
 	const join = "JOIN agents ON records.agent_id = agents.id"
 	err := db.Preload("Agent").Where(query, day, filter).Joins(join).Find(&records).Limit(_RECORD_MAX_SEARCH_HITS).Error
 	if err != nil {
