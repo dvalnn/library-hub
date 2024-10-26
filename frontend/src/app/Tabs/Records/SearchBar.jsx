@@ -43,7 +43,7 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 				value={userInput}
 				onChange={handleInputChange}
 				onKeyUp={handleKeyPress}
-				placeholder="Pesquisar por nome"
+				placeholder="Pesquisar"
 			/>
 
 			{buttonMode === 1 && (

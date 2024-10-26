@@ -33,7 +33,7 @@ function HistoryView({ date, filter }) {
 		const time = new Date(record.UpdatedAt).toLocaleString("pt-PT");
 		return (
 			<div className="agentBox" id="record" key={record.ID}>
-				<li className="agentInfo">
+				<div className="agentInfo">
 					<div className="nameTime">
 						<h1 className="name">{record.agent.name}</h1>
 						<h2 className="time">{time}</h2>
@@ -44,7 +44,7 @@ function HistoryView({ date, filter }) {
 							{ActivityEnum.getLabel(record.activity)}
 						</h2>
 					</div>
-				</li>
+				</div>
 			</div>
 		);
 	};

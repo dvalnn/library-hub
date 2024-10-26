@@ -7,6 +7,7 @@ import "./css/loader.css";
 import "./css/tabs.css";
 import "./css/calendar.css";
 import "./css/history.css";
+import "./css/newAgent.css"
 
 import { useState } from "react";
 
@@ -20,10 +21,13 @@ import Notifications from "./Tabs/Common/Notifications.jsx";
 import useNotications from "./Tabs/Common/useNotifications.js";
 import useRecordsState from "./Tabs/Common/useRecordsState.js";
 
+import NewAgent from "./Tabs/NewAgent/NewAgent.jsx";
+
 //*MIGUEL:
+//TODO: TAB de Estatística
+//TODO: TAB de Requisições
 //TODO: Ajeitar o CSS das notificações para elas aparecerem a partir da App em vez de só existirem na TAB de records
 //TODO: Loader
-//TODO: Fades de Scroll
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
@@ -46,7 +50,12 @@ function App() {
 
 	return (
 		<div id="App">
-			<TabsRadioSelector activeTab={activeTab} setActiveTab={setActiveTab} />
+			<div className="topBar">
+				<TabsRadioSelector activeTab={activeTab} setActiveTab={setActiveTab} />
+				<NewAgent/>
+				{/*<Notifications text={text} setters={notificationSetters} />*/}
+			</div>
+
 			{activeTab === "records" && (
 				<RecordsTab
 					recordsState={[
@@ -63,7 +72,6 @@ function App() {
 			{activeTab === "history" && <HistoryTab />}
 			{activeTab === "requests" && <RequestsTab />}
 			{activeTab === "stats" && <StatisticsTab />}
-			{/*<Notifications text={text} setters={notificationSetters} />*/}
 		</div>
 	);
 }

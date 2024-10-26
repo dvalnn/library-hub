@@ -20,16 +20,7 @@
 }
 
 #leftWindow .agentBox .agentInfo .details .dropDown::before,
-.dropDown::after {
-	--size: 0.3rem;
-	position: absolute;
-	content: "";
-	right: 1rem;
-	pointer-events: none;
-}
-
-#leftWindow .agentBox .agentInfo .details .dropDown::before,
-.dropDown::after {
+#leftWindow .agentBox .agentInfo .details .dropDown::after {
 	--size: 0.3rem;
 	position: absolute;
 	content: "";

@@ -4,6 +4,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	align-self: flex-start;
 	border-radius: 7px;
 	border: 2px solid var(--medium-blue);
 	background-color: var(--light-gray);
@@ -51,12 +52,12 @@
 	opacity: 90%;
 }
 
-#records {
+#recordsLabel {
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
 }
 
-#stats {
+#statsLabel {
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 }

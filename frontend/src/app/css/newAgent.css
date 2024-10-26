@@ -1,0 +1,296 @@
+@import url(./fontsColor.css);
+
+.topBar .newAgentBox {
+    width: fit-content;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+.topBar .addAgent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+    padding: 8px;
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50%;
+    /* Make the border initially transparent */
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.topBar .addAgent svg {
+    fill: var(--medium-blue);
+    margin: 2px;
+}
+
+.topBar .addAgent::before,
+.topBar .addAgent::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+}
+
+.topBar .addAgent:hover::before {
+    border-color: var(--medium-blue);
+    clip-path: inset(0 0% 100% 0);
+    animation: left-border 0.4s forwards;
+}
+
+.topBar .addAgent:hover::after {
+    border-color: var(--medium-blue);
+    clip-path: inset(0 50% 0 0);
+    animation: right-border 0.4s forwards;
+}
+
+@keyframes left-border {
+    from {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes right-border {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+.topBar .addAgent:active {
+    transform: scale(0.95);
+}
+
+/* Overlay for the popup, including background blur */
+.popupOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    /* Blurs background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Centered popup content */
+.popupOverlay .popupContent {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    width: 600px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    gap: 3px;
+}
+
+.popupOverlay .popupContent h1 {
+    font-family: Poppins-Medium;
+    color: var(--dark-blue);
+    align-self: center;
+    margin: -7px 0 10px 0;
+}
+
+.popupOverlay .popupContent label {
+    font-family: Poppins-Regular;
+    font-size: 1.6em;
+    margin-right: 5px;
+    color: var(--dark-blue);
+}
+
+.popupOverlay .popupContent .subForms {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 5px 0;
+    width: 100%;
+}
+
+.popupOverlay .popupContent .newName {
+    display: flex;
+    align-items: center;
+    margin: 5px 0 5px 0;
+    width: 100%;
+}
+
+.popupOverlay .popupContent .newName input,
+.popupContent .subForms input {
+    border: 2px solid var(--medium-blue);
+    font-family: Poppins-LightItalic;
+    flex: 1;
+    border-radius: 5px;
+}
+
+.popupOverlay .popupContent .newName input:focus,
+.popupOverlay .popupContent .subForms input:focus {
+    font-family: Poppins-Light;
+    outline: none;
+}
+
+.popupOverlay .popupContent .jobSelect .dropDown {
+    position: relative;
+    display: inline-flex;
+}
+
+.popupOverlay .popupContent .jobSelect select {
+    font-family: Poppins-Regular;
+    font-size: 1.4em;
+    cursor: pointer;
+    appearance: none;
+    border: 2px solid var(--medium-blue);
+    color: var(--medium-black);
+    width: 210px;
+    padding: 0.3rem 1rem 0.3rem 1rem;
+    outline: none;
+}
+
+.popupOverlay .popupContent .jobSelect .dropDown::before,
+.popupOverlay .popupContent .jobSelect .dropDown::after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1rem;
+    pointer-events: none;
+}
+
+.popupOverlay .popupContent .jobSelect .dropDown:before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 50%;
+}
+
+/* Close button in the top-right corner */
+.popupOverlay .popupContent .closeButton {
+    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.popupOverlay .popupContent .closeButton:hover {
+    background: var(--medium-red);
+    border-radius: 10px;
+}
+
+.popupOverlay .popupContent .closeButton:hover>svg path {
+    fill: var(--white);
+}
+
+.popupOverlay .popupContent #create {
+    font-family: Poppins-SemiBold;
+    position: relative;
+    align-self: flex-end;
+    display: flex;
+    width: max-content;
+    padding: 8px 25px;
+    border: 2px solid;
+    border-color: transparent;
+    background-color: inherit;
+    border-radius: 100px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 2;
+    box-shadow: 0 0 0 2px var(--medium-green);
+    color: var(--dark-green);
+}
+
+.popupOverlay .popupContent #create svg {
+    position: absolute;
+    width: 17px;
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    fill: var(--dark-green);
+}
+
+.popupOverlay .popupContent #create .arr-1 {
+    right: 16px;
+}
+
+.popupOverlay .popupContent #create .arr-2 {
+    left: -25%;
+}
+
+.popupOverlay .popupContent #create .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    background-color: var(--light-green);
+}
+
+.popupOverlay .popupContent #create:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+}
+
+.popupOverlay .popupContent #create .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    font-size: 1.2rem;
+}
+
+.popupOverlay .popupContent #create:hover {
+    font-family: Poppins-Bold;
+    border-radius: 12px;
+    color: var(--forest-green);
+}
+
+.popupOverlay .popupContent #create:hover .arr-1 {
+    right: -25%;
+}
+
+.popupOverlay .popupContent #create:hover .arr-2 {
+    left: 16px;
+}
+
+.popupOverlay .popupContent #create:hover .text {
+    transform: translateX(12px);
+}
+
+.popupOverlay .popupContent #create:hover svg {
+    fill: var(--forest-green);
+}
+
+.popupOverlay .popupContent #create:active {
+    font-family: Poppins-Bold;
+    scale: 0.95;
+    box-shadow: 0 0 0 4px var(--medium-green);
+}

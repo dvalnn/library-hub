@@ -24,14 +24,14 @@ function Agent({ agent, selectionFuncs }) {
 	return (
 		<div className="agentBox" id={divID}>
 			<SelectButton isSelected={isSelected} handleClick={handleClick} />
-			<li className="agentInfo">
+			<div className="agentInfo">
 				<h1 className="name">{agent.name}</h1>
 				<AgentDetails
 					agent={agent}
 					isSelected={isSelected}
 					setActivity={actSelectFunc}
 				/>
-			</li>
+			</div>
 		</div>
 	);
 }

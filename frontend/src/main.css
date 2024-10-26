@@ -32,6 +32,15 @@ body {
 	width: 100vw;
 }
 
+.topBar{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: max-content;
+}
+
 li {
 	list-style-type: none;
 }
