@@ -1,10 +1,13 @@
-import inDev from "../../../assets/images/in-development.png";
+import { useState } from "react";
+import RequestsCalendar from "./RequestsCalendar";
+import RequestsView from "./RequestsView";
 
 function RequestsTab() {
+	const [date, setDate] = useState(new Date());
 	return (
 		<div className="tab" id="requestsTab">
-			<img src={inDev} alt="secção em desenvolvimento" />
-			<h1>Secção em desenvolvimento</h1>
+			<RequestsCalendar dateState={{ date, setDate }}/>
+			{/* <RequestsView date={date} filter={"teacher"}/> */}
 		</div>
 	);
 }

@@ -9,7 +9,7 @@ function DatePicker({ filterState, dateState }) {
 	};
 
 	return (
-		<div className="datePicker">
+		<div id="datePicker">
 			<div className="calendarBox">
 				<Calendar
 					locale="pt"

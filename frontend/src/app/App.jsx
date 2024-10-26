@@ -8,6 +8,7 @@ import "./css/tabs.css";
 import "./css/calendar.css";
 import "./css/history.css";
 import "./css/newAgent.css"
+import "./css/requests.css"
 
 import { useState } from "react";
 

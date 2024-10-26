@@ -9,7 +9,7 @@
 	padding: 10px;
 }
 
-#historyTab .datePicker {
+#datePicker {
 	display: flex;
 	flex-direction: column;
 	max-height: 100%;
@@ -21,7 +21,7 @@
 			rgba(245, 244, 239, 0) 70%);
 }
 
-#historyTab .datePicker .calendarBox {
+#datePicker .calendarBox {
 	display: inline-grid;
 	grid-template-rows: 1fr auto;
 	grid-auto-flow: row;
@@ -31,7 +31,7 @@
 	gap: 10px;
 }
 
-#historyTab .datePicker .react-calendar {
+#datePicker .react-calendar {
 	font-family: Poppins-Regular;
 	display: flex;
 	width: 65%;
@@ -45,61 +45,61 @@
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#historyTab .datePicker .react-calendar__viewContainer {
+#datePicker .react-calendar__viewContainer {
 	height: max-content;
 }
 
-#historyTab .datePicker .react-calendar__viewContainer .react-calendar__month-view__weekdays {
+#datePicker .react-calendar__viewContainer .react-calendar__month-view__weekdays {
 	font-family: Poppins-Medium;
 	color: var(--medium-black);
 	font-weight: normal;
 }
 
-#historyTab .datePicker .react-calendar button:hover {
+#datePicker .react-calendar button:hover {
 	background-color: var(--white);
 	color: var(--dark-blue);
 }
 
-#historyTab .datePicker .react-calendar__navigation button {
+#datePicker .react-calendar__navigation button {
 	color: var(--medium-black);
 }
 
-#historyTab .datePicker .react-calendar__navigation button:focus {
+#datePicker .react-calendar__navigation button:focus {
 	background-color: var(--light-gray);
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__tile {
+#datePicker .react-calendar .react-calendar__tile {
 	color: var(--medium-black);
 	border-bottom: 1px var(--medium-black) solid;
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__month-view__days__day--weekend {
+#datePicker .react-calendar .react-calendar__month-view__days__day--weekend {
 	color: var(--dark-red);
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__tile--now {
+#datePicker .react-calendar .react-calendar__tile--now {
 	color: var(--white);
 	background-color: var(--dark-green);
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+#datePicker .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
 	color: var(--brown);
 	border: none;
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__month-view__days__day--weekend:hover,
-#historyTab .datePicker .react-calendar .react-calendar__month-view__days__day--neighboringMonth:hover {
+#datePicker .react-calendar .react-calendar__month-view__days__day--weekend:hover,
+#datePicker .react-calendar .react-calendar__month-view__days__day--neighboringMonth:hover {
 	background-color: var(--light-gray);
 }
 
-#historyTab .datePicker .react-calendar .react-calendar__tile--active,
-#historyTab .datePicker .react-calendar .react-calendar__tile--hasActive,
-#historyTab .datePicker .react-calendar .react-calendar__tile:focus {
+#datePicker .react-calendar .react-calendar__tile--active,
+#datePicker .react-calendar .react-calendar__tile--hasActive,
+#datePicker .react-calendar .react-calendar__tile:focus {
 	background-color: var(--dark-blue);
 	color: var(--white);
 }
 
-#historyTab .datePicker .react-calendar button:disabled {
+#datePicker .react-calendar button:disabled {
 	color: transparent;
 	background-color: transparent;
 	pointer-events: none;

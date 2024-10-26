@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 
 import noDoc from "../../../assets/images/noDoc.png";
 
-import ActivityEnum from "../Common/activityEnum.js";
-import AgentEnum from "../Common/agentEnum.js";
+//! Adaptar este código que veio do HistoryView para esta TAB
+//! Meter um div standar para criar um registo, Nome do Prof. Sala e Horário
+//! Ver a situação de Requisição de Livros!
 
-import getHistoricalRecords from "./getHistoricalRecords.js";
-
-function HistoryView({ date, filter }) {
-	const [records, setRecords] = useState([]);
+function RequestsView({date}){
+    const [records, setRecords] = useState([]);
 
 	useEffect(() => {
 		console.log(`Selected date: ${date}, filter: ${filter}`);
@@ -19,7 +18,7 @@ function HistoryView({ date, filter }) {
 			.catch((error) => {
 				console.error("Error fetching historical records:", error);
 			});
-	}, [date, filter]);
+	}, [date]);
 
 	const NoResultsMessage = () => (
 		<ul className="noResults">
@@ -61,10 +60,10 @@ function HistoryView({ date, filter }) {
 
 	return (
 		<div className="history">
-			<h1 className="title">Histórico</h1>
+			<h1 className="title">Requisições</h1>
 			{records.length !== 0 ? <RecordsList /> : <NoResultsMessage />}
 		</div>
 	);
-}
+};
 
-export default HistoryView;
+export default RequestsView;
