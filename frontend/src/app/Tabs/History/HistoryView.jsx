@@ -22,10 +22,10 @@ function HistoryView({ date, filter }) {
 	}, [date, filter]);
 
 	const NoResultsMessage = () => (
-		<ul className="noResults">
+		<div className="noResults">
 			<img id="Doc" src={noDoc} alt="No records found" />
 			<h2>Sem registos</h2>
-		</ul>
+		</div>
 	);
 
 	const RecordItem = ({ record }) => {
@@ -51,11 +51,11 @@ function HistoryView({ date, filter }) {
 	const RecordsList = () => {
 		const sortedRecords = [...records].sort((a, b) => b.ID - a.ID);
 		return (
-			<ul className="resultsContainer">
+			<div className="resultsContainer">
 				{sortedRecords.map((record) => (
 					<RecordItem key={record.ID || record.index} record={record} />
 				))}
-			</ul>
+			</div>
 		);
 	};
 

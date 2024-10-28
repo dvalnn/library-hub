@@ -1,8 +1,7 @@
 import { useState } from "react";
-
 import AgentFilterRadio from "../Common/AgentFilterRadio.jsx";
 
-function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
+function SearchBar({ inputCallback, radioSelection, setRadioSelection, agentOptions }) {
 	const [userInput, setUserInput] = useState("");
 	const [buttonMode, setButtonMode] = useState(1);
 
@@ -33,10 +32,13 @@ function SearchBar({ inputCallback, radioSelection, setRadioSelection }) {
 
 	return (
 		<div id="searchBar">
-			<AgentFilterRadio
-				selection={radioSelection}
-				setSelection={setRadioSelection}
-			/>
+			{agentOptions && agentOptions.length > 0 && (
+				<AgentFilterRadio
+					selection={radioSelection}
+					setSelection={setRadioSelection}
+					options={agentOptions}
+				/>
+			)}
 			<input
 				type="text"
 				className="input"

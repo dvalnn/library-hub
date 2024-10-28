@@ -7,6 +7,12 @@ import MainWindow from "./MainWindow.jsx";
 function RecordsTab({ recordsState, notifSetters}) {
 	const [name, setName] = useState("");
 	const [filter, setFilter] = useState("everyone");
+	const allAgentOptions = [
+		{ labelName: "Aluno", labelState: "student" },
+		{ labelName: "Professor", labelState: "teacher" },
+		{ labelName: "Assistente", labelState: "assistant" },
+		{ labelName: "Todos", labelState: "everyone" },
+	  ];
 
 	return (
 		<div className="tab" id="recordsTab">
@@ -14,6 +20,7 @@ function RecordsTab({ recordsState, notifSetters}) {
 				inputCallback={setName}
 				radioSelection={filter}
 				setRadioSelection={setFilter}
+				agentOptions={allAgentOptions}
 			/>
 			<MainWindow
 				name={name}

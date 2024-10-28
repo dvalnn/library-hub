@@ -15,17 +15,17 @@ function RecordsList({ records, recordHandlers, setShowDelete }) {
 
 	if (records.length === 0) {
 		return (
-			<ul className="noResults">
+			<div className="noResults">
 				<img id="Doc" src={noDoc} alt="Imagem nenhum item encontrado" />
 				<h2>Sem registos recentes</h2>
-			</ul>
+			</div>
 		);
 	}
 
 	// Sort records before rendering
 	const sortedRecords = [...records].sort((a, b) => b.ID - a.ID);
 	return (
-		<ul className="resultsContainer">
+		<div className="resultsContainer">
 			{sortedRecords.map((record, index) => (
 				<Record
 					record={record}
@@ -33,7 +33,7 @@ function RecordsList({ records, recordHandlers, setShowDelete }) {
 					key={record.ID || index}
 				/>
 			))}
-		</ul>
+		</div>
 	);
 }
 

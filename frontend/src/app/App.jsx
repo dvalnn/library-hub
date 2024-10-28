@@ -9,6 +9,7 @@ import "./css/calendar.css";
 import "./css/history.css";
 import "./css/newAgent.css"
 import "./css/requests.css"
+import "./css/requestsForms.css"
 
 import { useState } from "react";
 
@@ -25,13 +26,15 @@ import useRecordsState from "./Tabs/Common/useRecordsState.js";
 import NewAgent from "./Tabs/NewAgent/NewAgent.jsx";
 
 //*MIGUEL:
-//TODO: TAB de Estatística
 //TODO: TAB de Requisições
+//TODO: TAB de Estatística
 //TODO: Ajeitar o CSS das notificações para elas aparecerem a partir da App em vez de só existirem na TAB de records
 //TODO: Loader
 //TODO: Verificar cores usadas e remover cores n utilizadas
 
 //*TIAGO:
+//TODO: Meter o NewAgent a adicionar à base de dados uma nova pessoa
+//TODO: Meter as Requisições a funcionar (isto ainda está incompleto o frontend)
 //TODO: Loader
 
 //* Main HTML Body

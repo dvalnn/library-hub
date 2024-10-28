@@ -1,0 +1,55 @@
+@import url(./fontsColor.css);
+
+/* Main overlay that centers and blurs background */
+#formsPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 1;
+}
+
+#formsPage .formsWindow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    height: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+/* Close button styles */
+#formsPage .closeButton {
+    width: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#formsPage .closeButton:hover {
+    background: var(--medium-red);
+    border-radius: 10px;
+}
+
+#formsPage .closeButton:hover>svg path {
+    fill: var(--white);
+}

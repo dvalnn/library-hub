@@ -7,8 +7,8 @@ function Popup({ onClose }) {
     const [category, setCategory] = useState("0");
 
     return (
-        <div className="popupOverlay" onClick={onClose}>
-            <div className="popupContent" onClick={(e) => e.stopPropagation()}>
+        <div className="popupOverlay">
+            <div className="popupContent">
                 <button className="closeButton" onClick={onClose}>
                     <svg viewBox="0 0 24 24" fill="none">
                         <title>fechar</title>

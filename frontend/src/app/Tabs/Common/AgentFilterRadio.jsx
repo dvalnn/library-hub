@@ -1,5 +1,5 @@
-function AgentFilterRadio({ selection, setSelection }) {
-	const LabelSelect = ({ labelName, labelState, selection, setSelection }) => (
+function AgentFilterRadio({ selection, setSelection, options }) {
+	const LabelSelect = ({ labelName, labelState }) => (
 		<label className="radio">
 			<input
 				type="radio"
@@ -12,30 +12,13 @@ function AgentFilterRadio({ selection, setSelection }) {
 
 	return (
 		<div id="user-selector">
-			<LabelSelect
-				labelName={"Aluno"}
-				labelState={"student"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Professor"}
-				labelState={"teacher"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Assistente"}
-				labelState={"assistant"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
-			<LabelSelect
-				labelName={"Todos"}
-				labelState={"everyone"}
-				selection={selection}
-				setSelection={setSelection}
-			/>
+			{options.map((option) => (
+				<LabelSelect
+					key={option.labelState}
+					labelName={option.labelName}
+					labelState={option.labelState}
+				/>
+			))}
 		</div>
 	);
 }

@@ -8,3 +8,178 @@
     margin: auto 0 auto 0;
     padding: 10px;
 }
+
+#requestsTab .requests {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    align-items: start;
+    text-align: center;
+    border-inline-start: 3px solid transparent;
+    border-block-start: 3px solid transparent;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+#requestsTab .requests::before,
+#requestsTab .requests::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#requestsTab .requests::before {
+    top: 15px;
+    left: 0;
+    border-inline-start: 3px solid;
+    border-block-start: 3px solid;
+    border-image-source: radial-gradient(circle at top left,
+            var(--medium-blue),
+            transparent 23%);
+    border-image-slice: 1;
+}
+
+#requestsTab .requests::after {
+    bottom: 0;
+    right: 0;
+    border-inline-end: 3px solid;
+    border-block-end: 3px solid;
+    border-image-source: radial-gradient(circle at bottom right,
+            var(--medium-blue),
+            transparent 23%);
+    border-image-slice: 1;
+}
+
+#requestsTab .requests .tabSwitch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#requestsTab .requests .tabSwitch .title {
+    font-family: Poppins-Regular;
+    color: var(--medium-black);
+    background-color: var(--white);
+    max-width: max-content;
+    padding-top: 12px;
+    margin: -11px 40px 0px 40px;
+    z-index: 1;
+}
+
+#requestsTab .requests .tabSwitch .switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    cursor: pointer;
+    border-style: none;
+    z-index: 1;
+}
+
+#requestsTab .requests .tabSwitch .switch svg {
+    width: 1em;
+    fill: var(--medium-black);
+}
+
+#requestsTab .requests .tabSwitch .switch:hover > svg {
+    transform: scale(1.2);
+    fill: var(--medium-blue);
+}
+
+#requestsTab .requests .newRequest{
+    height: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--sand);
+    border-radius: 1em;
+    padding: 5px;
+    margin: 5px 8px 5px 8px;
+}
+
+#requestsTab .requests .newRequest .btnTitle{
+    margin: auto;
+    color: var(--brown);
+    font-family: Poppins-Regular;
+    font-size: 2.3em;
+}
+
+#requestsTab .requests .newRequest .newBtn {
+	--plus_sideLength: 5rem;
+	--plus_topRightTriangleSideLength: 1.3rem;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: var(--plus_sideLength);
+	height: var(--plus_sideLength);
+	overflow: hidden;
+	transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+    border: 1px solid var(--sand);
+    background-color: var(--dark-green);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 3px;
+}
+
+#requestsTab .requests .newRequest .newBtn::before {
+	position: absolute;
+	content: "";
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	border-width: 0 var(--plus_topRightTriangleSideLength)
+		var(--plus_topRightTriangleSideLength) 0;
+	border-style: solid;
+	border-color: transparent var(--white) transparent transparent;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.2s;
+}
+
+#requestsTab .requests .newRequest .newBtn:hover {
+	cursor: pointer;
+	transform: scale(1.05);
+    border: 2px solid var(--dark-green);
+    background-color: var(--light-green);
+}
+
+#requestsTab .requests .newRequest .newBtn:hover::before {
+	--plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+    background-color: var(--light-green);
+}
+
+#requestsTab .requests .newRequest .newBtn:focus-visible::before {
+	--plus_topRightTriangleSideLength: calc(var(--plus_sideLength) * 2);
+    background-color: var(--light-green);
+}
+
+#requestsTab .requests .newRequest .newBtn > .selectIcon {
+	width: calc(var(--plus_sideLength) * 0.7);
+	height: calc(var(--plus_sideLength) * 0.7);
+	z-index: 1;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.2s;
+	fill: var(--light-gray);
+}
+
+#requestsTab .requests .newRequest .newBtn:hover > .selectIcon {
+	transform: rotate(180deg);
+    fill: var(--medium-green);
+}
+
+#requestsTab .requests .newRequest .newBtn:focus-visible > .selectIcon {
+	transform: rotate(180deg);
+    fill: var(--medium-green);
+}
+
+
+
+
+
+
+

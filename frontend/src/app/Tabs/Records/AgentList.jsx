@@ -38,29 +38,22 @@ function AgentList({
 			});
 	}, [searchArgs, notifSetters]);
 
-	// Use another useEffect to control setShowSubmit based on elements length
 	useEffect(() => {
-		// Toggle the submit button visibility based on whether there are results
-		if (elements.length === 0) {
-			setShowSubmit(false);
-		} else {
-			setShowSubmit(true);
-		}
+		setShowSubmit(elements.length > 0); // Simplified logic
 	}, [elements, setShowSubmit]);
-
 	// Render no results if elements are empty
 	if (!elements.length) {
 		return (
-			<ul className="noResults">
+			<div className="noResults">
 				<img src={notfound} alt="Imagem nenhum item encontrado" />
 				<h2>Sem resultados de pesquisa</h2>
-			</ul>
+			</div>
 		);
 	}
 
 	// Render the results if there are any elements
 	return (
-		<ul className="resultsContainer">
+		<div className="resultsContainer">
 			{elements.map((agent, index) => (
 				<Agent
 					agent={agent}
@@ -68,7 +61,7 @@ function AgentList({
 					key={agent.ID || index}
 				/>
 			))}
-		</ul>
+		</div>
 	);
 }
 
