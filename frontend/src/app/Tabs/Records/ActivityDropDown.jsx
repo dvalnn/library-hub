@@ -17,7 +17,9 @@ function ActivityDropDown({ agent, setActivity }) {
 			case AgentEnum.Student: // Students
 				return [
 					enumObject(ActivityEnum.Computers),
+					enumObject(ActivityEnum.ComputersGames),
 					enumObject(ActivityEnum.Recreation),
+					enumObject(ActivityEnum.RecreationSmartphone),
 					enumObject(ActivityEnum.GroupWork),
 					enumObject(ActivityEnum.IndividualWork),
 					enumObject(ActivityEnum.TestTaking),
@@ -26,14 +28,13 @@ function ActivityDropDown({ agent, setActivity }) {
 			case AgentEnum.Teacher: // Teachers
 				return [
 					enumObject(ActivityEnum.Computers),
-					enumObject(ActivityEnum.Recreation),
 					enumObject(ActivityEnum.IndividualWork),
-					// enumObject(ActivityEnum.BookRequisition), // Uncomment if needed
+					enumObject(ActivityEnum.BookRequisition),
 				];
 			case AgentEnum.Assistant: // Assistants
 				return [
-					enumObject(ActivityEnum.Computers),
-					enumObject(ActivityEnum.Recreation),
+					enumObject(ActivityEnum.ComputersWork),
+					enumObject(ActivityEnum.ComputersGames),
 				];
 			default:
 				return [];
