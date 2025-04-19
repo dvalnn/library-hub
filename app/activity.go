@@ -25,18 +25,18 @@ var AgentActivityMap = map[AgentKind][]Activity{
 		ExpulsionFromClass,
 		TestTaking,
 		ComputersGames,
-		RecreationSmartphone
+		RecreationSmartphone,
 	},
 
 	TEACHER: {
 		ComputersWork,
 		IndividualWork,
-		BookRequisition
+		BookRequisition,
 	},
 
 	ASSISTANT: {
 		ComputersWork,
-		ComputersGames
+		ComputersGames,
 	},
 }
 
