@@ -26,6 +26,7 @@
 
           # js lsp/lint
           biome
+          deno
 
           ### Python stuff
           python312

@@ -10,4 +10,5 @@ result.*
 # project specific
 Sqlite/
 *.db
-pyimporter/data
+*.csv
+scripts/data
