@@ -24,6 +24,17 @@ const AgentEnum = {
 
 		return values[label] || 0; // return null if label is not found
 	},
+
+    //FIXME: Helper function to get value based on label in Portuguese
+    getValuePT: function (label) {
+        const values = {
+            Aluno: this.Student,
+            Professor: this.Teacher,
+            Assistente: this.Assistant,
+        };
+
+        return values[label] || 0; // return null if label is not found
+    },
 };
 
 export default AgentEnum;

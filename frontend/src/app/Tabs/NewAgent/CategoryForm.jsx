@@ -1,8 +1,4 @@
-import React, { useState } from 'react';
-
-function CategoryForm({ category, setCategory }) {
-    const [classInput, setClassInput] = useState("");
-
+function CategoryForm({ category, setCategory, classInput, setClassInput }) {
     const handleCategoryChange = (e) => {
         setCategory(e.target.value);
         if (e.target.value !== "Aluno") setClassInput(""); // Clear class if not "Aluno"
@@ -18,7 +14,9 @@ function CategoryForm({ category, setCategory }) {
                         onChange={handleCategoryChange}
                         required
                     >
-                        <option value="0" disabled>Selecione uma Profissão</option>
+                        <option value="0" disabled>
+                            Selecione uma Profissão
+                        </option>
                         <option value="Aluno">Aluno</option>
                         <option value="Professor">Professor</option>
                         <option value="Assistente">Assistente</option>

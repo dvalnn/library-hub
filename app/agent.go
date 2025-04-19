@@ -15,6 +15,8 @@ const (
 	STUDENT AgentKind = iota + 1
 	TEACHER
 	ASSISTANT
+
+	AGENT_KIND_MAX
 )
 
 func (a AgentKind) String() string {
@@ -59,6 +61,14 @@ func (ag *Agent) validateClass() error {
 }
 
 func (ag *Agent) validate() error {
+	if ag.Name == "" {
+		return fmt.Errorf("name cannot be empty")
+	}
+
+	if ag.AgentKind <= 0 || ag.AgentKind > AGENT_KIND_MAX {
+		return fmt.Errorf("agent kind must be between %d and %d", STUDENT, AGENT_KIND_MAX)
+	}
+
 	if ag.Class != "" {
 		if ag.AgentKind != STUDENT {
 			return fmt.Errorf("only students can be assigned to a class")
@@ -72,7 +82,7 @@ func (ag *Agent) validate() error {
 	return nil
 }
 
-func (ag *Agent) create(db *gorm.DB) error {
+func (ag *Agent) Create(db *gorm.DB) error {
 	err := ag.validate()
 	if err != nil {
 		return err

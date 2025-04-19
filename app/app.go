@@ -97,3 +97,17 @@ func (a *App) SearchRecordsByDay(day string, kind AgentKind) ([]*Record, error) 
 
 	return matches, nil
 }
+
+func (a *App) CreateNewAgent(ag *Agent) error {
+
+	println("Creating agent:", ag)
+	println("Agent kind:", ag.AgentKind)
+	println("Agent class:", ag.Class)
+	println("Agent name:", ag.Name)
+
+	if err := ag.Create(a.db); err != nil {
+		println("Error creating agent:", err)
+		return err
+	}
+	return nil
+}
