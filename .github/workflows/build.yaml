@@ -13,7 +13,7 @@ env:
 jobs:
   build:
     strategy:
-    # Failure in one platform build won't impact the others
+      # Failure in one platform build won't impact the others
       fail-fast: false
       matrix:
         build:
@@ -27,12 +27,12 @@ jobs:
     runs-on: ${{ matrix.build.os }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4.2.2
         with:
           submodules: recursive
 
       - name: Build wails
-        uses: dAppServer/wails-build-action@v2.2
+        uses: dAppServer/wails-build-action@main
         id: build
         with:
           build-name: ${{ matrix.build.name }}
